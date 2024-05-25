@@ -35,7 +35,7 @@ export const registerValidator = validate(
         options: async (value) => {
           const isExistEmail = await usersService.checkEmailExist(value)
           if (isExistEmail) {
-            throw new ErrorWithStatus({ message: 'Email đã tồn tại', status: 400 })
+            throw new Error('Email đã tồn tại')
           }
           return true
         }

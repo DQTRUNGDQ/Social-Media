@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import User from '~/models/schemas/User.schema'
 import { ParamsDictionary } from 'express-serve-static-core'
 import databaseService from '~/services/database.services'
@@ -11,7 +11,11 @@ export const loginController = (req: Request, res: Response) => {
   })
 }
 
-export const registerController = async (req: Request<ParamsDictionary, any, RegisterReqBody>, res: Response) => {
+export const registerController = async (
+  req: Request<ParamsDictionary, any, RegisterReqBody>,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const result = await usersService.register(req.body)
     return res.status(200).json({
@@ -19,8 +23,6 @@ export const registerController = async (req: Request<ParamsDictionary, any, Reg
       result
     })
   } catch (error) {
-    return res.status(400).json({
-      error: 'Đăng ký thất bại'
-    })
+    next(error)
   }
 }
