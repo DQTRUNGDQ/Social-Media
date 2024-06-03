@@ -91,6 +91,7 @@ body::-webkit-scrollbar {
   background-color: rgb(0, 0, 0);
   border-radius: 12px;
   cursor: pointer;
+  width: 100%;
 }
 
 .form-login .login-btn .login-btn-styled {
@@ -180,4 +181,15 @@ body::-webkit-scrollbar {
   font-size: 12px;
   color: rgb(153, 153, 153);
   font-weight: 400;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }

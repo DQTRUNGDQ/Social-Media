@@ -19,7 +19,7 @@ export default function useRouteElements() {
       )
     },
     {
-      path: 'register',
+      path: '/register',
       element: (
         <LoginLayout>
           <Register />
