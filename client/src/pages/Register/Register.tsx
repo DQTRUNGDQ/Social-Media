@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { rules } from 'src/utils/rules'
+import axios from 'axios'
 
 interface FormData {
   name: string
@@ -29,8 +30,29 @@ export default function Register({ onClose }) {
     formState: { errors }
   } = useForm<FormData>()
 
-  const onSubmit = handleSubmit((data) => {})
-  console.log('error', errors)
+  const [isRegistered, setIsRegistered] = useState(false)
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const res = await axios.post('http://localhost:5000/users/register', {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        confirm_password: data.confirm_password,
+        date_of_birth: `${data.year}-${data.month.toString().padStart(2, '0')}-${data.day.toString().padStart(2, '0')}`
+      })
+
+      console.log('Registration successful:', res.data)
+      setIsRegistered(true)
+      setTimeout(() => {
+        setIsRegistered(false)
+        onClose() // Close the modal after displaying the toast
+      }, 3000)
+    } catch (err) {
+      console.log('Registration failed', err)
+    }
+  }
+
   return (
     <section className='bg-gray-50 dark:bg-gray-900'>
       <div className='overlay flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
@@ -42,10 +64,24 @@ export default function Register({ onClose }) {
             <button onClick={onClose} className='close-button'>
               <i className='fas fa-times'></i>
             </button>
+            {isRegistered && (
+              <div
+                className='flex text-center bg-green-500 text-white justify-center  border px-4 py-3 mb-3 rounded relative'
+                role='alert'
+              >
+                <span className='block'>Đăng ký thành công!</span>
+              </div>
+            )}
             <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
               Tạo một tài khoản
             </h1>
-            <form className='space-y-4 md:space-y-6' onSubmit={onSubmit} noValidate>
+
+            {/* {isRegistered && (
+              <div className='fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded'>
+                Đăng ký thành công!
+              </div>
+            )} */}
+            <form className='space-y-4 md:space-y-6' onSubmit={handleSubmit(onSubmit)} noValidate>
               <div>
                 {/* <label htmlFor='email' className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                   Tên

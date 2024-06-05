@@ -146,6 +146,7 @@ body::-webkit-scrollbar {
 
 .form-login .content-method .register {
   color: #fff;
+  width: 100%;
 }
 
 .form-login .content-method span {
@@ -156,9 +157,10 @@ body::-webkit-scrollbar {
 }
 
 .footer-container {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-height: ̀50vh;
 }
 
 .footer-styled {

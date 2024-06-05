@@ -49,6 +49,15 @@ export const rules: Rules = {
     minLength: {
       value: 8,
       message: 'Độ dài từ 8 - 15 ký tự'
+    },
+    validate: {
+      strongPassword: (value) => {
+        const strongRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])')
+        if (!strongRegex.test(value)) {
+          return 'Mật khẩu phải chứa ít nhất một chữ cái viết thường, một chữ cái viết hoa, một số và một ký tự đặc biệt'
+        }
+        return true
+      }
     }
   },
   confirm_password: {
