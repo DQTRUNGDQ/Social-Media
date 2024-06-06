@@ -4,6 +4,7 @@ import axios from 'axios'
 import background from '../../images/background.jpg'
 import google from '../../images/google.jfif'
 import Register from '../Register'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const [password, setPassword] = useState('')
@@ -12,6 +13,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const [loginAttempted, setLoginAttempted] = useState(false) // Thêm trạng thái loginAttempted
+  const navigate = useNavigate()
 
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
@@ -25,6 +27,7 @@ export default function Login() {
 
       setSuccessMessage('Đăng nhập thành công')
       setErrorMessage('')
+      navigate('/home')
     } catch (error) {
       console.error(error)
       setErrorMessage('Mật khẩu hoặc Email nhập vào không chính xác')
