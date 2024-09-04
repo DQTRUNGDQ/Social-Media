@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import User from "~/models/User";
+import User from "../models/User";
 import jwt from "jsonwebtoken";
-import { USERS_MESSAGES } from "~/constants/message";
+import { USERS_MESSAGES } from "../constants/message";
 import { config } from "dotenv";
 config();
 

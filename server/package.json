@@ -10,9 +10,13 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^22.5.0",
     "@types/validator": "^13.12.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
     "mongoose": "^8.5.4",
     "typescript": "^5.5.4"
   },
@@ -22,5 +26,8 @@
     "eslint": "^9.9.1",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2"
+  },
+  "_moduleAliases": {
+    "~": "src"
   }
 }

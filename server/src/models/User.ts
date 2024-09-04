@@ -29,15 +29,10 @@ interface IUser extends Document {
   //tokens: { token: string }[];
   tokens: IToken[];
   generateAuthTokens(): Promise<{ accessToken: string; refreshToken: string }>;
-}
-
-interface IUser extends Document {
-  refreshToken: string[];
-  removeRefreshToken: (token: string) => Promise<void>;
+  removeRefreshToken(token: string): Promise<void>;
 }
 
 interface IUserModel extends Model<IUser> {
-  removeRefreshToken(token: string): Promise<void>;
   findByCredentials(email: string, password: string): Promise<IUser>;
 }
 
@@ -103,6 +98,7 @@ const userSchema: Schema<IUser> = new Schema({
     maxlength: 160,
   },
   website: {
+    type: String,
     validate(value: string) {
       if (value && !validator.isURL(value)) {
         throw new Error("Invalid URL");
@@ -173,7 +169,7 @@ userSchema.methods.generateAuthTokens = async function (): Promise<{
   );
 
   // Lưu Refresh Token vào cơ sở dữ liệu
-  user.tokens.push(refreshToken);
+  user.tokens.push({ token: refreshToken, createdAt: new Date() });
   await user.save();
 
   return { accessToken, refreshToken };
