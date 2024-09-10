@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Sidebar/sidebar";
 import Feed from "../../components/Feed/feed";
 import "../../styles/Main.css";
+// import images from "../../assets/loadImage";
 
 const Home = () => {
   return (

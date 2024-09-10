@@ -4,6 +4,7 @@ import "module-alias/register";
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
+import cors from "cors";
 
 const app = express();
 require("dotenv").config();
@@ -13,6 +14,13 @@ connectDB();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 // Routes
 app.use("/api/auth", authRoutes);

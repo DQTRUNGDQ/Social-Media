@@ -30,4 +30,5 @@ export const USERS_MESSAGES = {
   USER_REFRESH_TOKEN_OR_NOT_EXISTS: "Used refresh token is or not exist",
   GET_ME_SUCCESS: "Get my profile success",
   USER_NOT_VERIFIED: "User not verified",
+  USER_NOT_FOUND: "User not found",
 } as const;

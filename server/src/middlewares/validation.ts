@@ -3,12 +3,12 @@ import { check, validationResult } from "express-validator";
 
 // Validator cho đăng ký
 export const validateRegister = [
-  check("username").notEmpty().withMessage("Username is required"),
+  check("name").notEmpty().withMessage("Name is required"),
 ];
 check("email").isEmail().withMessage("Email is invalid"),
   check("password")
     .isLength({ min: 8 })
-    .withMessage("Password mus be at least 8 characters long"),
+    .withMessage("Password must be at least 8 characters long"),
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -20,7 +20,7 @@ check("email").isEmail().withMessage("Email is invalid"),
 // Validator cho đăng nhập
 export const validateLogin = [
   check("email").isEmail().withMessage("Email is invalid"),
-  check("passowrd").notEmpty().withMessage("password is required"),
+  check("password").notEmpty().withMessage("password is required"),
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

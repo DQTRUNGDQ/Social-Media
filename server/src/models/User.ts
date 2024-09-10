@@ -3,17 +3,20 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import validator from "validator";
 import { config } from "dotenv";
+import { RefreshToken } from "./RefreshToken";
 config();
 
 // Định nghĩa giao diện cho token
 interface IToken {
-  token: string;
+  accessToken: string;
+  refreshToken: string;
   createdAt: Date;
 }
 
 // Định nghĩa giao diện cho người dùng
 
 interface IUser extends Document {
+  name: string;
   username: string;
   email: string;
   password: string;
@@ -26,10 +29,9 @@ interface IUser extends Document {
   followers: mongoose.Types.ObjectId[];
   following: mongoose.Types.ObjectId[];
   posts: mongoose.Types.ObjectId[];
-  //tokens: { token: string }[];
-  tokens: IToken[];
+  tokenVersion: number;
   generateAuthTokens(): Promise<{ accessToken: string; refreshToken: string }>;
-  removeRefreshToken(token: string): Promise<void>;
+  invalidateTokens(): Promise<void>;
 }
 
 interface IUserModel extends Model<IUser> {
@@ -39,7 +41,11 @@ interface IUserModel extends Model<IUser> {
 // Định nghĩa schema cho token
 
 const tokenSchema: Schema<IToken> = new Schema({
-  token: {
+  accessToken: {
+    type: String,
+    required: true,
+  },
+  refreshToken: {
     type: String,
     required: true,
   },
@@ -51,6 +57,13 @@ const tokenSchema: Schema<IToken> = new Schema({
 
 // Định nghĩa schema cho người dùng
 const userSchema: Schema<IUser> = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 3,
+    maxlength: 30,
+  },
   username: {
     type: String,
     required: true,
@@ -58,6 +71,14 @@ const userSchema: Schema<IUser> = new Schema({
     trim: true,
     minlength: 3,
     maxlength: 30,
+    validate: {
+      validator: function (value: string) {
+        // Kiểm tra username có bắt đầu bằng '@' và chỉ chứa ký tự hợp lệ
+        return /^@[a-zA-Z0-9_]{2,29}$/.test(value);
+      },
+      message: (props) =>
+        `Username phải bắt đầu bằng '@' và chỉ chứa chữ cái, số, gạch dưới, dài từ 3 đến 30 ký tự.`,
+    },
   },
   email: {
     type: String,
@@ -131,14 +152,17 @@ const userSchema: Schema<IUser> = new Schema({
       },
     },
   ],*/
-  tokens: [tokenSchema],
+  tokenVersion: {
+    type: Number,
+    default: 0,
+  },
 });
 
 // Hash mật khẩu trước khi lưu người dùng
 userSchema.pre<IUser>("save", async function (next) {
   const user = this;
   if (user.isModified("password")) {
-    user.password = await bcrypt.hash(user.password, 8);
+    user.password = await bcrypt.hash(user.password, 10);
   }
   next();
 });
@@ -161,6 +185,7 @@ userSchema.methods.generateAuthTokens = async function (): Promise<{
   const refreshToken = jwt.sign(
     {
       id: user._id.toString(),
+      tokenVersion: user.tokenVersion,
     },
     process.env.JWT_REFRESH_SECRET as string,
     {
@@ -168,22 +193,31 @@ userSchema.methods.generateAuthTokens = async function (): Promise<{
     }
   );
 
-  // Lưu Refresh Token vào cơ sở dữ liệu
-  user.tokens.push({ token: refreshToken, createdAt: new Date() });
-  await user.save();
+  //Lưu Refresh Token vào collection riêng biệt
+  const tokenDoc = new RefreshToken({
+    userId: user.id,
+    refreshToken,
+    createdAt: new Date(),
+    expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 ngày
+    tokenVersion: user.tokenVersion,
+  });
+
+  await tokenDoc.save();
 
   return { accessToken, refreshToken };
 };
 
-// Xóa Refresh Token khi logout hoặc khi cần
+// Tăng phiên bản tokenVersion
 
-userSchema.methods.removeRefreshToken = async function (
-  token: string
-): Promise<void> {
-  const user = this;
-  user.tokens = user.tokens.filter((t: IToken) => t.token !== token);
-  await user.save();
+userSchema.methods.invalidateTokens = async function (): Promise<void> {
+  this.tokenVersion += 1;
+  await this.save();
+
+  // Xoá tất cả các refreshToken cũ từ collection RefreshToken
+  await RefreshToken.deleteMany({ userId: this.id });
 };
+
+// Xác thực Refresh Token
 
 // Tìm người dùng bằng thông tin đăng nhập
 

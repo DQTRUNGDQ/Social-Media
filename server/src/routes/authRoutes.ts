@@ -1,6 +1,11 @@
 import express from "express";
 import { register, login, logout } from "../controllers/authController";
 import {
+  requestPasswordReset,
+  VerifyResetCode,
+  resetPassword,
+} from "../controllers/authController";
+import {
   validateRegister,
   validateLogin,
   validateRefreshToken,
@@ -16,5 +21,14 @@ router.post("/login", validateLogin, login);
 
 // Route logout
 router.post("/logout", validateRefreshToken, logout);
+
+// Route yêu cầu mã xác thực gửi qua email
+router.post("/request-password-reset", requestPasswordReset);
+
+// Route để xác thực mã và đặt lại mật khẩu
+router.post("/verify-reset-code", VerifyResetCode);
+
+// Route để đặt lại mật khẩu sau khi mã xác thực đã được xác minh
+router.post("/reset-password", resetPassword);
 
 export default router;
