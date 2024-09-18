@@ -27,7 +27,7 @@ export default function Register({ onClose }) {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:5000/users/register", {
+      const res = await axios.post("http://localhost:5000/api/auth/register", {
         name: data.name,
         email: data.email,
         password: data.password,
@@ -59,7 +59,7 @@ export default function Register({ onClose }) {
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mb-14">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-4 sm:pr-8 sm:pl-8">
-            <button onClick={onClose} className="close-button">
+            <button onClick={onClose} className="close-button-rg">
               <i className="fas fa-times"></i>
             </button>
             {isRegistered && (
@@ -74,7 +74,7 @@ export default function Register({ onClose }) {
               Tạo một tài khoản
             </h1>
             <form
-              className="space-y-4 md:space-y-6"
+              className="space-y-4 md:space-y-2"
               onSubmit={handleSubmit(onSubmit)}
               noValidate
             >

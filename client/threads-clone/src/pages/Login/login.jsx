@@ -3,32 +3,47 @@ import axios from "axios";
 import images from "../../assets/loadImage";
 import { useNavigate } from "react-router-dom";
 import Register from "../Register/Register.jsx";
+import ForgotPasswordModal from "../ForgotPassword/ForgotPassword";
+import ForgotPasswordCode from "../ForgotPassword/ForgotPasswordCode";
+import useAuthToken from "../../services/useAuthToken";
 
 export default function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [step, setStep] = useState("email");
   const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showForgotPasswordForm, setForgotPasswordOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loginAttempted, setLoginAttempted] = useState(false); // Added state for loginAttempted
+  const { setAccessToken } = useAuthToken();
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
     setLoginAttempted(true); // Update state when clicking "Login"
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
-      const accessToken = res.data.result;
+      const accessToken = res.data.result.accessToken;
+      setAccessToken(accessToken);
 
       localStorage.setItem("accessToken", accessToken);
 
       setSuccessMessage("Login successful");
+      if (accessToken) {
+        navigate("/home");
+      }
       setErrorMessage("");
-      navigate("/");
     } catch (error) {
       console.error(error);
       setErrorMessage("Incorrect password or email");
@@ -39,6 +54,17 @@ export default function Login() {
   const handleRegisterClick = () => {
     setShowRegisterForm(true);
     setLoginAttempted(false); // Ensure no change in state when clicking "Create Account"
+  };
+
+  const handleForgotPasswordClick = () => {
+    setForgotPasswordOpen(true);
+    console.log("Modal is open:", showForgotPasswordForm);
+  };
+
+  const handleForgotPasswordNext = (enteredEmail) => {
+    setEmail(enteredEmail);
+    setStep("code");
+    setForgotPasswordOpen(false);
   };
 
   return (
@@ -102,9 +128,12 @@ export default function Login() {
 
             <div className="txt-align">
               <span className="forgot-pw">
-                <a href="#">Forgot password</a>
+                <button type="button" onClick={handleForgotPasswordClick}>
+                  Forgot password
+                </button>
               </span>
             </div>
+
             <div className="other-method">
               <div className="txt-or">or</div>
               <hr />
@@ -142,6 +171,15 @@ export default function Login() {
           </form>
         </div>
       </div>
+      {showForgotPasswordForm && (
+        <ForgotPasswordModal
+          isOpen={showForgotPasswordForm}
+          onClose={() => setForgotPasswordOpen(false)}
+          onNext={(email) => handleForgotPasswordNext(email)}
+        />
+      )}
+
+      {step === "code" && <ForgotPasswordCode email={email} />}
       {showRegisterForm && (
         <Register onClose={() => setShowRegisterForm(false)} />
       )}

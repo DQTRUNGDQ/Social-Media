@@ -5,6 +5,7 @@ import User from "~/models/User";
 import { sendResetCodeEmail } from "~/services/emailService";
 import { generateResetCode, verifyResetCode } from "../services/tokenService";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 // Controller đăng ký
 export const register = async (req: Request, res: Response): Promise<void> => {
@@ -26,11 +27,17 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
     const { tokens } = await authService.loginUser(email, password);
+    res.cookie("refreshToken", tokens.refreshToken),
+      {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict", // Chống CSRF
+        maxAge: 7 * 24 * 60 * 60 * 1000, // Refresh token sống trong 7 ngày
+      };
     res.send({
       result: {
         message: USERS_MESSAGES.LOGIN_SUCCESS,
         accessToken: tokens.accessToken,
-        refreshToken: tokens.refreshToken,
       },
     });
   } catch (error: any) {
@@ -82,11 +89,15 @@ export const VerifyResetCode = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { userId, resetCode } = req.body;
+  const { email, resetCode } = req.body;
 
   try {
     // Xác thực mã và lưu trạng thái xác thực
-    const isValid = verifyResetCode(userId, resetCode);
+    const user = await User.findOne({ email });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    const isValid = verifyResetCode(user.id, resetCode);
     if (!isValid) {
       res.status(400).send({ message: "Invalid or expired reset code" });
     }
@@ -123,5 +134,39 @@ export const resetPassword = async (
     res.status(200).send({ message: "PASSWORD UPDATED SUCCESSFULLY" });
   } catch (error: any) {
     res.status(500).send({ error: error.message });
+  }
+};
+
+// Controller Auto Refresh AccessToken
+export const refreshToken = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    res.status(401).json({ message: "No refresh token provided" });
+  }
+
+  try {
+    const decoded = jwt.verify(
+      refreshToken,
+      process.env.JWT_REFRESH_SECRET as string
+    ) as { id: string };
+
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const newAccessToken = jwt.sign(
+      { id: user.id.toString() },
+      process.env.JWT_ACCESS_SECRET as string,
+      { expiresIn: process.env.JWT_ACCESS_EXPIRATION }
+    );
+    res.status(200).json({ accessToken: newAccessToken });
+  } catch (error) {
+    res.status(403).json({ message: "Invalid refresh token" });
   }
 };

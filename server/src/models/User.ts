@@ -17,7 +17,7 @@ interface IToken {
 
 interface IUser extends Document {
   name: string;
-  username: string;
+  username?: string;
   email: string;
   password: string;
   date_of_birth?: Date;
@@ -66,7 +66,6 @@ const userSchema: Schema<IUser> = new Schema({
   },
   username: {
     type: String,
-    required: true,
     unique: true,
     trim: true,
     minlength: 3,

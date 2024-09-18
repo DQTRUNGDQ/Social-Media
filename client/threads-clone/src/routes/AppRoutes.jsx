@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home/home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register.jsx";
@@ -8,9 +8,10 @@ import Search from "../pages/Search/Search";
 import Activity from "../pages/Activity/Activity";
 import Profile from "../pages/Profile/Profile";
 import LoginLayout from "../layouts/LoginLayout";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPasswordMain";
 
 const AppRoutes = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = localStorage.getItem("accessToken");
 
   return (
     <Routes>
@@ -35,10 +36,18 @@ const AppRoutes = () => {
       />
       <Route path="/activity" element={<Activity />} />
       <Route
-        path="/login"
+        path="/register"
         element={
           <LoginLayout>
             <Register />
+          </LoginLayout>
+        }
+      />
+      <Route
+        path="/forget-password"
+        element={
+          <LoginLayout>
+            <ForgotPassword />
           </LoginLayout>
         }
       />

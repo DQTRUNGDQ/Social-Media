@@ -1,5 +1,10 @@
 import express from "express";
-import { register, login, logout } from "../controllers/authController";
+import {
+  register,
+  login,
+  logout,
+  refreshToken,
+} from "../controllers/authController";
 import {
   requestPasswordReset,
   VerifyResetCode,
@@ -30,5 +35,8 @@ router.post("/verify-reset-code", VerifyResetCode);
 
 // Route để đặt lại mật khẩu sau khi mã xác thực đã được xác minh
 router.post("/reset-password", resetPassword);
+
+// Route để refresh accessToken
+router.post("/refresh-token", refreshToken);
 
 export default router;

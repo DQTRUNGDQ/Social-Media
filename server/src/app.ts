@@ -5,12 +5,15 @@ import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
 require("dotenv").config();
 
 // Connect to MongoDB
 connectDB();
+
+app.use(cookieParser());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
