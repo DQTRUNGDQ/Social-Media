@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import images from "../../assets/loadImage";
 import { useNavigate } from "react-router-dom";
 import Register from "../Register/Register.jsx";
 import ForgotPasswordModal from "../ForgotPassword/ForgotPassword";
 import ForgotPasswordCode from "../ForgotPassword/ForgotPasswordCode";
+import ResetPassword from "../ForgotPassword/ResetPassword";
 import useAuthToken from "../../services/useAuthToken";
+import {
+  codeSchema,
+  emailSchema,
+  loginSchema,
+  passwordSchema,
+} from "../../utils/validationSchema";
+import { loginUser, verifyResetCode } from "../../services/authService";
 
 export default function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [resetCode, setResetCode] = useState("");
   const [step, setStep] = useState("email");
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showForgotPasswordForm, setForgotPasswordOpen] = useState(false);
@@ -23,23 +32,17 @@ export default function Login() {
     event.preventDefault();
     setLoginAttempted(true); // Update state when clicking "Login"
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      await loginSchema.validate({ password, email });
 
-      const accessToken = res.data.result.accessToken;
+      const data = await loginUser(email, password);
+
+      const accessToken = data.result.accessToken;
       setAccessToken(accessToken);
 
       localStorage.setItem("accessToken", accessToken);
 
       setSuccessMessage("Login successful");
+
       if (accessToken) {
         navigate("/home");
       }
@@ -58,14 +61,39 @@ export default function Login() {
 
   const handleForgotPasswordClick = () => {
     setForgotPasswordOpen(true);
-    console.log("Modal is open:", showForgotPasswordForm);
   };
 
-  const handleForgotPasswordNext = (enteredEmail) => {
-    setEmail(enteredEmail);
-    setStep("code");
-    setForgotPasswordOpen(false);
+  const handleForgotPasswordNext = async (enteredEmail) => {
+    setResetCode(resetCode);
+    try {
+      await emailSchema.validate({ email: enteredEmail });
+      setEmail(enteredEmail);
+      setStep("code");
+      setForgotPasswordOpen(false);
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
+
+  const handleCodeVerification = async (enteredResetCode) => {
+    setResetCode(enteredResetCode);
+    try {
+      await codeSchema.validate({ code: resetCode });
+      const isValid = await verifyResetCode(email, resetCode);
+      console.log("Is valid reset code:", isValid);
+      if (isValid === true) {
+        setStep("password");
+        console.log("Code verified successfully.");
+      } else {
+        setErrorMessage("Invalid reset code. Please check and try again.");
+      }
+    } catch (err) {
+      setErrorMessage("Invalid reset code. Please check and try again.");
+    }
+  };
+  useEffect(() => {
+    console.log("Current step updated to:", step);
+  }, [step]);
 
   return (
     <div className="login-main">
@@ -179,9 +207,26 @@ export default function Login() {
         />
       )}
 
-      {step === "code" && <ForgotPasswordCode email={email} />}
+      {step === "code" && (
+        <ForgotPasswordCode
+          isOpen={step === "code"}
+          email={email}
+          onClose={() => setStep("email")}
+          onNext={handleCodeVerification}
+        />
+      )}
+
+      {step === "password" && (
+        <ResetPassword
+          isOpen={step === "password"}
+          email={email}
+          resetCode={resetCode}
+          onClose={() => setStep("code")}
+        />
+      )}
+
       {showRegisterForm && (
-        <Register onClose={() => setShowRegisterForm(false)} />
+        <Register onClick={() => setShowRegisterForm(false)} />
       )}
     </div>
   );

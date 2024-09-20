@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ForgotPasswordModal from "./ForgotPassword";
 import ForgotPasswordCode from "./ForgotPasswordCode";
+import ResetPassword from "./ResetPassword";
 
 const ForgotPassword = () => {
   const [step, setStep] = useState("email");
@@ -11,6 +12,11 @@ const ForgotPassword = () => {
     setStep("code");
   };
 
+  const handleNextStepReset = (enteredEmail) => {
+    setEmail(enteredEmail);
+    setStep("password");
+  };
+
   return (
     <div>
       {step === "email" && (
@@ -19,7 +25,15 @@ const ForgotPassword = () => {
           onNext={(enteredEmail) => handleNextStep(enteredEmail)}
         />
       )}
-      {step === "code" && <ForgotPasswordCode email={email} />}
+      {step === "code" && (
+        <ForgotPasswordCode
+          email={email}
+          isOpen={true}
+          onNext={(enteredEmail) => handleNextStepReset(enteredEmail)}
+          onClose={() => setStep("email")}
+        />
+      )}
+      {step === "password" && <ResetPassword email={email} isOpen={true} />}
     </div>
   );
 };

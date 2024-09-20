@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../../styles/authentication.css";
 
-const ForgotPasswordCode = ({ onClose, email }) => {
+const ForgotPasswordCode = ({ onClose, email, onNext }) => {
   const [resetCode, setCode] = useState("");
   const [error, setError] = useState("");
 
@@ -11,10 +11,19 @@ const ForgotPasswordCode = ({ onClose, email }) => {
     setError("");
 
     try {
-      await axios.post("http://localhost:5000/api/auth/verify-reset-code", {
-        email,
-        resetCode,
-      });
+      await axios.post(
+        "http://localhost:5000/api/auth/verify-reset-code",
+        {
+          email,
+          resetCode,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      onNext(resetCode);
     } catch (err) {
       setError("Mã xác nhận không hợp lệ. Vui lòng kiểm tra và thử lại.");
     }
@@ -48,11 +57,11 @@ const ForgotPasswordCode = ({ onClose, email }) => {
             required
             placeholder="Nhập mã xác nhận"
           />
-          <button className="submit-button" type="submit">
+          <button type="submit" className="submit-button">
             Confirm
           </button>
+          {error && <p>{error}</p>}
         </form>
-        {error && <p>{error}</p>}
       </div>
     </div>
   );

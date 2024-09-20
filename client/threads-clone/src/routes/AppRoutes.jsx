@@ -9,6 +9,7 @@ import Activity from "../pages/Activity/Activity";
 import Profile from "../pages/Profile/Profile";
 import LoginLayout from "../layouts/LoginLayout";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPasswordMain";
+import ResetPassword from "../pages/ForgotPassword/ResetPassword";
 
 const AppRoutes = () => {
   const isAuthenticated = localStorage.getItem("accessToken");

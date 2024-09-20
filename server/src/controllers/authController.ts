@@ -11,6 +11,7 @@ import jwt from "jsonwebtoken";
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { user, tokens } = await authService.registerUser(req.body);
+
     res.status(201).send({
       message: USERS_MESSAGES.REGISTER_SUCCESS,
       user,
@@ -27,6 +28,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
     const { tokens } = await authService.loginUser(email, password);
+
     res.cookie("refreshToken", tokens.refreshToken),
       {
         httpOnly: true,
@@ -116,19 +118,25 @@ export const resetPassword = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { userId, newPassword } = req.body;
-
+  const { email, resetCode, newPassword } = req.body;
+  console.log("Reset code received in backend:", resetCode);
   try {
-    // Tìm người dùng theo userId
-    const user = await User.findById(userId);
+    // Tìm người dùng theo email
+    const user = await User.findOne({ email });
     if (!user) {
-      res.status(404).send({ message: USERS_MESSAGES.USER_NOT_FOUND });
+      res.status(404).send({ message: "User not found" });
       return;
     }
 
+    // Kiểm tra mã xác nhận và thời gian hết hạn
+    const isValid = verifyResetCode(user.id, resetCode);
+    if (!isValid) {
+      res.status(400).send({ message: "Invalid or expired reset code" });
+    }
+
     // Băm mật khẩu mới và cập nhật
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    user.password = hashedPassword;
+    user.password = newPassword; // Đặt mật khẩu mới vào
+    user.markModified("password"); // Đánh dấu trường password là đã thay đổi
     await user.save();
 
     res.status(200).send({ message: "PASSWORD UPDATED SUCCESSFULLY" });

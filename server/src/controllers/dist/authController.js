@@ -42,7 +42,6 @@ var message_1 = require("../constants/message");
 var User_1 = require("~/models/User");
 var emailService_1 = require("~/services/emailService");
 var tokenService_1 = require("../services/tokenService");
-var bcrypt_1 = require("bcrypt");
 var jsonwebtoken_1 = require("jsonwebtoken");
 // Controller đăng ký
 exports.register = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
@@ -188,35 +187,39 @@ exports.VerifyResetCode = function (req, res) { return __awaiter(void 0, void 0,
 }); };
 // Controller reset password
 exports.resetPassword = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
-    var _a, userId, newPassword, user, hashedPassword, error_6;
+    var _a, email, resetCode, newPassword, user, isValid, error_6;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, userId = _a.userId, newPassword = _a.newPassword;
+                _a = req.body, email = _a.email, resetCode = _a.resetCode, newPassword = _a.newPassword;
+                console.log("Reset code received in backend:", resetCode);
                 _b.label = 1;
             case 1:
-                _b.trys.push([1, 5, , 6]);
-                return [4 /*yield*/, User_1["default"].findById(userId)];
+                _b.trys.push([1, 4, , 5]);
+                return [4 /*yield*/, User_1["default"].findOne({ email: email })];
             case 2:
                 user = _b.sent();
                 if (!user) {
-                    res.status(404).send({ message: message_1.USERS_MESSAGES.USER_NOT_FOUND });
+                    res.status(404).send({ message: "User not found" });
                     return [2 /*return*/];
                 }
-                return [4 /*yield*/, bcrypt_1["default"].hash(newPassword, 10)];
-            case 3:
-                hashedPassword = _b.sent();
-                user.password = hashedPassword;
+                isValid = tokenService_1.verifyResetCode(user.id, resetCode);
+                if (!isValid) {
+                    res.status(400).send({ message: "Invalid or expired reset code" });
+                }
+                // Băm mật khẩu mới và cập nhật
+                user.password = newPassword; // Đặt mật khẩu mới vào
+                user.markModified("password"); // Đánh dấu trường password là đã thay đổi
                 return [4 /*yield*/, user.save()];
-            case 4:
+            case 3:
                 _b.sent();
                 res.status(200).send({ message: "PASSWORD UPDATED SUCCESSFULLY" });
-                return [3 /*break*/, 6];
-            case 5:
+                return [3 /*break*/, 5];
+            case 4:
                 error_6 = _b.sent();
                 res.status(500).send({ error: error_6.message });
-                return [3 /*break*/, 6];
-            case 6: return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };

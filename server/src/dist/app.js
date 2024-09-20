@@ -13,12 +13,14 @@ require("dotenv").config();
 // Connect to MongoDB
 db_1["default"]();
 app.use(cookie_parser_1["default"]());
-app.use(body_parser_1["default"].json());
-app.use(body_parser_1["default"].urlencoded({ extended: true }));
 app.use(cors_1["default"]({
     origin: "http://localhost:3000",
-    credentials: true
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.use(body_parser_1["default"].json());
+app.use(body_parser_1["default"].urlencoded({ extended: true }));
 // Routes
 app.use("/api/auth", authRoutes_1["default"]);
 // app.use("/api/post", postRoutes);

@@ -29,6 +29,5 @@ export const verifyResetCode = (userId: string, code: string): boolean => {
   if (!data || data.expiresAt < Date.now() || data.code !== code) {
     return false;
   }
-  resetCodes.delete(userId); // Xóa mã sau khi xác thực thành công
   return true;
 };

@@ -3,9 +3,9 @@ import { config } from "dotenv";
 config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.mailtrap.io",
-  port: 587,
-  secure: false,
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // True cho 465, false cho 587
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendResetCodeEmail = async (email: string, resetCode: string) => {
   await transporter.sendMail({
-    from: "Threads@offical.com",
+    from: '"Threads" <Threads@official.com>',
     to: email,
     subject: "Password Reset Code",
     text: `You requested a password reset. Use the following code to reset your password: ${resetCode}`,

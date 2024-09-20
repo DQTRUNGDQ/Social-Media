@@ -28,6 +28,7 @@ export const loginUser = async (
 ): Promise<{ user: any; tokens: IAuthTokens }> => {
   const user = await User.findByCredentials(email, password);
   const tokens = await user.generateAuthTokens();
+
   return { user, tokens };
 };
 
