@@ -3,6 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import useAuthToken from "./services/useAuthToken";
 import axios from "axios";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const QueryClientInstance = new QueryClient();
 
 function App() {
   const { accessToken, setAccessToken } = useAuthToken();
@@ -14,9 +17,11 @@ function App() {
   }, [accessToken]);
 
   return (
-    <Router>
-      <AppRoutes />
-    </Router>
+    <QueryClientProvider client={QueryClientInstance}>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </QueryClientProvider>
   );
 }
 

@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import User from "~/models/User";
+import { config } from "dotenv";
+import { Console } from "console";
+config();
 
 interface AuthenticatedRequest extends Request {
   user?: any;
@@ -14,24 +17,27 @@ const authMiddleware = async (
 ) => {
   try {
     const authHeader = req.header("Authorization");
-
+    console.log("Auth Header:", authHeader);
     if (!authHeader) {
       throw new Error("Authorization header missing");
     }
 
-    const token = authHeader.replace("Bearer ", "");
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
-      _id: string;
-    };
+    const accessToken = authHeader.replace("Bearer ", "");
 
-    const user = await User.findOne({ _id: decoded._id });
+    const decoded = jwt.verify(
+      accessToken,
+      process.env.JWT_ACCESS_SECRET as string
+    ) as { id: string };
+    console.log("Decoded:", decoded);
+
+    const user = await User.findOne({ _id: decoded.id });
 
     if (!user) {
       throw new Error("User not found");
     }
 
     req.user = user;
-    req.token = token;
+    req.token = accessToken;
     next();
   } catch (error) {
     res.status(401).send({ error: " Please authenticate" });

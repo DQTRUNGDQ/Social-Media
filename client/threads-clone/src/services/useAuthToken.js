@@ -37,6 +37,15 @@ const useAuthToken = () => {
     }
   };
 
+  const getValidAccessToken = async () => {
+    let accessToken = accessToken || localStorage.getItem("accessToken");
+
+    if (!accessToken || isTokenExpired(accessToken)) {
+      accessToken = await refreshToken(); // Làm mới token nếu hết hạn
+    }
+    return accessToken;
+  };
+
   useEffect(() => {
     const storedToken = localStorage.getItem("accessToken");
     if (storedToken) {
@@ -45,7 +54,7 @@ const useAuthToken = () => {
     const intervalId = setInterval(checkTokenExpiration, 5 * 60 * 1000); // Kiểm tra mỗi 1 phút // Kiểm tra mỗi 5 phút
     return () => clearInterval(intervalId); // Dọn dẹp interval khi component unmount
   }, [accessToken]);
-  return { accessToken, setAccessToken };
+  return { accessToken, setAccessToken, getValidAccessToken };
 };
 
 export default useAuthToken;

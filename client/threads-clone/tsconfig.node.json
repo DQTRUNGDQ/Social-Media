@@ -23,7 +23,8 @@
     "src/layouts/LoginLayout.jsx",
     "src/components/Footer/Footer.jsx",
     "src/pages/Register/Register.jsx",
-    "src/pages/Home/Following.jsx"
+    "src/pages/Home/Following.jsx",
+    "src/pages/Profile/Profile.jsx"
   ],
   "exclude": ["node_modules"]
 }

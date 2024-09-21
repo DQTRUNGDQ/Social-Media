@@ -1,0 +1,245 @@
+/* PROFILE */
+
+.profile-main {
+  display: flex;
+}
+
+.profile-main-content {
+  width: 40%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.profile-main-content .profile-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+.profile-container .profile-information {
+  background-color: white; /* Màu nền cho profile */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(184, 184, 184);
+  border-radius: 25px;
+  padding: 30px 20px;
+}
+
+.profile-container .basic-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-container .profile-user-usedname {
+  color: #000;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.profile-container .profile-user-tagname {
+  color: #000;
+  font-size: 14px;
+}
+
+.profile-container .profile-user-avatar img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+}
+
+.profile-container .followers {
+  display: flex;
+  align-items: center;
+}
+
+.profile-container .minimum-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.profile-container .followers-user-avatar {
+  display: flex;
+  margin-right: 8px;
+}
+
+.profile-container .followers-user-avatar img {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.profile-container .followers-user-avatar img:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-container .followers-user-avatar img:nth-child(2) {
+  z-index: 3;
+  margin-left: -5px;
+}
+
+.profile-container .quantity-followers {
+  color: rgba(184, 184, 184);
+  font-size: 14px;
+}
+
+.profile-container .joined-in {
+  display: flex;
+  align-items: center;
+}
+
+.profile-container .joined-in svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.profile-container .joined-in span {
+  font-size: 14px;
+  color: rgba(184, 184, 184);
+}
+
+.profile-container .edit-profile {
+  width: 100%;
+  border: 1px solid rgba(184, 184, 184);
+  border-radius: 10px;
+  padding: 8px 0;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.profile-container .profile-options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(184, 184, 184);
+  padding: 0px 30px;
+  cursor: pointer;
+}
+
+.border-active {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #000 !important;
+}
+
+.profile-container .pro-options-item {
+  display: flex;
+  justify-content: center;
+  min-width: 150px;
+  height: 35px;
+}
+
+.profile-container .pro-options-item .item-text {
+  font-weight: 600;
+  color: rgb(153, 153, 153);
+  font-size: 14px;
+}
+
+.profile-info-detail .finish-profile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.profile-info-detail .title-finish {
+  font-weight: 600;
+}
+
+.profile-container .unfinished {
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+.profile-container .info-profile {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+}
+
+.info-profile::-webkit-scrollbar {
+  display: none;
+}
+
+.profile-container .info-profile .info-item {
+  flex: 0 0 50%;
+  width: 194px;
+  height: 212px;
+  border: 1px solid transparent;
+  background-color: rgb(245, 245, 245);
+  border-radius: 14px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px 15px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-container .info-profile .icon-item {
+  display: flex;
+  min-width: 60px;
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(184, 184, 184);
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.profile-container .icon-item svg {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.profile-container .info-profile .content-item {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+
+.profile-container .info-profile .guess-item {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 10px 0px;
+  color: rgb(153, 153, 153);
+}
+
+.profile-container .info-profile .btn-item {
+  border: 1px solid rgba(184, 184, 184);
+  border-radius: 14px;
+  padding: 5px 50px;
+  max-width: 170px;
+  display: flex;
+  justify-content: center;
+  color: rgb(153, 153, 153);
+}
+
+.profile-container .btn-item .btn-text {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.unactive {
+  background-color: #000;
+}
+
+.unactive .btn-text {
+  color: #fff;
+}
