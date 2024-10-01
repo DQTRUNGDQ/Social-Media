@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import threadRoutes from "./routes/threadRoutes";
 
 const app = express();
 require("dotenv").config();
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 // app.use("/api/post", postRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/threads", threadRoutes);
 
 const port = process.env.PORT || 5000;
 

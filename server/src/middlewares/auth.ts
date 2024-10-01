@@ -2,10 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import User from "~/models/User";
 import { config } from "dotenv";
-import { Console } from "console";
 config();
 
-interface AuthenticatedRequest extends Request {
+export interface AuthenticatedRequest extends Request {
   user?: any;
   token?: string;
 }
@@ -28,7 +27,6 @@ const authMiddleware = async (
       accessToken,
       process.env.JWT_ACCESS_SECRET as string
     ) as { id: string };
-    console.log("Decoded:", decoded);
 
     const user = await User.findOne({ _id: decoded.id });
 
