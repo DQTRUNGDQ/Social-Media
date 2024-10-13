@@ -90,18 +90,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
 }
 
 .modal-content-post.has-image {
-  height: auto;
+  height: 600px;
 }
 
 .modal-content-sub-post {
   max-width: 780px;
   width: 100%;
-  height: 500px;
   transition: transform 0.3s ease-in-out;
-  overflow-y: auto;
 }
 
 .modal-title {
@@ -144,6 +143,7 @@
 .modal-information {
   margin-top: -30px;
   margin-left: 40px;
+  margin-bottom: 20px;
 }
 
 .modal-input {
@@ -189,7 +189,6 @@
   border-radius: 12px;
   padding: 8px 20px;
   color: #ccc;
-  cursor: not-allowed;
 }
 
 .modal-actions .post-button.active {

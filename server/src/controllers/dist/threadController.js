@@ -37,38 +37,90 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 exports.createThread = void 0;
-var Thread_1 = require("./../models/Thread");
-exports.createThread = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var content, files, _a, textContent, hashtags, images, videos, newThread, error_1;
-    var _b, _c;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
-            case 0:
-                _d.trys.push([0, 2, , 3]);
-                content = req.body.content;
-                files = req.files;
-                _a = processPostContent(content), textContent = _a.textContent, hashtags = _a.hashtags;
-                images = ((_b = files === null || files === void 0 ? void 0 : files.images) === null || _b === void 0 ? void 0 : _b.map(function (file) { return file.path; })) || [];
-                videos = ((_c = files === null || files === void 0 ? void 0 : files.videos) === null || _c === void 0 ? void 0 : _c.map(function (file) { return file.path; })) || [];
-                newThread = new Thread_1["default"]({
-                    content: textContent,
-                    hashtags: hashtags,
-                    images: images,
-                    videos: videos,
-                    author: req.userId
-                });
-                return [4 /*yield*/, newThread.save()];
-            case 1:
-                _d.sent();
-                res.status(201).json({ message: "Bài viết đã được tạo", post: newThread });
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _d.sent();
-                res
-                    .status(500)
-                    .json({ message: "Lỗi khi tạo bài viết", error: error_1.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+var Thread_1 = require("~/models/Thread");
+var threadService_1 = require("~/services/threadService");
+var firebaseConfig_1 = require("~/config/firebaseConfig");
+var Hashtag_1 = require("~/models/Hashtag");
+var createThread = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
+    var content, _a, textContent, hashtags, file, fileName, fileUpload, blobStream;
+    return __generator(this, function (_b) {
+        content = req.body.content;
+        _a = threadService_1.processPostContent(content), textContent = _a.textContent, hashtags = _a.hashtags;
+        file = req.file;
+        if (!file) {
+            return [2 /*return*/, res.status(400).send("Không có file được tải lên")];
         }
+        fileName = file.originalname;
+        fileUpload = firebaseConfig_1.bucket.file(fileName);
+        blobStream = fileUpload.createWriteStream({
+            metadata: {
+                contentType: file.mimetype
+            }
+        });
+        blobStream.on("error", function (error) {
+            return res.status(500).json({ message: "Lỗi khi upload file", error: error });
+        });
+        blobStream.on("finish", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var fileUrl, newThread, post, _i, hashtags_1, hashtag, existingHashtag, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fileUpload.makePublic()];
+                    case 1:
+                        _a.sent();
+                        fileUrl = "https://firebasestorage.googleapis.com/v0/b/" + firebaseConfig_1.bucket.name + "/o/" + encodeURIComponent(fileName) + "?alt=media";
+                        newThread = {
+                            content: textContent,
+                            hashtags: hashtags,
+                            images: file.mimetype.includes("image") ? [fileUrl] : [],
+                            videos: file.mimetype.includes("video") ? [fileUrl] : [],
+                            mediaUrl: fileUrl,
+                            mediaType: file.mimetype.includes("image") ? "image" : "video",
+                            author: req.user,
+                            createdAt: new Date()
+                        };
+                        console.log("User:", req.user);
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 9, , 10]);
+                        return [4 /*yield*/, Thread_1["default"].create(newThread)];
+                    case 3:
+                        post = _a.sent();
+                        _i = 0, hashtags_1 = hashtags;
+                        _a.label = 4;
+                    case 4:
+                        if (!(_i < hashtags_1.length)) return [3 /*break*/, 8];
+                        hashtag = hashtags_1[_i];
+                        return [4 /*yield*/, Hashtag_1["default"].findOne({ name: hashtag })];
+                    case 5:
+                        existingHashtag = _a.sent();
+                        if (!existingHashtag) {
+                            // Nếu hashtag chưa tồn tại, tạo mới
+                            existingHashtag = new Hashtag_1["default"]({ name: hashtag });
+                        }
+                        // Cập nhật số lần sử dụng và thêm threadId vào mảng threads
+                        existingHashtag.usageCount += 1; // Tăng usageCount
+                        if (!existingHashtag.threadsId.includes(post.id)) {
+                            existingHashtag.threadsId.push(post.id); // Thêm threadId
+                        }
+                        return [4 /*yield*/, existingHashtag.save()];
+                    case 6:
+                        _a.sent(); // Lưu lại
+                        _a.label = 7;
+                    case 7:
+                        _i++;
+                        return [3 /*break*/, 4];
+                    case 8: return [2 /*return*/, res.status(200).json({ message: "Bài viết đã được tạo!", post: post })];
+                    case 9:
+                        error_1 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({ message: "Lỗi khi tạo bài viết", error: error_1 })];
+                    case 10: return [2 /*return*/];
+                }
+            });
+        }); });
+        blobStream.end(file.buffer);
+        return [2 /*return*/, new Promise(function (relsove) {
+                blobStream.on("finish", function () { return relsove(res); });
+            })];
     });
 }); };
+exports.createThread = createThread;

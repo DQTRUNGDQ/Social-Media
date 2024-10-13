@@ -14,7 +14,7 @@ const createThread = async (
   const { textContent, hashtags } = processPostContent(content);
 
   // Lấy các tệp để upload lên Firebase
-  const file = req.file as any;
+  const file = req.file;
   if (!file) {
     return res.status(400).send("Không có file được tải lên");
   }

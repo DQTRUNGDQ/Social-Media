@@ -8,6 +8,7 @@ var authRoutes_1 = require("./routes/authRoutes");
 var userRoutes_1 = require("./routes/userRoutes");
 var cors_1 = require("cors");
 var cookie_parser_1 = require("cookie-parser");
+var threadRoutes_1 = require("./routes/threadRoutes");
 var app = express_1["default"]();
 require("dotenv").config();
 // Connect to MongoDB
@@ -19,12 +20,14 @@ app.use(cors_1["default"]({
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.use(express_1["default"].json());
 app.use(body_parser_1["default"].json());
 app.use(body_parser_1["default"].urlencoded({ extended: true }));
 // Routes
 app.use("/api/auth", authRoutes_1["default"]);
 // app.use("/api/post", postRoutes);
 app.use("/api/users", userRoutes_1["default"]);
+app.use("/api/threads", threadRoutes_1["default"]);
 var port = process.env.PORT || 5000;
 app.listen(port, function () {
     console.log("Server is running on port " + port);
