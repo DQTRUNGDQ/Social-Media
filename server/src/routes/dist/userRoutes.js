@@ -6,4 +6,5 @@ var auth_1 = require("~/middlewares/auth");
 var router = express_1["default"].Router();
 // Route lấy thông tin người dùng hiện tại
 router.get("/profile", auth_1["default"], userController_1.getProfile);
+router.put("/update-profile", auth_1["default"], userController_1.updateUserProfile);
 exports["default"] = router;

@@ -16,7 +16,7 @@ const authMiddleware = async (
 ) => {
   try {
     const authHeader = req.header("Authorization");
-    console.log("Auth Header:", authHeader);
+    // console.log("Auth Header:", authHeader);
     if (!authHeader) {
       throw new Error("Authorization header missing");
     }

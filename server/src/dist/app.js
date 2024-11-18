@@ -28,7 +28,4 @@ app.use("/api/auth", authRoutes_1["default"]);
 // app.use("/api/post", postRoutes);
 app.use("/api/users", userRoutes_1["default"]);
 app.use("/api/threads", threadRoutes_1["default"]);
-var port = process.env.PORT || 5000;
-app.listen(port, function () {
-    console.log("Server is running on port " + port);
-});
+exports["default"] = app;

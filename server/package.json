@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "ts-node --trace-deprecation src/app.ts",
-    "dev": "nodemon src/app.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

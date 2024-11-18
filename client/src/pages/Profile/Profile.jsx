@@ -4,10 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchUserProfile } from "../../services/userService";
 import "../../styles/Profile.css";
 import Sidebar from "../../components/Sidebar/sidebar";
+import EditProfileModal from "./EditProfile";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken"); // Giả sử bạn lưu token ở đây
@@ -38,6 +40,14 @@ export default function Profile() {
   if (!user) {
     return <div>No user data available</div>;
   }
+
+  const handleEditProfileClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="profile-main">
@@ -73,8 +83,11 @@ export default function Profile() {
               </div>
             </div>
             <div>
-              <button className="edit-profile">Chỉnh sửa hồ sơ</button>
+              <button className="edit-profile" onClick={handleEditProfileClick}>
+                Chỉnh sửa hồ sơ
+              </button>
             </div>
+            <EditProfileModal isOpen={isModalOpen} onClose={handleCloseModal} />
             <div className="detail-profile">
               <div className="profile-options">
                 <div className="pro-options-item border-active">

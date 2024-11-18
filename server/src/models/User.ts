@@ -15,7 +15,7 @@ interface IToken {
 
 // Định nghĩa giao diện cho người dùng
 
-interface IUser extends Document {
+export interface IUser extends Document {
   name: string;
   username?: string;
   email: string;
@@ -23,7 +23,7 @@ interface IUser extends Document {
   date_of_birth?: Date;
   avatar?: string;
   bio?: string;
-  website?: string;
+  link?: string;
   created_at?: Date;
   updated_at?: Date;
   followers: mongoose.Types.ObjectId[];
@@ -117,7 +117,7 @@ const userSchema: Schema<IUser> = new Schema({
     type: String,
     maxlength: 160,
   },
-  website: {
+  link: {
     type: String,
     validate(value: string) {
       if (value && !validator.isURL(value)) {

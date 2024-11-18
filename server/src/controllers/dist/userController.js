@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getProfile = void 0;
+exports.updateUserProfile = exports.getProfile = void 0;
 var User_1 = require("~/models/User");
 exports.getProfile = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
     var user, error_1;
@@ -48,7 +48,7 @@ exports.getProfile = function (req, res) { return __awaiter(void 0, void 0, Prom
             case 1:
                 user = _a.sent();
                 if (!user) {
-                    res.status(404).json({ message: "User not found" });
+                    res.status(404).json({ message: "Unauthorized" });
                 }
                 res.json({ user: user });
                 return [3 /*break*/, 3];
@@ -57,6 +57,44 @@ exports.getProfile = function (req, res) { return __awaiter(void 0, void 0, Prom
                 res.status(500).send({ error: "Server error" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.updateUserProfile = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, bio, link, avatar, user, error_2;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _a = req.body, bio = _a.bio, link = _a.link, avatar = _a.avatar;
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 4, , 5]);
+                return [4 /*yield*/, User_1["default"].findById(req.user.id)];
+            case 2:
+                user = _b.sent();
+                if (!user) {
+                    res.status(404).json({ message: "Unauthorized" });
+                    return [2 /*return*/];
+                }
+                if (bio !== undefined)
+                    user.bio = bio;
+                if (link !== undefined)
+                    user.link = link;
+                if (avatar !== undefined)
+                    user.avatar = avatar;
+                return [4 /*yield*/, user.save()];
+            case 3:
+                _b.sent();
+                res.status(200).json({
+                    message: "Profile updated successfully",
+                    user: user
+                });
+                return [3 /*break*/, 5];
+            case 4:
+                error_2 = _b.sent();
+                res.status(500).json({ error: "Server error" });
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };

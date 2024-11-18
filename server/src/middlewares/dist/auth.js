@@ -47,13 +47,12 @@ var authMiddleware = function (req, res, next) { return __awaiter(void 0, void 0
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 authHeader = req.header("Authorization");
-                console.log("Auth Header:", authHeader);
+                // console.log("Auth Header:", authHeader);
                 if (!authHeader) {
                     throw new Error("Authorization header missing");
                 }
                 accessToken = authHeader.replace("Bearer ", "");
                 decoded = jsonwebtoken_1["default"].verify(accessToken, process.env.JWT_ACCESS_SECRET);
-                console.log("Decoded:", decoded);
                 return [4 /*yield*/, User_1["default"].findOne({ _id: decoded.id })];
             case 1:
                 user = _a.sent();

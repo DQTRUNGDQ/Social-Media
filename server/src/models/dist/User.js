@@ -120,7 +120,7 @@ var userSchema = new mongoose_1.Schema({
         type: String,
         maxlength: 160
     },
-    website: {
+    link: {
         type: String,
         validate: function (value) {
             if (value && !validator.isURL(value)) {

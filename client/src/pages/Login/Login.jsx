@@ -42,9 +42,8 @@ export default function Login() {
 
       setSuccessMessage("Login successful");
 
-      if (accessToken) {
-        navigate("/home");
-      }
+      navigate("/home");
+
       setErrorMessage("");
     } catch (error) {
       console.error(error);
