@@ -1,10 +1,14 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import Thread from "~/models/Thread";
+import User, { IUser } from "~/models/User";
 import { AuthenticatedRequest } from "../middlewares/auth";
 import { processPostContent } from "~/services/threadService";
 import { bucket } from "~/config/firebaseConfig";
 import { v4 as uuidv4 } from "uuid";
 import Hashtag from "~/models/Hashtag";
+import asyncHandler from "~/middlewares/asyncHandler";
+import { error } from "console";
+import { AppError } from "~/utils/AppError";
 
 const createThread = async (
   req: AuthenticatedRequest,
@@ -86,4 +90,26 @@ const createThread = async (
   });
 };
 
-export { createThread };
+const getThread = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      const user = await User.findById(req.user.id);
+      if (!user) {
+        return next(new AppError("User not found", 404));
+      }
+      const posts = await Thread.find()
+        .populate("author", "username")
+        .sort({ createdAt: -1 });
+      res.json({ posts });
+    } catch {
+      console.error(error);
+      res.status(500).json({ message: "Error fetching posts" });
+    }
+  }
+);
+
+export { getThread, createThread };

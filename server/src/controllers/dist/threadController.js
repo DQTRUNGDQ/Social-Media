@@ -36,11 +36,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.createThread = void 0;
+exports.createThread = exports.getThread = void 0;
 var Thread_1 = require("~/models/Thread");
+var User_1 = require("~/models/User");
 var threadService_1 = require("~/services/threadService");
 var firebaseConfig_1 = require("~/config/firebaseConfig");
 var Hashtag_1 = require("~/models/Hashtag");
+var asyncHandler_1 = require("~/middlewares/asyncHandler");
+var console_1 = require("console");
+var AppError_1 = require("~/utils/AppError");
 var createThread = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
     var content, _a, textContent, hashtags, file, fileName, fileUpload, blobStream;
     return __generator(this, function (_b) {
@@ -124,3 +128,32 @@ var createThread = function (req, res) { return __awaiter(void 0, void 0, Promis
     });
 }); };
 exports.createThread = createThread;
+var getThread = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
+    var user, posts, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _b.trys.push([0, 3, , 4]);
+                return [4 /*yield*/, User_1["default"].findById(req.user.id)];
+            case 1:
+                user = _b.sent();
+                if (!user) {
+                    return [2 /*return*/, next(new AppError_1.AppError("User not found", 404))];
+                }
+                return [4 /*yield*/, Thread_1["default"].find()
+                        .populate("author", "username")
+                        .sort({ createdAt: -1 })];
+            case 2:
+                posts = _b.sent();
+                res.json({ posts: posts });
+                return [3 /*break*/, 4];
+            case 3:
+                _a = _b.sent();
+                console.error(console_1.error);
+                res.status(500).json({ message: "Error fetching posts" });
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); });
+exports.getThread = getThread;

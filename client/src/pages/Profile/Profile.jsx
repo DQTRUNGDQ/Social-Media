@@ -5,6 +5,7 @@ import { fetchUserProfile } from "../../services/userService";
 import "../../styles/Profile.css";
 import Sidebar from "../../components/Sidebar/sidebar";
 import EditProfileModal from "./EditProfile";
+import { Loading } from "../../components/Loading/Loading";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function Profile() {
     },
     enabled: !!accessToken,
   });
-  if (isLoading || isFetching) return <div>Loading...</div>;
+  if (isLoading || isFetching) return <Loading></Loading>;
   if (isError) return <div>Error loading user profile</div>;
   if (!user) {
     return <div>No user data available</div>;

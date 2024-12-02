@@ -4,11 +4,13 @@ var express_1 = require("express");
 var body_parser_1 = require("body-parser");
 require("module-alias/register");
 var db_1 = require("./config/db");
-var authRoutes_1 = require("./routes/authRoutes");
-var userRoutes_1 = require("./routes/userRoutes");
 var cors_1 = require("cors");
 var cookie_parser_1 = require("cookie-parser");
+var authRoutes_1 = require("./routes/authRoutes");
+var userRoutes_1 = require("./routes/userRoutes");
 var threadRoutes_1 = require("./routes/threadRoutes");
+var errorHandler_1 = require("./middlewares/errorHandler");
+var AppError_1 = require("./utils/AppError");
 var app = express_1["default"]();
 require("dotenv").config();
 // Connect to MongoDB
@@ -28,4 +30,10 @@ app.use("/api/auth", authRoutes_1["default"]);
 // app.use("/api/post", postRoutes);
 app.use("/api/users", userRoutes_1["default"]);
 app.use("/api/threads", threadRoutes_1["default"]);
+// Xử lý route không tìm thấy
+app.all("*", function (req, res, next) {
+    next(new AppError_1.AppError("Cannot find " + req.originalUrl + " on this server", 404));
+});
+// Middleware xử lý lỗi
+app.use(errorHandler_1.errorHandler);
 exports["default"] = app;

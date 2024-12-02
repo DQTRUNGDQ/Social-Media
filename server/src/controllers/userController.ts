@@ -1,50 +1,53 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import User, { IUser } from "~/models/User";
+import asyncHandler from "~/middlewares/asyncHandler";
+import { AppError } from "~/utils/AppError";
 
 interface AuthenticatedRequest extends Request {
   user?: any;
 }
 
-export const getProfile = async (
-  req: AuthenticatedRequest,
-  res: Response
-): Promise<void> => {
-  try {
-    const user = await User.findById(req.user.id);
-    if (!user) {
-      res.status(404).json({ message: "Unauthorized" });
+export const getProfile = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      const user = await User.findById(req.user.id);
+      if (!user) {
+        return next(new AppError("User not found", 404));
+      }
+      res.json({ user });
+    } catch (error: any) {
+      res.status(500).send({ error: "Server error" });
     }
-    res.json({ user });
-  } catch (error: any) {
-    res.status(500).send({ error: "Server error" });
   }
-};
+);
 
-export const updateUserProfile = async (
-  req: AuthenticatedRequest,
-  res: Response
-) => {
-  const { bio, link, avatar } = req.body;
+export const updateUserProfile = asyncHandler(
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+    const { bio, link, avatar } = req.body;
 
-  try {
-    const user: IUser | null = await User.findById(req.user.id);
+    try {
+      const user: IUser | null = await User.findById(req.user.id);
 
-    if (!user) {
-      res.status(404).json({ message: "Unauthorized" });
-      return;
+      if (!user) {
+        return next(new AppError("User not found", 404));
+      }
+
+      if (bio !== undefined) user.bio = bio;
+      if (link !== undefined) user.link = link;
+      if (avatar !== undefined) user.avatar = avatar;
+
+      await user.save();
+
+      res.status(200).json({
+        message: "Profile updated successfully",
+        user,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Server error" });
     }
-
-    if (bio !== undefined) user.bio = bio;
-    if (link !== undefined) user.link = link;
-    if (avatar !== undefined) user.avatar = avatar;
-
-    await user.save();
-
-    res.status(200).json({
-      message: "Profile updated successfully",
-      user,
-    });
-  } catch (error: any) {
-    res.status(500).json({ error: "Server error" });
   }
-};
+);

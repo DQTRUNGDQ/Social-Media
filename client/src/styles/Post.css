@@ -1,8 +1,12 @@
 /* THANH ĐĂNG BÀI (BẮT ĐẦU 1 THREAD)*/
+.post-container {
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+}
 .post-bar {
   display: flex;
   align-items: center;
-  margin: 20px;
   padding: 25px;
   background-color: white;
   border: 1px solid rgba(213, 213, 213, 1);
