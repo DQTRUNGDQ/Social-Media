@@ -8,12 +8,7 @@ var threadSchema = new mongoose_1.Schema({
         minlength: [1, "Content must be at least 1 character"],
         maxlength: [5000, "Content cannot exceed 5000 characters"]
     },
-    hashtags: [
-        {
-            type: mongoose_1.Schema.Types.ObjectId,
-            ref: "Hashtag"
-        },
-    ],
+    hashtags: [String],
     images: [String],
     videos: [String],
     poll: {
@@ -40,6 +35,14 @@ var threadSchema = new mongoose_1.Schema({
         type: Date,
         "default": Date.now
     },
+    guessViews: {
+        type: Number,
+        "default": 0
+    },
+    userViews: {
+        type: Number,
+        "default": 0
+    },
     likesCount: {
         type: Number,
         "default": 0
@@ -57,11 +60,6 @@ var threadSchema = new mongoose_1.Schema({
         "default": 0
     }
 });
-var likeSchema = new mongoose_1.Schema({
-    threadId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Thread", required: true },
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
-    createdAt: { type: Date, "default": Date.now }
-});
 var commentSchema = new mongoose_1.Schema({
     threadId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Thread", required: true },
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
@@ -78,10 +76,8 @@ var repostSchema = new mongoose_1.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
     createdAt: { type: Date, "default": Date.now }
 });
-var models = {
-    Thread: mongoose_1["default"].model("Thread", threadSchema),
-    Like: mongoose_1["default"].model("Like", likeSchema),
-    Comment: mongoose_1["default"].model("Comment", commentSchema),
-    Share: mongoose_1["default"].model("Share", shareSchema),
-    Repost: mongoose_1["default"].model("Repost", repostSchema)
-};
+var Thread = mongoose_1["default"].model("Thread", threadSchema);
+var Comment = mongoose_1["default"].model("Comment", commentSchema);
+var Share = mongoose_1["default"].model("Share", shareSchema);
+var Repost = mongoose_1["default"].model("Repost", repostSchema);
+exports["default"] = Thread;

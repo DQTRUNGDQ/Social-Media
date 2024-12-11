@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PostBar from "../../components/Post/PostBar";
 import PostModal from "../../components/Post/PostModal";
-import Posts from "../../components/Post/Posts";
+
 import "../../styles/Post.css";
 
 const ForYou = () => {

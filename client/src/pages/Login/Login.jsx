@@ -37,12 +37,11 @@ export default function Login() {
 
       const accessToken = data.result.accessToken;
       setAccessToken(accessToken);
+      navigate("/home");
 
       localStorage.setItem("accessToken", accessToken);
 
       setSuccessMessage("Login successful");
-
-      navigate("/home");
 
       setErrorMessage("");
     } catch (error) {

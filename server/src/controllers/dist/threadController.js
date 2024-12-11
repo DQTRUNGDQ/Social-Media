@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.createThread = exports.getThread = void 0;
+exports.toggleLike = exports.createThread = exports.getThread = exports.getLikedThreads = void 0;
 var Thread_1 = require("~/models/Thread");
 var User_1 = require("~/models/User");
 var threadService_1 = require("~/services/threadService");
@@ -45,6 +45,7 @@ var Hashtag_1 = require("~/models/Hashtag");
 var asyncHandler_1 = require("~/middlewares/asyncHandler");
 var console_1 = require("console");
 var AppError_1 = require("~/utils/AppError");
+var Like_1 = require("~/models/Like");
 var createThread = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
     var content, _a, textContent, hashtags, file, fileName, fileUpload, blobStream;
     return __generator(this, function (_b) {
@@ -82,7 +83,6 @@ var createThread = function (req, res) { return __awaiter(void 0, void 0, Promis
                             author: req.user,
                             createdAt: new Date()
                         };
-                        console.log("User:", req.user);
                         _a.label = 2;
                     case 2:
                         _a.trys.push([2, 9, , 10]);
@@ -157,3 +157,81 @@ var getThread = asyncHandler_1["default"](function (req, res, next) { return __a
     });
 }); });
 exports.getThread = getThread;
+var toggleLike = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
+    var threadId, userId, thread, existingLike, newLike, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 9, , 10]);
+                threadId = req.body.threadId;
+                userId = req.user.id;
+                return [4 /*yield*/, Thread_1["default"].findById(threadId)];
+            case 1:
+                thread = _a.sent();
+                if (!thread) {
+                    res
+                        .status(404)
+                        .json({ message: "Thread no longer exists or has been deleted" });
+                    return [2 /*return*/];
+                }
+                return [4 /*yield*/, Like_1["default"].findOne({ threadId: threadId, user: userId })];
+            case 2:
+                existingLike = _a.sent();
+                if (!existingLike) return [3 /*break*/, 5];
+                // Nếu đã like thì thực hiện unlike (xóa like)
+                return [4 /*yield*/, Like_1["default"].deleteOne({ _id: existingLike._id })];
+            case 3:
+                // Nếu đã like thì thực hiện unlike (xóa like)
+                _a.sent();
+                if (thread.likesCount > 0) {
+                    thread.likesCount--;
+                }
+                return [4 /*yield*/, thread.save()];
+            case 4:
+                _a.sent();
+                res.status(200).json({
+                    isLiked: false,
+                    likesCount: thread.likesCount
+                });
+                return [3 /*break*/, 8];
+            case 5:
+                newLike = new Like_1["default"]({ threadId: threadId, user: userId });
+                return [4 /*yield*/, newLike.save()];
+            case 6:
+                _a.sent();
+                thread.likesCount++;
+                return [4 /*yield*/, thread.save()];
+            case 7:
+                _a.sent();
+                res.status(200).json({
+                    isLiked: true,
+                    likesCount: thread.likesCount
+                });
+                _a.label = 8;
+            case 8: return [3 /*break*/, 10];
+            case 9:
+                error_2 = _a.sent();
+                next(error_2);
+                return [3 /*break*/, 10];
+            case 10: return [2 /*return*/];
+        }
+    });
+}); });
+exports.toggleLike = toggleLike;
+exports.getLikedThreads = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
+    var userId, likedThreads;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                userId = req.user.id;
+                return [4 /*yield*/, Like_1["default"].find({ user: userId }).populate("threadId")];
+            case 1:
+                likedThreads = _a.sent();
+                if (!likedThreads || likedThreads.length === 0) {
+                    res.status(404).json({ message: "No liked threads found" });
+                }
+                res.status(200).json(likedThreads.map(function (like) { return like.threadId; }));
+                return [2 /*return*/];
+        }
+    });
+}); });

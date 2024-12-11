@@ -8,13 +8,6 @@ interface IComment extends Document {
   createdAt: Date;
 }
 
-// Định nghĩa interface cho Like
-interface ILike extends Document {
-  user: Schema.Types.ObjectId;
-  threadId: Schema.Types.ObjectId;
-  createdAt: Date;
-}
-
 // Định nghĩa interface cho Repost
 interface IRepost extends Document {
   user: Schema.Types.ObjectId;
@@ -31,6 +24,7 @@ interface IShare extends Document {
 
 // Định nghĩa interface cho Thread
 interface IThread extends Document {
+  _id: Schema.Types.ObjectId;
   content: string;
   hashtags?: string[];
   images: string[];
@@ -45,7 +39,6 @@ interface IThread extends Document {
   };
   visibility: "public" | "friends" | "only_me";
   author: Schema.Types.ObjectId;
-  likes?: ILike[];
   comments?: IComment[];
   reposts?: IRepost[];
   shares?: IShare;
@@ -118,12 +111,6 @@ const threadSchema = new Schema<IThread>({
   },
 });
 
-const likeSchema = new Schema<ILike>({
-  threadId: { type: Schema.Types.ObjectId, ref: "Thread", required: true },
-  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  createdAt: { type: Date, default: Date.now },
-});
-
 const commentSchema = new Schema<IComment>({
   threadId: { type: Schema.Types.ObjectId, ref: "Thread", required: true },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
@@ -144,7 +131,6 @@ const repostSchema = new Schema<IRepost>({
 });
 
 const Thread = mongoose.model<IThread>("Thread", threadSchema);
-const Like = mongoose.model<ILike>("Like", likeSchema);
 const Comment = mongoose.model<IComment>("Comment", commentSchema);
 const Share = mongoose.model<IShare>("Share", shareSchema);
 const Repost = mongoose.model<IRepost>("Repost", repostSchema);

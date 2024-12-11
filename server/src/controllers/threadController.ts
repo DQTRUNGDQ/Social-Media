@@ -9,6 +9,7 @@ import Hashtag from "~/models/Hashtag";
 import asyncHandler from "~/middlewares/asyncHandler";
 import { error } from "console";
 import { AppError } from "~/utils/AppError";
+import Like from "~/models/Like";
 
 const createThread = async (
   req: AuthenticatedRequest,
@@ -56,7 +57,7 @@ const createThread = async (
       createdAt: new Date(),
     };
 
-    console.log("User:", req.user);
+    // console.log("User:", req.user);
 
     try {
       const post = await Thread.create(newThread); // Lưu thông tin post vào cơ sở dữ liệu
@@ -112,4 +113,69 @@ const getThread = asyncHandler(
   }
 );
 
-export { getThread, createThread };
+const toggleLike = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      const { threadId } = req.body;
+      const userId = req.user.id;
+      const thread = await Thread.findById(threadId);
+      if (!thread) {
+        res
+          .status(404)
+          .json({ message: "Thread no longer exists or has been deleted" });
+        return;
+      }
+
+      const existingLike = await Like.findOne({ threadId, user: userId });
+
+      if (existingLike) {
+        // Nếu đã like thì thực hiện unlike (xóa like)
+        await Like.deleteOne({ _id: existingLike._id });
+        if (thread.likesCount > 0) {
+          thread.likesCount--;
+        }
+        await thread.save();
+        res.status(200).json({
+          isLiked: false,
+          likesCount: thread.likesCount,
+        });
+      } else {
+        const newLike = new Like({ threadId, user: userId });
+        await newLike.save();
+        thread.likesCount++;
+        await thread.save();
+        res.status(200).json({
+          isLiked: true,
+          likesCount: thread.likesCount,
+        });
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+export const getLikedThreads = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const userId = req.user.id;
+
+    // Tìm tất cả những bài viết mà người dùng đã like
+    const likedThreads = await Like.find({ user: userId }).populate("threadId");
+
+    if (!likedThreads || likedThreads.length === 0) {
+      res.status(404).json({ message: "No liked threads found" });
+    }
+
+    res.status(200).json(likedThreads.map((like) => like.threadId));
+  }
+);
+
+export { getThread, createThread, toggleLike };

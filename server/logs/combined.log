@@ -262,3 +262,213 @@ Stack: Error: Cannot find /api/threads/posts on this server
     at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
     at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
     at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+2024-12-11T10:28:02.098Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:05.359Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:05.890Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:06.120Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:06.352Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:06.547Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:06.737Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:06.892Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:07.459Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:07.684Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:07.857Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:08.016Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:08.176Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:08.803Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:08.973Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:28:22.638Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:29:35.365Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:37:23.899Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:37:29.467Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:38:59.136Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-11T10:40:03.974Z [ERROR]: Error: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt" 
+Stack: ValidationError: Like validation failed: createdAt: Cast to date failed for value "[Function: Date]" (type function) at path "createdAt"
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1474:12)
+    at model.$set (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:1128:16)
+    at model.Document (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:177:12)
+    at model.Model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:125:12)
+    at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

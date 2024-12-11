@@ -10,6 +10,7 @@
   padding: 25px;
   background-color: white;
   border: 1px solid rgba(213, 213, 213, 1);
+  border-bottom: none;
   border-radius: 15px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -272,4 +273,73 @@
 .privacy-post span {
   font-size: 18px;
   opacity: 0.5;
+}
+
+/* GIAO DIỆN BÀI VIẾT */
+.posts-content {
+  border: 1px solid rgba(213, 213, 213, 1);
+}
+
+.post-content {
+  font-size: 18px;
+}
+
+.post {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.post-hashtags {
+  padding-right: 5px;
+  color: #0095f6;
+  cursor: pointer;
+}
+
+.post-translate {
+  color: #999999;
+  cursor: pointer;
+}
+
+.post-images img,
+.post-videos video {
+  margin-top: 10px;
+  display: block;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+/* Nút Like */
+
+.like-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+  margin-right: 8px;
+}
+.heart-icon {
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.heart-icon.red {
+  color: red;
+}
+
+.heart-icon.black {
+  color: black;
+}
+
+.like-button.liked .heart-icon {
+  color: red;
+}
+
+.like-button .fa-heart-o {
+  color: black;
 }

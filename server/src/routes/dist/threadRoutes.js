@@ -7,4 +7,5 @@ var auth_1 = require("~/middlewares/auth");
 var router = express_1["default"].Router();
 router.post("/upload", uploadMiddleware_1["default"].single("media"), auth_1["default"], threadController_1.createThread);
 router.get("/posts", auth_1["default"], threadController_1.getThread);
+router.post("/like", auth_1["default"], threadController_1.toggleLike);
 exports["default"] = router;
