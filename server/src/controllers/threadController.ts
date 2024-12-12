@@ -105,7 +105,21 @@ const getThread = asyncHandler(
       const posts = await Thread.find()
         .populate("author", "username")
         .sort({ createdAt: -1 });
-      res.json({ posts });
+      // Lấy danh sách bài viết người dùng đã like
+      const likedPosts = await Like.find({ user: req.user.id }).distinct(
+        "threadId"
+      );
+      const likedPostIds = likedPosts.map((id) => id.toString());
+      // Thêm trạng thái 'isLiked' cho mỗi bài viết
+      const formattedPosts = posts.map((post) => ({
+        ...post.toObject(),
+        isLiked:
+          likedPostIds.length > 0
+            ? likedPostIds.includes(post._id.toString())
+            : false, // Gắn trạng thái like cho bài viết
+      }));
+
+      res.json({ posts: formattedPosts });
     } catch {
       console.error(error);
       res.status(500).json({ message: "Error fetching posts" });
@@ -130,6 +144,20 @@ const toggleLike = asyncHandler(
         return;
       }
 
+      const user = await User.findById(userId, "username");
+      if (!user) {
+        res.status(404).json({ message: "User not found" });
+        return;
+      }
+
+      // Kiểm tra xem người dùng đã có username chưa
+      let username = user.username;
+
+      if (!username) {
+        // Nếu chưa có username, tạo username ngẫu nhiên
+        username = generateRandomUsername();
+      }
+
       const existingLike = await Like.findOne({ threadId, user: userId });
 
       if (existingLike) {
@@ -144,7 +172,12 @@ const toggleLike = asyncHandler(
           likesCount: thread.likesCount,
         });
       } else {
-        const newLike = new Like({ threadId, user: userId });
+        const newLike = new Like({
+          threadId,
+          user: userId,
+          username,
+          createdAt: new Date(),
+        });
         await newLike.save();
         thread.likesCount++;
         await thread.save();
@@ -159,7 +192,7 @@ const toggleLike = asyncHandler(
   }
 );
 
-export const getLikedThreads = asyncHandler(
+const getLikedThreads = asyncHandler(
   async (
     req: AuthenticatedRequest,
     res: Response,
@@ -171,11 +204,41 @@ export const getLikedThreads = asyncHandler(
     const likedThreads = await Like.find({ user: userId }).populate("threadId");
 
     if (!likedThreads || likedThreads.length === 0) {
-      res.status(404).json({ message: "No liked threads found" });
+      res.status(404).json([]);
     }
 
-    res.status(200).json(likedThreads.map((like) => like.threadId));
+    const likedThreadData = likedThreads.map((like) => like.threadId);
+
+    res.status(200).json(likedThreadData);
   }
 );
 
-export { getThread, createThread, toggleLike };
+function generateRandomUsername(): string {
+  const words = [
+    "cool",
+    "super",
+    "great",
+    "happy",
+    "awesome",
+    "smart",
+    "bright",
+    "shiny",
+    "star",
+    "moon",
+    "sky",
+    "quick",
+    "fast",
+    "sun",
+    "fire",
+    "wave",
+    "cloud",
+  ];
+
+  const randomWord = words[Math.floor(Math.random() * words.length)];
+  const randomNum = Math.floor(Math.random() * 1000);
+
+  // Tạo username có dạng: "cool123" với độ dài khoảng 15 ký tự
+  return `@${randomWord}${randomNum}`;
+}
+
+export { getThread, createThread, toggleLike, getLikedThreads };

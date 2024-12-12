@@ -472,3 +472,971 @@ Stack: ValidationError: Like validation failed: createdAt: Cast to date failed f
     at new model (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4611:15)
     at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:142:25
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T00:29:05.265Z [ERROR]: Error: Cannot find /api/threads/threads:id/like on this server 
+Stack: Error: Cannot find /api/threads/threads:id/like on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+2024-12-12T00:29:12.327Z [ERROR]: Error: Cannot find /api/threads/threads:id/like on this server 
+Stack: Error: Cannot find /api/threads/threads:id/like on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+2024-12-12T01:01:22.797Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:22.910Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:36.960Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:37.097Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:44.764Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:44.880Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:59.582Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:01:59.710Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:02:12.115Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T01:02:12.238Z [ERROR]: Error: Cannot find /api/threads/posts/liked on this server 
+Stack: Error: Cannot find /api/threads/posts/liked on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T03:55:29.596Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:55:29.662Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:55:37.064Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:55:37.136Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:55:42.751Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:55:42.821Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:56:03.985Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:56:04.302Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:56:15.823Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:56:15.906Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:56:16.461Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:56:16.528Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:57:29.416Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T03:57:29.493Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:00:20.254Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:00:20.311Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:190:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:03:51.901Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:03:51.998Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:28:39.100Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:28:39.350Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:18.943Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:20.617Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:20.728Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:30.477Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:30.551Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:49.044Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:29:49.110Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:31:17.558Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:31:19.719Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:31:20.056Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:33:13.532Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:33:21.494Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:33:35.516Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:33:39.837Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:33:39.904Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:35:05.454Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:35:10.547Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:35:12.623Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:35:12.710Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:35:28.460Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:35:47.035Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:38:35.084Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:38:35.165Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:39:31.486Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:39:35.176Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:39:35.263Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:40:12.151Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:42:52.560Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:43:07.727Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:43:11.598Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:43:11.763Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:44:23.652Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:44:26.999Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:44:27.542Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T04:44:50.783Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T05:58:22.471Z [ERROR]: Error: Cannot find /api/threads/liked-posts/null on this server 
+Stack: Error: Cannot find /api/threads/liked-posts/null on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T05:58:22.519Z [ERROR]: Error: Cannot find /api/threads/liked-posts/null on this server 
+Stack: Error: Cannot find /api/threads/liked-posts/null on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T05:58:22.526Z [ERROR]: Error: Cannot find /api/threads/liked-posts/null on this server 
+Stack: Error: Cannot find /api/threads/liked-posts/null on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T05:58:22.536Z [ERROR]: Error: Cannot find /api/threads/liked-posts/null on this server 
+Stack: Error: Cannot find /api/threads/liked-posts/null on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T05:58:38.453Z [ERROR]: Error: Cannot find /api/threads/like on this server 
+Stack: Error: Cannot find /api/threads/like on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2024-12-12T06:20:58.651Z [ERROR]: Error: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at model.Query._find (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2347:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:4412:63)
+    at async G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:185:26
+2024-12-12T06:20:58.788Z [ERROR]: Error: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at model.Query._find (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2347:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:4412:63)
+    at async G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:185:26
+2024-12-12T06:21:02.800Z [ERROR]: Error: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at model.Query._find (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2347:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:4412:63)
+    at async G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:185:26
+2024-12-12T06:21:02.953Z [ERROR]: Error: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at model.Query._find (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2347:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:4412:63)
+    at async G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:185:26
+2024-12-12T06:21:04.375Z [ERROR]: Error: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at model.Query._find (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2347:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:4412:63)
+    at async G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:185:26
+2024-12-12T06:21:04.447Z [ERROR]: Error: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `author` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at model.Query._find (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2347:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async model.Query.exec (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:4412:63)
+    at async G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:185:26
+2024-12-12T07:19:57.801Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T07:19:57.964Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T07:20:03.457Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T07:20:03.582Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T07:21:06.211Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T07:21:06.361Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:193:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T07:37:36.702Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:40.533Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:40.697Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:48.756Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:49.369Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:50.085Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:50.802Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:37:59.692Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:38:18.524Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:38:51.937Z [ERROR]: Error: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+Stack: StrictPopulateError: Cannot populate path `username` because it is not in your schema. Set the `strictPopulate` option to false to override.
+    at getModelsMapForPopulate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:50:12)
+    at populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4245:21)
+    at _populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4205:5)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4177:5
+    at new Promise (<anonymous>)
+    at Function.populate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\model.js:4176:10)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:2546:11
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\query.js:3217:21
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:39:24.316Z [ERROR]: Error: Like validation failed: username: Path `username` is required. 
+Stack: ValidationError: Like validation failed: username: Path `username` is required.
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:39:51.306Z [ERROR]: Error: Like validation failed: username: Path `username` is required. 
+Stack: ValidationError: Like validation failed: username: Path `username` is required.
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:40:23.248Z [ERROR]: Error: Like validation failed: username: Path `username` is required. 
+Stack: ValidationError: Like validation failed: username: Path `username` is required.
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:41:46.958Z [ERROR]: Error: Like validation failed: username: Path `username` is required. 
+Stack: ValidationError: Like validation failed: username: Path `username` is required.
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T07:42:17.587Z [ERROR]: Error: Like validation failed: username: Path `username` is required. 
+Stack: ValidationError: Like validation failed: username: Path `username` is required.
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2024-12-12T08:08:37.266Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:212:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T08:08:37.379Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:212:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-12-12T08:11:08.845Z [ERROR]: Error: File too large 
+Stack: MulterError: File too large
+    at abortWithCode (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:71:22)
+    at FileStream.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:134:11)
+    at FileStream.emit (node:events:519:28)
+    at FileStream.emit (node:domain:488:12)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:479:32)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+2024-12-12T08:14:08.717Z [ERROR]: Error: File too large 
+Stack: MulterError: File too large
+    at abortWithCode (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:71:22)
+    at FileStream.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:134:11)
+    at FileStream.emit (node:events:519:28)
+    at FileStream.emit (node:domain:488:12)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:479:32)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+2024-12-12T08:14:24.612Z [ERROR]: Error: File too large 
+Stack: MulterError: File too large
+    at abortWithCode (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:71:22)
+    at FileStream.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:134:11)
+    at FileStream.emit (node:events:519:28)
+    at FileStream.emit (node:domain:488:12)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:479:32)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)
+2024-12-12T08:14:38.680Z [ERROR]: Error: File too large 
+Stack: MulterError: File too large
+    at abortWithCode (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:71:22)
+    at FileStream.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:134:11)
+    at FileStream.emit (node:events:519:28)
+    at FileStream.emit (node:domain:488:12)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:479:32)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+    at _write (node:internal/streams/writable:493:10)

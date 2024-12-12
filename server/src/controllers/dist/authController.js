@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,6 +46,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 exports.__esModule = true;
 exports.refreshToken = exports.resetPassword = exports.VerifyResetCode = exports.requestPasswordReset = exports.logout = exports.login = exports.register = void 0;
 var authService = require("../services/authService");
@@ -45,14 +67,16 @@ var tokenService_1 = require("../services/tokenService");
 var jsonwebtoken_1 = require("jsonwebtoken");
 // Controller đăng ký
 exports.register = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
-    var _a, user, tokens, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var _a, username, otherFields, generatedUsername, _b, user, tokens, error_1;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
             case 0:
-                _b.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, authService.registerUser(req.body)];
+                _c.trys.push([0, 2, , 3]);
+                _a = req.body, username = _a.username, otherFields = __rest(_a, ["username"]);
+                generatedUsername = username || generateRandomUsername();
+                return [4 /*yield*/, authService.registerUser(__assign(__assign({}, otherFields), { username: generatedUsername }))];
             case 1:
-                _a = _b.sent(), user = _a.user, tokens = _a.tokens;
+                _b = _c.sent(), user = _b.user, tokens = _b.tokens;
                 res.status(201).send({
                     message: message_1.USERS_MESSAGES.REGISTER_SUCCESS,
                     user: user,
@@ -61,7 +85,7 @@ exports.register = function (req, res) { return __awaiter(void 0, void 0, Promis
                 });
                 return [3 /*break*/, 3];
             case 2:
-                error_1 = _b.sent();
+                error_1 = _c.sent();
                 res.status(400).send({ error: error_1.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -254,3 +278,28 @@ exports.refreshToken = function (req, res) { return __awaiter(void 0, void 0, Pr
         }
     });
 }); };
+function generateRandomUsername() {
+    var words = [
+        "cool",
+        "super",
+        "great",
+        "happy",
+        "awesome",
+        "smart",
+        "bright",
+        "shiny",
+        "star",
+        "moon",
+        "sky",
+        "quick",
+        "fast",
+        "sun",
+        "fire",
+        "wave",
+        "cloud",
+    ];
+    var randomWord = words[Math.floor(Math.random() * words.length)];
+    var randomNum = Math.floor(Math.random() * 1000);
+    // Tạo username có dạng: "cool123" với độ dài khoảng 15 ký tự
+    return "@" + randomWord + randomNum;
+}

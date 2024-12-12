@@ -2,6 +2,7 @@ import express from "express";
 import upload from "~/middlewares/uploadMiddleware";
 import {
   createThread,
+  getLikedThreads,
   getThread,
   toggleLike,
 } from "~/controllers/threadController";
@@ -12,5 +13,6 @@ const router = express.Router();
 router.post("/upload", upload.single("media"), authMiddleware, createThread);
 router.get("/posts", authMiddleware, getThread);
 router.post("/like", authMiddleware, toggleLike);
+router.get("/posts/liked", authMiddleware, getLikedThreads);
 
 export default router;

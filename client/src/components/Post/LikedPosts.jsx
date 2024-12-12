@@ -7,7 +7,7 @@ import { Loading } from "../Loading/Loading";
 import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
 
-const PostBar = ({ onClick }) => {
+const LikedPosts = ({ onClick }) => {
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,36 +28,34 @@ const PostBar = ({ onClick }) => {
           },
         });
 
-        // Kiểm tra xem có bài viết nào đã like không
+        const likedPostsResponse = await api.get("/posts/liked", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        // Lấy tất cả bài viết đã thích từ response
+        const likedPostsData = likedPostsResponse.data || [];
+
+        // Lọc các bài viết chính
         const postsData = postsResponse.data.posts || [];
-        const anyPostLiked = postsData.some((post) => post.isLiked); // Kiểm tra có bài viết nào đã like
 
-        // Nếu có bài viết nào đã like, mới gọi API likedPosts
-        let likedPostsData = [];
-        if (anyPostLiked) {
-          const likedPostsResponse = await api.get("/posts/liked", {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-              "Content-Type": "application/json",
-            },
-          });
-
-          likedPostsData = likedPostsResponse.data || [];
-        }
-
-        // Cập nhật trạng thái isLiked cho mỗi bài viết dựa trên likedPostsData
+        // Kiểm tra và kết hợp dữ liệu bài viết đã thích
         const formattedPosts = postsData.map((post) => ({
           ...post,
           isLiked: likedPostsData.some(
-            (likedPost) => likedPost && likedPost._id === post._id // Kiểm tra có likedPost không phải null/undefined
+            (likedPost) => likedPost && likedPost._id === post._id // Kiểm tra nếu post._id có trong likedPostsData
           ),
         }));
 
-        // Cập nhật state
-        setPosts(formattedPosts);
-        setLikedPosts(likedPostsData);
+        // Chỉ lưu các bài viết đã được thích
+        setPosts(formattedPosts.filter((post) => post.isLiked));
+        setLikedPosts(likedPostsData); // Lưu toàn bộ bài viết đã thích (hoặc nếu cần chỉ lưu thông tin cần thiết)
       } catch (error) {
-        setError("Có lỗi xảy ra khi tải bài viết.");
+        setError(
+          "Bạn chưa yêu thích bất kỳ bài viết nào hoặc đã có lỗi xảy ra khi tải bài viết."
+        );
         console.log(error);
       } finally {
         setLoading(false);
@@ -271,11 +269,11 @@ const PostBar = ({ onClick }) => {
             </div>
           ))
         ) : (
-          <p>Không có bài viết nào để hiển thị.</p>
+          <p>Bạn chưa yêu thích bất kỳ bài viết nào.</p>
         )}
       </div>
     </div>
   );
 };
 
-export default PostBar;
+export default LikedPosts;

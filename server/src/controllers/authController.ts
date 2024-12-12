@@ -10,7 +10,12 @@ import jwt from "jsonwebtoken";
 // Controller đăng ký
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { user, tokens } = await authService.registerUser(req.body);
+    const { username, ...otherFields } = req.body;
+    const generatedUsername = username || generateRandomUsername();
+    const { user, tokens } = await authService.registerUser({
+      ...otherFields,
+      username: generatedUsername,
+    });
 
     res.status(201).send({
       message: USERS_MESSAGES.REGISTER_SUCCESS,
@@ -178,3 +183,31 @@ export const refreshToken = async (
     res.status(403).json({ message: "Invalid refresh token" });
   }
 };
+
+function generateRandomUsername(): string {
+  const words = [
+    "cool",
+    "super",
+    "great",
+    "happy",
+    "awesome",
+    "smart",
+    "bright",
+    "shiny",
+    "star",
+    "moon",
+    "sky",
+    "quick",
+    "fast",
+    "sun",
+    "fire",
+    "wave",
+    "cloud",
+  ];
+
+  const randomWord = words[Math.floor(Math.random() * words.length)];
+  const randomNum = Math.floor(Math.random() * 1000);
+
+  // Tạo username có dạng: "cool123" với độ dài khoảng 15 ký tự
+  return `@${randomWord}${randomNum}`;
+}

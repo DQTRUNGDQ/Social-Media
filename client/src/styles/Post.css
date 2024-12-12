@@ -325,7 +325,7 @@
 }
 .heart-icon {
   font-size: 24px;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .heart-icon.red {
@@ -338,8 +338,5 @@
 
 .like-button.liked .heart-icon {
   color: red;
-}
-
-.like-button .fa-heart-o {
-  color: black;
+  transform: scale(1.2);
 }

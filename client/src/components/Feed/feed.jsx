@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DropdownTabNavigation from "../DropdownTabNavigation/DropdownTabNavigation";
 import ForYou from "../../pages/Home/ForYou";
 import Following from "../../pages/Home/Following";
+import Liked from "../../pages/Home/Liked";
 
 const Feed = () => {
   const [selectedTab, setSelectedTab] = useState("Dành cho bạn");
@@ -13,7 +14,7 @@ const Feed = () => {
       case "Đang theo dõi":
         return <Following />;
       case "Đã thích":
-        return <div>Content Liked</div>;
+        return <Liked />;
       case "Đã lưu":
         return <div>Content Saved</div>;
       default:
