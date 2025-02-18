@@ -14,7 +14,7 @@ import {
 } from "../../utils/validationSchema";
 import { loginUser, verifyResetCode } from "../../services/authService";
 
-export default function Login() {
+const Login = ({ setIsAuthenticated }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [resetCode, setResetCode] = useState("");
@@ -37,13 +37,17 @@ export default function Login() {
 
       const accessToken = data.result.accessToken;
       setAccessToken(accessToken);
-      navigate("/home");
 
+      // Lưu vào localStorage & cập nhật state
       localStorage.setItem("accessToken", accessToken);
+      setAccessToken(accessToken);
+      setIsAuthenticated(accessToken);
 
       setSuccessMessage("Login successful");
 
       setErrorMessage("");
+
+      navigate("/home");
     } catch (error) {
       console.error(error);
       setErrorMessage("Incorrect password or email");
@@ -227,4 +231,6 @@ export default function Login() {
       )}
     </div>
   );
-}
+};
+
+export default Login;

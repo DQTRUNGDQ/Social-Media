@@ -23,12 +23,12 @@ const Sidebar = () => {
       </div>
       <div className="main-menu">
         <div className="mmn-home mmn-item">
-          <Link to="/">
+          <Link to="/home">
             <svg
               aria-label="Home"
               role="img"
               viewBox="0 0 26 26"
-              style={{ color: isActive("/") ? "black" : "gray" }}
+              style={{ color: isActive("/home") ? "black" : "gray" }}
             >
               <title>Home</title>
               <path
@@ -65,7 +65,7 @@ const Sidebar = () => {
               aria-label="Thông báo"
               role="img"
               viewBox="0 0 32 32"
-              style={{ color: isActive("/profile") ? "black" : "gray" }}
+              style={{ color: isActive("/activity") ? "black" : "gray" }}
             >
               <title>Thông báo</title>
               <path

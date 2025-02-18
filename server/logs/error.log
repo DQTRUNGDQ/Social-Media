@@ -1440,3 +1440,27 @@ Stack: MulterError: File too large
     at Multipart._write (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:567:19)
     at writeOrBuffer (node:internal/streams/writable:564:12)
     at _write (node:internal/streams/writable:493:10)
+2025-02-17T10:39:29.773Z [ERROR]: Error: Cannot find /api/auth/login on this server 
+Stack: Error: Cannot find /api/auth/login on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-02-17T10:39:29.872Z [ERROR]: Error: Cannot find /favicon.ico on this server 
+Stack: Error: Cannot find /favicon.ico on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)

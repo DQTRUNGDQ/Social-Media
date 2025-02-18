@@ -3,21 +3,19 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../styles/Post.css";
 import images from "../../assets/loadImage";
 import api from "../../services/threadService";
-import { Loading } from "../Loading/Loading";
 import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
 
 const PostBar = ({ onClick }) => {
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState(null);
   const socket = useRef(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        setLoading(true);
         const authToken = localStorage.getItem("accessToken");
 
         // Lấy danh sách các bài viết từ API chính
@@ -59,8 +57,6 @@ const PostBar = ({ onClick }) => {
       } catch (error) {
         setError("Có lỗi xảy ra khi tải bài viết.");
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchPosts();
@@ -95,9 +91,6 @@ const PostBar = ({ onClick }) => {
     };
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
   if (error) {
     return <p>{error}</p>;
   }

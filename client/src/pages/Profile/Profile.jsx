@@ -72,7 +72,9 @@ export default function Profile() {
                   <img alt="" />
                   <img alt="" />
                 </div>
-                <div className="quantity-followers">12 người theo dõi</div>
+                <div className="quantity-followers">
+                  {user.follower} người theo dõi
+                </div>
               </div>
               <div className="joined-in">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
