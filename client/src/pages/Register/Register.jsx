@@ -5,6 +5,7 @@ import axios from "axios";
 import { rules } from "../../utils/rules";
 
 export default function Register({ onClose }) {
+  // Xử lý ngày sinh của người dùng
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");

@@ -90,6 +90,11 @@
   font-size: 14px;
 }
 
+.profile-container .quantity-followers:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .profile-container .joined-in {
   display: flex;
   align-items: center;

@@ -6,11 +6,13 @@ import "../../styles/Profile.css";
 import Sidebar from "../../components/Sidebar/sidebar";
 import EditProfileModal from "./EditProfile";
 import { Loading } from "../../components/Loading/Loading";
+import FollowersModal from "../../components/Followers/FollowersModal";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFollowersOpen, setFollowersIsOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken"); // Giả sử bạn lưu token ở đây
@@ -67,13 +69,16 @@ export default function Profile() {
               </div>
             </div>
             <div className="minimum-info">
-              <div className="followers">
+              <div
+                className="followers"
+                onClick={() => setFollowersIsOpen(true)}
+              >
                 <div className="followers-user-avatar">
                   <img alt="" />
                   <img alt="" />
                 </div>
                 <div className="quantity-followers">
-                  {user.follower} người theo dõi
+                  {user.followers.length} người theo dõi
                 </div>
               </div>
               <div className="joined-in">
@@ -85,6 +90,13 @@ export default function Profile() {
                 <span>Đã tham gia 11/2023</span>
               </div>
             </div>
+            <FollowersModal
+              isOpen={isFollowersOpen}
+              onClose={() => setFollowersIsOpen(false)}
+              user={user}
+              followers={user.followers}
+              following={user.following}
+            />
             <div>
               <button className="edit-profile" onClick={handleEditProfileClick}>
                 Chỉnh sửa hồ sơ

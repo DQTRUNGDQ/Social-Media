@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { fileSchema } from "../../utils/validationSchema";
 import { Controller, useForm } from "react-hook-form";
 import api from "../../services/threadService";
+import { getEnCryptedToken } from "../../utils/tokenCrypto";
 
 // const schema = yup.object().shape({
 //   mediaType: yup

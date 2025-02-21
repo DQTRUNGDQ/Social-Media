@@ -41,7 +41,7 @@ const Login = ({ setIsAuthenticated }) => {
       // Lưu vào localStorage & cập nhật state
       localStorage.setItem("accessToken", accessToken);
       setAccessToken(accessToken);
-      setIsAuthenticated(accessToken);
+      setIsAuthenticated(true);
 
       setSuccessMessage("Login successful");
 
@@ -227,7 +227,7 @@ const Login = ({ setIsAuthenticated }) => {
       )}
 
       {showRegisterForm && (
-        <Register onClick={() => setShowRegisterForm(false)} />
+        <Register onClose={() => setShowRegisterForm(false)} />
       )}
     </div>
   );
