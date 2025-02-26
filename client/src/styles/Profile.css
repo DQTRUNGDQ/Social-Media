@@ -258,9 +258,18 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
+  visibility: hidden;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
+
+.profile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 .modal {
   background-color: white;
   border-radius: 10px;
@@ -268,7 +277,20 @@
   width: 520px;
   padding: 20px;
   box-sizing: border-box;
+  transform: translateY(0);
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
+
+.modal.open {
+  transform: translateY(-90px);
+  opacity: 1;
+}
+
+.modal-section {
+  cursor: pointer;
+}
+
 .modal-header-pf {
   display: flex;
   flex-direction: row;
@@ -285,6 +307,7 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .flex-modal {
@@ -379,4 +402,17 @@ input:checked + .slider:before {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.bio-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }

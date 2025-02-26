@@ -56,7 +56,7 @@ export default function Profile() {
     <div className="profile-main">
       <Sidebar />
       <div className="profile-main-content">
-        <h2 className="profile-title">Profile</h2>
+        <h2 className="profile-title">Hồ sơ</h2>
         <div className="profile-container">
           <div className="profile-information">
             <div className="basic-info">

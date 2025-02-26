@@ -1,17 +1,39 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "../../styles/Profile.css";
+import EditBioModal from "../../components/EditProfile/EditBioModal/EditBioModal";
 
 const EditProfileModal = ({ isOpen, onClose }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isBioModalOpen, setIsBioModalOpen] = useState(false);
+  const [bio, setBio] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setIsVisible(true), 10); // Kích hoạt animation sau khi render
+    } else {
+      setIsVisible(false);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose(); // Chỉ đóng modal nếu click vào vùng overlay
+      if (isBioModalOpen) {
+        setIsBioModalOpen(false);
+      } else {
+        onClose();
+      }
     }
   };
+
   return (
-    <div className="profile-overlay" onClick={handleOverlayClick}>
-      <div className="modal ">
+    <div
+      className={`profile-overlay ${isOpen ? "active" : ""}`}
+      onClick={handleOverlayClick}
+    >
+      <div className={`modal ${isVisible ? "open" : ""}`}>
         <div className="modal-section flex-modal">
           <div>
             <h2>Name</h2>
@@ -28,13 +50,19 @@ const EditProfileModal = ({ isOpen, onClose }) => {
         </div>
         <hr />
         <div className="modal-section">
-          <h3>Bio</h3>
-          <p>+ Write bio</p>
+          <h3>Tiểu sử</h3>
+          <p onClick={() => setIsBioModalOpen(true)}>+ Viết tiểu sử</p>
         </div>
+        <EditBioModal
+          isOpen={isBioModalOpen}
+          onClose={() => setIsBioModalOpen(false)}
+          onSave={(newBio) => setBio(newBio)}
+          initialBio={bio}
+        />
         <hr />
         <div className="modal-section">
-          <h3>Link</h3>
-          <p>+ Add link</p>
+          <h3>Đường dẫn</h3>
+          <p>+ Thêm đường dẫn</p>
         </div>
         <hr />
         <div className="toggle-switch">
