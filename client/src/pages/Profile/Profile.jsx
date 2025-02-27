@@ -7,11 +7,12 @@ import Sidebar from "../../components/Sidebar/sidebar";
 import EditProfileModal from "./EditProfile";
 import { Loading } from "../../components/Loading/Loading";
 import FollowersModal from "../../components/Followers/FollowersModal";
+import { useModal } from "../../providers/ModalContext";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isProfileModalOpen, setIsProfileModalOpen } = useModal();
   const [isFollowersOpen, setFollowersIsOpen] = useState(false);
 
   useEffect(() => {
@@ -45,11 +46,11 @@ export default function Profile() {
   }
 
   const handleEditProfileClick = () => {
-    setIsModalOpen(true);
+    setIsProfileModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleProfileCloseModal = () => {
+    setIsProfileModalOpen(false);
   };
 
   return (
@@ -102,7 +103,10 @@ export default function Profile() {
                 Chỉnh sửa hồ sơ
               </button>
             </div>
-            <EditProfileModal isOpen={isModalOpen} onClose={handleCloseModal} />
+            <EditProfileModal
+              isOpen={isProfileModalOpen}
+              onClose={handleProfileCloseModal}
+            />
             <div className="detail-profile">
               <div className="profile-options">
                 <div className="pro-options-item border-active">

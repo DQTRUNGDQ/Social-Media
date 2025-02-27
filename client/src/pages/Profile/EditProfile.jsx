@@ -2,37 +2,40 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "../../styles/Profile.css";
 import EditBioModal from "../../components/EditProfile/EditBioModal/EditBioModal";
+import { useModal } from "../../providers/ModalContext";
 
-const EditProfileModal = ({ isOpen, onClose }) => {
+const EditProfileModal = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isBioModalOpen, setIsBioModalOpen] = useState(false);
+  const {
+    isProfileModalOpen,
+    setIsProfileModalOpen,
+    isBioModalOpen,
+    setIsBioModalOpen,
+  } = useModal();
   const [bio, setBio] = useState("");
 
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => setIsVisible(true), 10); // Kích hoạt animation sau khi render
+    if (isProfileModalOpen) {
+      setTimeout(() => setIsVisible(true), 10);
     } else {
       setIsVisible(false);
     }
-  }, [isOpen]);
+  }, [isProfileModalOpen]);
 
-  if (!isOpen) return null;
+  if (!isProfileModalOpen) return null;
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       if (isBioModalOpen) {
         setIsBioModalOpen(false);
       } else {
-        onClose();
+        setIsProfileModalOpen(false);
       }
     }
   };
 
   return (
-    <div
-      className={`profile-overlay ${isOpen ? "active" : ""}`}
-      onClick={handleOverlayClick}
-    >
+    <div className={`profile-overlay ${"active"}`} onClick={handleOverlayClick}>
       <div className={`modal ${isVisible ? "open" : ""}`}>
         <div className="modal-section flex-modal">
           <div>
@@ -40,7 +43,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
             <h1>Quốc Trung (@dqtrugg)</h1>
           </div>
           <div className="modal-header-pf">
-            <img
+            <image
               alt="Profile picture of a person with a white background"
               height="50"
               src="https://storage.googleapis.com/a1aa/image/Dzed2Ouf1Wsp7U7k52KrYQfu0ppJt46q83OXbhyWyzayaWNnA.jpg"

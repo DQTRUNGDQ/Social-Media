@@ -414,5 +414,6 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
   z-index: 10;
 }

@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import * as React from "react";
 import axios from "axios";
+
+const { useState, useEffect } = React;
 
 const useAuthToken = () => {
   const [accessToken, setAccessToken] = useState(null);
@@ -7,11 +9,17 @@ const useAuthToken = () => {
   const getAccessToken = () => accessToken;
 
   const isTokenExpired = (token) => {
-    const base64Url = token.split(".")[1]; // Lấy phần payload
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/"); // Chuyển đổi Base64URL thành Base64
-    const decoded = JSON.parse(atob(base64)); // Giải mã Base64
-    const currentTime = Date.now() / 1000;
-    return decoded.exp < currentTime;
+    if (!token || token.split(".").length < 3) return true;
+    try {
+      const base64Url = token.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      const decoded = JSON.parse(atob(base64));
+      const currentTime = Date.now() / 1000;
+      return decoded.exp < currentTime;
+    } catch (error) {
+      console.error("Lỗi khi decode token:", error);
+      return true;
+    }
   };
 
   const refreshToken = async () => {
@@ -22,28 +30,28 @@ const useAuthToken = () => {
         { withCredentials: true }
       );
       const { accessToken: newAccessToken } = response.data;
-      setAccessToken(newAccessToken); // Cập nhật accessToken mới
+      setAccessToken(newAccessToken);
       localStorage.setItem("accessToken", newAccessToken);
-      console.log("accessToken");
+      return newAccessToken; // ✅ Trả về accessToken mới
     } catch (error) {
       console.error("Failed to refresh token", error);
+      return null; // ✅ Trả về null nếu refresh không thành công
     }
   };
 
   const checkTokenExpiration = () => {
     const token = getAccessToken();
     if (token && isTokenExpired(token)) {
-      refreshToken(); // Làm mới accessToken nếu hết hạn
+      refreshToken();
     }
   };
 
   const getValidAccessToken = async () => {
-    let accessToken = accessToken || localStorage.getItem("accessToken");
-
-    if (!accessToken || isTokenExpired(accessToken)) {
-      accessToken = await refreshToken(); // Làm mới token nếu hết hạn
+    let token = accessToken || localStorage.getItem("accessToken");
+    if (!token || isTokenExpired(token)) {
+      token = await refreshToken();
     }
-    return accessToken;
+    return token;
   };
 
   useEffect(() => {
@@ -51,9 +59,10 @@ const useAuthToken = () => {
     if (storedToken) {
       setAccessToken(storedToken);
     }
-    const intervalId = setInterval(checkTokenExpiration, 5 * 60 * 1000); // Kiểm tra mỗi 1 phút // Kiểm tra mỗi 5 phút
-    return () => clearInterval(intervalId); // Dọn dẹp interval khi component unmount
-  }, [accessToken]);
+    const intervalId = setInterval(checkTokenExpiration, 1 * 60 * 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return { accessToken, setAccessToken, getValidAccessToken };
 };
 

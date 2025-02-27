@@ -9,7 +9,7 @@ import Activity from "../pages/Activity/Activity";
 import Profile from "../pages/Profile/Profile";
 import LoginLayout from "../layouts/LoginLayout";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPasswordMain";
-import useAuthToken from "../services/useAuthToken";
+import { ModalProvider } from "../providers/ModalContext";
 
 const AUTO_LOGOUT_TIME = 60 * 60 * 1000; // 60 phút
 
@@ -91,7 +91,14 @@ const AppRoutes = () => {
       />
       <Route path="/search" element={<Search />} />
       <Route path="/activity" element={<Activity />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route
+        path="/profile"
+        element={
+          <ModalProvider>
+            <Profile />
+          </ModalProvider>
+        }
+      />
       <Route
         path="/login"
         element={
