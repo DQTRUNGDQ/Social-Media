@@ -1,8 +1,20 @@
 import { useState, useEffect } from "react";
 
 export default function EditBioModal({ isOpen, onClose, onSave, initialBio }) {
-  const [bio, setBio] = useState(initialBio || "");
+  const [bio, setBio] = useState(() => {
+    return sessionStorage.getItem("bioDraft") || initialBio || "";
+  });
   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    sessionStorage.setItem("bioDraft", bio);
+  }, [bio]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      sessionStorage.removeItem("bioDraft");
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -40,12 +52,14 @@ export default function EditBioModal({ isOpen, onClose, onSave, initialBio }) {
         </div>
         <div className="p-4">
           <div className="space-y-2">
-            <textarea
-              className="bio-input"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              placeholder="Viết tiểu sử của bạn..."
-            ></textarea>
+            <div className="bio-input-container">
+              <textarea
+                className="bio-input"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                placeholder="Viết tiểu sử của bạn..."
+              ></textarea>
+            </div>
             <p className="text-gray-500 text-sm">
               Hồ sơ của bạn sẽ được để công khai.
             </p>
