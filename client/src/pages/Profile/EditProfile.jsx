@@ -8,8 +8,9 @@ import {
   updateUserProfile,
 } from "../../services/userService";
 
-const EditProfileModal = ({ userData, setUserData }) => {
+const EditProfileModal = ({ userData, setUserData, editSection }) => {
   const [isVisible, setIsVisible] = useState(false);
+
   const {
     accessToken,
     isProfileModalOpen,
@@ -23,6 +24,13 @@ const EditProfileModal = ({ userData, setUserData }) => {
 
   // BIO tạm thời
   const [tempBio, setTempBio] = useState(userData.bio || "");
+
+  // Xử lý hộp thoại "thêm bio" ngoài phần "chỉnh sửa hồ sơ"
+  useEffect(() => {
+    if (editSection === "bio") {
+      setIsBioModalOpen(true); // Mở luôn phần sửa bio
+    }
+  }, [editSection]);
 
   useEffect(() => {
     if (isProfileModalOpen) {
@@ -42,6 +50,8 @@ const EditProfileModal = ({ userData, setUserData }) => {
 
   if (!isProfileModalOpen) return null;
 
+  // Xử lý phần mở "Thêm/chỉnh sửa BIO"
+
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       if (isBioModalOpen) {
@@ -51,6 +61,8 @@ const EditProfileModal = ({ userData, setUserData }) => {
       }
     }
   };
+
+  // Xử lý cập nhật BIO
 
   const handleSaveProfile = async () => {
     try {
@@ -96,12 +108,14 @@ const EditProfileModal = ({ userData, setUserData }) => {
             )}
           </div>
         </div>
-        <EditBioModal
-          isOpen={isBioModalOpen}
-          onClose={() => setIsBioModalOpen(false)}
-          onSave={(newBio) => setTempBio(newBio)}
-          initialBio={tempBio}
-        />
+        {isBioModalOpen && (
+          <EditBioModal
+            isOpen={isBioModalOpen}
+            onClose={() => setIsBioModalOpen(false)}
+            onSave={(newBio) => setTempBio(newBio)}
+            initialBio={tempBio}
+          />
+        )}
         <hr />
         <div className="modal-section">
           <h3>Đường dẫn</h3>

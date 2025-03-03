@@ -15,6 +15,7 @@ export default function Profile() {
   const { isProfileModalOpen, setIsProfileModalOpen } = useModal();
   const [isFollowersOpen, setFollowersIsOpen] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [editSection, setEditSection] = useState(null); // NEW: Xác định phần nào được mở trong modal
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken"); // Giả sử bạn lưu token ở đây
@@ -48,11 +49,18 @@ export default function Profile() {
   }
 
   const handleEditProfileClick = () => {
+    setEditSection(null);
     setIsProfileModalOpen(true);
   };
 
   const handleProfileCloseModal = () => {
     setIsProfileModalOpen(false);
+  };
+
+  // Khi bấm "Thêm Bio" - chức năng phụ "Thêm" tiểu sử ngoài chức năng chính "chỉnh sửa hồ sơ"
+  const handleEditBioClick = () => {
+    setEditSection("bio"); // Mở modal và focus vào bio
+    setIsProfileModalOpen(true);
   };
 
   return (
@@ -121,6 +129,7 @@ export default function Profile() {
               onClose={handleProfileCloseModal}
               userData={userData}
               setUserData={setUserData} // Truyền setUserData xuống để cập nhật UI
+              editSection={editSection} // NEW: Truyền trạng thái edit
             />
             <div className="detail-profile">
               <div className="profile-options">
@@ -163,8 +172,12 @@ export default function Profile() {
                       Giới thiệu bản thân và cho mọi người biết sở thích của
                       bạn.
                     </div>
-                    <div className="btn-item unactive">
-                      <button className="btn-text">Thêm</button>
+                    <div
+                      className={`btn-item ${userData.bio ? "" : "unactive"} `}
+                    >
+                      <button className="btn-text" onClick={handleEditBioClick}>
+                        {userData.bio ? "Đã hoàn thành" : "Thêm"}
+                      </button>
                     </div>
                   </div>
                   <div className="info-item">
