@@ -21,3 +21,21 @@ export const fetchUserProfile = async (accessToken) => {
     throw error; // Để có thể xử lý lỗi ở nơi gọi hàm này
   }
 };
+
+export const updateUserProfile = async (accessToken, newBio) => {
+  try {
+    const res = await axios.put(
+      `${API_URL}/update-profile`,
+      { bio: newBio },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Error updating bio", error);
+    throw error;
+  }
+};

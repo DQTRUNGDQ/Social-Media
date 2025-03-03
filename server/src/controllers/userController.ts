@@ -36,6 +36,11 @@ export const updateUserProfile = asyncHandler(
         return next(new AppError("User not found", 404));
       }
 
+      // Kiểm tra lại bio trước khi lưu
+      if (bio !== undefined && bio.length > 200) {
+        return next(new AppError("Bio cannot exceed 200 characters", 400));
+      }
+
       if (bio !== undefined) user.bio = bio;
       if (link !== undefined) user.link = link;
       if (avatar !== undefined) user.avatar = avatar;
@@ -47,6 +52,9 @@ export const updateUserProfile = asyncHandler(
         user,
       });
     } catch (error: any) {
+      if (error.name === "ValidationError") {
+        return next(new AppError(error.message, 400));
+      }
       res.status(500).json({ error: "Server error" });
     }
   }

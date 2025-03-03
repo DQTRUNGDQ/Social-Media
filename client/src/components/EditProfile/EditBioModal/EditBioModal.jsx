@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function EditBioModal({ isOpen, onClose, onSave, initialBio }) {
+  const MAX_BIO_LENGTH = 200;
   const [bio, setBio] = useState(() => {
     return sessionStorage.getItem("bioDraft") || initialBio || "";
   });
@@ -18,11 +19,33 @@ export default function EditBioModal({ isOpen, onClose, onSave, initialBio }) {
 
   useEffect(() => {
     if (isOpen) {
+      setBio(initialBio || ""); // Reset bio khi mở lại
       setTimeout(() => setIsVisible(true), 10); // Kích hoạt animation
     } else {
       setIsVisible(false);
     }
-  }, [isOpen]);
+  }, [isOpen, initialBio]);
+
+  const handleInputChange = (e) => {
+    let inputValue = e.target.value;
+
+    // Ngăn nhập toàn khoảng trắng
+    if (/^\s+$/.test(inputValue)) {
+      return;
+    }
+
+    // Giới hạn ký tự
+    if (inputValue.length > MAX_BIO_LENGTH) {
+      return;
+    }
+    setBio(inputValue);
+  };
+
+  const handleSave = () => {
+    const trimmedBio = bio.trim();
+    onSave(trimmedBio);
+    onClose();
+  };
 
   if (!isOpen) return null;
 
@@ -40,13 +63,7 @@ export default function EditBioModal({ isOpen, onClose, onSave, initialBio }) {
             Hủy bỏ
           </button>
           <h2 className="text-lg font-semibold">Nhập tiểu sử</h2>
-          <button
-            className="text-blue-500"
-            onClick={() => {
-              onSave(bio); //Gửi bio về component cha
-              onClose();
-            }}
-          >
+          <button className="text-blue-500" onClick={handleSave}>
             Hoàn thành
           </button>
         </div>
@@ -56,7 +73,7 @@ export default function EditBioModal({ isOpen, onClose, onSave, initialBio }) {
               <textarea
                 className="bio-input"
                 value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="Viết tiểu sử của bạn..."
               ></textarea>
             </div>

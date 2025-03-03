@@ -14,6 +14,7 @@ export default function Profile() {
   const [accessToken, setAccessToken] = useState("");
   const { isProfileModalOpen, setIsProfileModalOpen } = useModal();
   const [isFollowersOpen, setFollowersIsOpen] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken"); // Giả sử bạn lưu token ở đây
@@ -34,6 +35,7 @@ export default function Profile() {
     queryFn: async () => {
       if (!accessToken) throw new Error("No access token");
       const profile = await fetchUserProfile(accessToken);
+      setUserData(profile); // Gán dữ liệu user vào state mới
       console.log("Fetched Profile:", profile); // Log profile
       return profile;
     },
@@ -62,13 +64,23 @@ export default function Profile() {
           <div className="profile-information">
             <div className="basic-info">
               <div className="profile-user-name">
-                <div className="profile-user-usedname">{user.name}</div>
-                <div className="profile-user-tagname">{user.username}</div>
+                <div className="profile-user-usedname">{userData.name}</div>
+                <div className="profile-user-tagname">{userData.username}</div>
               </div>
               <div className="profile-user-avatar">
                 <img alt="" />
               </div>
             </div>
+            <div className="profile-bio txt-added">
+              {userData.bio ? (
+                userData.bio
+                  .split("\n")
+                  .map((line, index) => <p key={index}>{line}</p>)
+              ) : (
+                <p className="empty"></p>
+              )}
+            </div>
+
             <div className="minimum-info">
               <div
                 className="followers"
@@ -79,7 +91,7 @@ export default function Profile() {
                   <img alt="" />
                 </div>
                 <div className="quantity-followers">
-                  {user.followers.length} người theo dõi
+                  {userData.followers.length} người theo dõi
                 </div>
               </div>
               <div className="joined-in">
@@ -95,17 +107,20 @@ export default function Profile() {
               isOpen={isFollowersOpen}
               onClose={() => setFollowersIsOpen(false)}
               user={user}
-              followers={user.followers}
-              following={user.following}
+              followers={userData.followers}
+              following={userData.following}
             />
             <div>
               <button className="edit-profile" onClick={handleEditProfileClick}>
                 Chỉnh sửa hồ sơ
               </button>
             </div>
+
             <EditProfileModal
               isOpen={isProfileModalOpen}
               onClose={handleProfileCloseModal}
+              userData={userData}
+              setUserData={setUserData} // Truyền setUserData xuống để cập nhật UI
             />
             <div className="detail-profile">
               <div className="profile-options">

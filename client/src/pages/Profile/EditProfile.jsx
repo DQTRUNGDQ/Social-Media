@@ -3,24 +3,42 @@ import { useState, useEffect } from "react";
 import "../../styles/Profile.css";
 import EditBioModal from "../../components/EditProfile/EditBioModal/EditBioModal";
 import { useModal } from "../../providers/ModalContext";
+import {
+  fetchUserProfile,
+  updateUserProfile,
+} from "../../services/userService";
 
-const EditProfileModal = () => {
+const EditProfileModal = ({ userData, setUserData }) => {
   const [isVisible, setIsVisible] = useState(false);
   const {
+    accessToken,
     isProfileModalOpen,
     setIsProfileModalOpen,
     isBioModalOpen,
     setIsBioModalOpen,
   } = useModal();
+
+  // BIO chính thức
   const [bio, setBio] = useState("");
+
+  // BIO tạm thời
+  const [tempBio, setTempBio] = useState(userData.bio || "");
 
   useEffect(() => {
     if (isProfileModalOpen) {
       setTimeout(() => setIsVisible(true), 10);
+      // Gọi API lấy dữ liệu khi mở modal
+      fetchUserProfile(accessToken)
+        .then((data) => {
+          setBio(data.bio || ""); // Nếu chưa có bio thì để rỗng
+          setTempBio(data.bio || "");
+          setUserData(data); // Cập nhật dữ liệu mới từ API
+        })
+        .catch((error) => console.error("Lỗi khi tải hồ sơ:", error));
     } else {
       setIsVisible(false);
     }
-  }, [isProfileModalOpen]);
+  }, [isProfileModalOpen, accessToken]);
 
   if (!isProfileModalOpen) return null;
 
@@ -31,6 +49,20 @@ const EditProfileModal = () => {
       } else {
         setIsProfileModalOpen(false);
       }
+    }
+  };
+
+  const handleSaveProfile = async () => {
+    try {
+      await updateUserProfile(accessToken, tempBio);
+
+      // Cập nhật UI ngay lập tức
+      setBio(tempBio);
+      setUserData((prev) => ({ ...prev, bio: tempBio }));
+
+      setIsProfileModalOpen(false);
+    } catch (error) {
+      console.error("Lỗi khi cập nhật tiểu sử:", error);
     }
   };
 
@@ -54,13 +86,21 @@ const EditProfileModal = () => {
         <hr />
         <div className="modal-section">
           <h3>Tiểu sử</h3>
-          <p onClick={() => setIsBioModalOpen(true)}>+ Viết tiểu sử</p>
+          <div className="profile-bio" onClick={() => setIsBioModalOpen(true)}>
+            {tempBio ? (
+              tempBio
+                .split("\n")
+                .map((line, index) => <p key={index}>{line}</p>)
+            ) : (
+              <p className="empty">+ Viết tiểu sử</p>
+            )}
+          </div>
         </div>
         <EditBioModal
           isOpen={isBioModalOpen}
           onClose={() => setIsBioModalOpen(false)}
-          onSave={(newBio) => setBio(newBio)}
-          initialBio={bio}
+          onSave={(newBio) => setTempBio(newBio)}
+          initialBio={tempBio}
         />
         <hr />
         <div className="modal-section">
@@ -81,7 +121,9 @@ const EditProfileModal = () => {
             <span className="slider"></span>
           </label>
         </div>
-        <button className="done-button">Done</button>
+        <button className="done-button" onClick={handleSaveProfile}>
+          Hoàn thành
+        </button>
       </div>
     </div>
   );

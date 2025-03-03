@@ -115,7 +115,7 @@ const userSchema: Schema<IUser> = new Schema({
   },
   bio: {
     type: String,
-    maxlength: 160,
+    maxlength: 200,
   },
   link: {
     type: String,
