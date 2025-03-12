@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../styles/Profile.css";
 import EditBioModal from "../../components/EditProfile/EditBioModal/EditBioModal";
 import { useModal } from "../../providers/ModalContext";
@@ -7,6 +7,7 @@ import {
   fetchUserProfile,
   updateUserProfile,
 } from "../../services/userService";
+import Avatar from "../../assets/Avatar";
 
 const EditProfileModal = ({ userData, setUserData, editSection }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,11 +20,33 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
     setIsBioModalOpen,
   } = useModal();
 
+  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
+  const avatarMenuRef = useRef(null);
+
   // BIO chính thức
   const [bio, setBio] = useState("");
 
   // BIO tạm thời
   const [tempBio, setTempBio] = useState(userData.bio || "");
+
+  useEffect(() => {
+    function handleClicksOutside(event) {
+      if (
+        avatarMenuRef.current &&
+        !avatarMenuRef.current.contains(event.target)
+      ) {
+        setIsAvatarMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClicksOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClicksOutside);
+    };
+  });
+
+  const handleAvatarClick = () => {
+    setIsAvatarMenuOpen((prev) => !prev);
+  };
 
   // Xử lý hộp thoại "thêm bio" ngoài phần "chỉnh sửa hồ sơ"
   useEffect(() => {
@@ -83,17 +106,26 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
       <div className={`modal ${isVisible ? "open" : ""}`}>
         <div className="modal-section flex-modal">
           <div>
-            <h2>Name</h2>
-            <h1>Quốc Trung (@dqtrugg)</h1>
+            <h2>Tên</h2>
+            <h1>
+              {userData.name} ({userData.username})
+            </h1>
           </div>
-          <div className="modal-header-pf">
-            <image
-              alt="Profile picture of a person with a white background"
-              height="50"
-              src="https://storage.googleapis.com/a1aa/image/Dzed2Ouf1Wsp7U7k52KrYQfu0ppJt46q83OXbhyWyzayaWNnA.jpg"
-              width="50"
-            />
+          <div
+            className="modal-header-pf"
+            ref={avatarMenuRef}
+            onClick={handleAvatarClick}
+          >
+            <Avatar _id={userData._id} avatarUrl={userData.avatar} size={80} />
           </div>
+          {isAvatarMenuOpen && (
+            <div className="avatar-menu">
+              <ul>
+                <button class="py-2 text-black">Tải ảnh lên</button>
+                <button class="py-2 text-red-500">Xóa ảnh hiện tại</button>
+              </ul>
+            </div>
+          )}
         </div>
         <hr />
         <div className="modal-section">

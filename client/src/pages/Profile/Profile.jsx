@@ -8,6 +8,7 @@ import EditProfileModal from "./EditProfile";
 import { Loading } from "../../components/Loading/Loading";
 import FollowersModal from "../../components/Followers/FollowersModal";
 import { useModal } from "../../providers/ModalContext";
+import Avatar from "../../assets/Avatar";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -76,7 +77,11 @@ export default function Profile() {
                 <div className="profile-user-tagname">{userData.username}</div>
               </div>
               <div className="profile-user-avatar">
-                <img alt="" />
+                <Avatar
+                  _id={userData._id}
+                  avatarUrl={userData.avatar}
+                  size={80}
+                />
               </div>
             </div>
             <div className="profile-bio txt-added">

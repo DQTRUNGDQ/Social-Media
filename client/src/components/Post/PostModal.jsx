@@ -9,6 +9,7 @@ import { fileSchema } from "../../utils/validationSchema";
 import { Controller, useForm } from "react-hook-form";
 import api from "../../services/threadService";
 import { getEnCryptedToken } from "../../utils/tokenCrypto";
+import Avatar from "../../assets/Avatar";
 
 // const schema = yup.object().shape({
 //   mediaType: yup
@@ -35,6 +36,7 @@ const PostModal = ({ isOpen, onClose }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [content, setContent] = useState("");
   const [remainingChars, setRemainingChars] = useState(maxLength);
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -243,10 +245,10 @@ const PostModal = ({ isOpen, onClose }) => {
           <div className="modal-container">
             <div className="modal-header">
               <div className="modal-info-user">
-                <img
-                  src={images["avatar.jpg"]}
-                  className="profile-image"
-                  alt="User Profile"
+                <Avatar
+                  _id={userData._id}
+                  avatarUrl={userData.avatar}
+                  size={40}
                 />
                 <span className="username">dqtrugg</span>
               </div>
@@ -496,12 +498,8 @@ const PostModal = ({ isOpen, onClose }) => {
             </div>
             <div className="vertical-divider"></div>
           </div>
-          <div className="thread-child">
-            <img
-              src={images["avatar.jpg"]}
-              className="avatar-image"
-              alt="User Profile"
-            />
+          <div className="avatar-small">
+            <Avatar _id={userData._id} avatarUrl={userData.avatar} size={20} />
             <span>Thêm vào chủ đề</span>
           </div>
         </div>

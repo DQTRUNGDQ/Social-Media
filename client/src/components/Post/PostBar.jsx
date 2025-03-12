@@ -5,10 +5,12 @@ import images from "../../assets/loadImage";
 import api from "../../services/threadService";
 import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
+import Avatar from "../../assets/Avatar";
 
 const PostBar = ({ onClick }) => {
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
   const [error, setError] = useState(null);
   const socket = useRef(null);
@@ -157,11 +159,7 @@ const PostBar = ({ onClick }) => {
     <div class="bg-gray-100 p-4">
       <div className="post-container">
         <div className="post-bar">
-          <img
-            src={images["avatar.jpg"]}
-            alt="Profile"
-            className="avatar-image"
-          />
+          <Avatar _id={userData._id} avatarUrl={userData.avatar} size={50} />
           <input
             type="text"
             placeholder="Bắt đầu thread..."
@@ -180,12 +178,10 @@ const PostBar = ({ onClick }) => {
               class="posts-content max-w-l bg-white p-4 rounded-lg shadow-md"
             >
               <div class="flex items-center mb-4">
-                <img
-                  alt="Profile picture"
-                  class="w-10 h-10 rounded-full"
-                  height="40"
-                  src="https://storage.googleapis.com/a1aa/image/jZuQXyLaNh4AE5ABZdvUTSbXesEfFiPD9nHs8L7qNErG5x2TA.jpg"
-                  width="40"
+                <Avatar
+                  _id={post.author?._id}
+                  avatarUrl={post.author?.avatar}
+                  size={40}
                 />
                 <div class="ml-3">
                   <div class="font-bold">{post.author?.username}</div>
