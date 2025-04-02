@@ -15,6 +15,7 @@ const PostBar = ({ onClick }) => {
   const [error, setError] = useState(null);
   const socket = useRef(null);
 
+  // HIỂN THỊ BÀI ĐĂNG
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -97,7 +98,7 @@ const PostBar = ({ onClick }) => {
     return <p>{error}</p>;
   }
 
-  // Xử lý thời gian đăng bài
+  // XỬ LÝ ĐỊNH DẠNG THỜI GIAN ĐĂNG BÀI
   const formatPostTime = (createdAt) => {
     const now = new Date();
     const postTime = new Date(createdAt);

@@ -11,6 +11,7 @@ import Avatar from "../../assets/Avatar";
 
 const EditProfileModal = ({ userData, setUserData, editSection }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
 
   const {
     accessToken,
@@ -20,15 +21,65 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
     setIsBioModalOpen,
   } = useModal();
 
-  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
   const avatarMenuRef = useRef(null);
+  const fileInputRef = useRef(null);
 
-  // BIO chính thức
+  // BIO CHÍNH THỨC VÀ BIO TẠM THỜI
   const [bio, setBio] = useState("");
-
-  // BIO tạm thời
   const [tempBio, setTempBio] = useState(userData.bio || "");
 
+  // AVATAR TẠM THỜI (LƯU URL PREVIEW)
+  const [tempAvatar, setTempAvatar] = useState(userData.avatar || "");
+
+  // XỬ LÝ CLICK VÀO AVATAR
+  const handleAvatarClick = (e) => {
+    setIsAvatarMenuOpen(true);
+  };
+
+  // XỬ LÝ KHI BẤM "UPLOAD ẢNH" VÀ XỬ LÝ THAY ĐỔI FILE INPUT
+  const handleUploadClick = (e) => {
+    e.stopPropagation();
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setTempAvatar(previewUrl);
+    }
+  };
+
+  // XỬ LÝ LƯU THÔNG TIN ĐÃ THÊM / CHỈNH SỬA
+
+  const handleSaveProfile = async () => {
+    try {
+      await updateUserProfile(accessToken, tempBio);
+
+      // Cập nhật UI ngay lập tức
+      setBio(tempBio);
+      setUserData((prev) => ({ ...prev, bio: tempBio }));
+
+      setIsProfileModalOpen(false);
+    } catch (error) {
+      console.error("Lỗi khi cập nhật tiểu sử:", error);
+    }
+  };
+
+  // Xử lý phần mở "Thêm/chỉnh sửa BIO"
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      if (isBioModalOpen) {
+        setIsBioModalOpen(false);
+      } else {
+        setIsProfileModalOpen(false);
+      }
+    }
+  };
+
+  // XỬ LÝ KHI CLICK RA KHỎI AVATAR
   useEffect(() => {
     function handleClicksOutside(event) {
       if (
@@ -42,11 +93,7 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
     return () => {
       document.removeEventListener("mousedown", handleClicksOutside);
     };
-  });
-
-  const handleAvatarClick = () => {
-    setIsAvatarMenuOpen((prev) => !prev);
-  };
+  }, []);
 
   // Xử lý hộp thoại "thêm bio" ngoài phần "chỉnh sửa hồ sơ"
   useEffect(() => {
@@ -73,34 +120,6 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
 
   if (!isProfileModalOpen) return null;
 
-  // Xử lý phần mở "Thêm/chỉnh sửa BIO"
-
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      if (isBioModalOpen) {
-        setIsBioModalOpen(false);
-      } else {
-        setIsProfileModalOpen(false);
-      }
-    }
-  };
-
-  // Xử lý cập nhật BIO
-
-  const handleSaveProfile = async () => {
-    try {
-      await updateUserProfile(accessToken, tempBio);
-
-      // Cập nhật UI ngay lập tức
-      setBio(tempBio);
-      setUserData((prev) => ({ ...prev, bio: tempBio }));
-
-      setIsProfileModalOpen(false);
-    } catch (error) {
-      console.error("Lỗi khi cập nhật tiểu sử:", error);
-    }
-  };
-
   return (
     <div className={`profile-overlay ${"active"}`} onClick={handleOverlayClick}>
       <div className={`modal ${isVisible ? "open" : ""}`}>
@@ -111,21 +130,27 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
               {userData.name} ({userData.username})
             </h1>
           </div>
-          <div
-            className="modal-header-pf"
-            ref={avatarMenuRef}
-            onClick={handleAvatarClick}
-          >
+          <div className="modal-header-pf" onClick={handleAvatarClick}>
             <Avatar _id={userData._id} avatarUrl={userData.avatar} size={80} />
           </div>
           {isAvatarMenuOpen && (
             <div className="avatar-menu">
               <ul>
-                <button class="py-2 text-black">Tải ảnh lên</button>
-                <button class="py-2 text-red-500">Xóa ảnh hiện tại</button>
+                <button onClick={handleUploadClick}>Tải ảnh lên</button>
+
+                <button onClick={() => setTempAvatar("")}>
+                  Xóa ảnh hiện tại
+                </button>
               </ul>
             </div>
           )}
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
         </div>
         <hr />
         <div className="modal-section">
