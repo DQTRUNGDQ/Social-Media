@@ -118,7 +118,7 @@ var userSchema = new mongoose_1.Schema({
     },
     bio: {
         type: String,
-        maxlength: 160
+        maxlength: 200
     },
     link: {
         type: String,

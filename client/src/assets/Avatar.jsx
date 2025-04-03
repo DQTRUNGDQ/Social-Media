@@ -1,11 +1,13 @@
 import React from "react";
-import ProTypes from "prop-types";
+import PropTypes from "prop-types";
 
+// Hàm để tạo avatar mặc định
 const getDefaultAvatar = (_id) => {
   return `https://robohash.org/${_id}.png?size=200x200&set=set1`;
 };
 
 export default function Avatar({ _id, avatarUrl, size = 80 }) {
+  // Kiểm tra avatarUrl và sử dụng avatar mặc định nếu không có avatarUrl
   const finalAvatar =
     avatarUrl && avatarUrl.trim() !== "" ? avatarUrl : getDefaultAvatar(_id);
 
@@ -37,8 +39,9 @@ export default function Avatar({ _id, avatarUrl, size = 80 }) {
   );
 }
 
-Avatar.ProTypes = {
-  _id: ProTypes.string.isRequired,
-  avatarUrl: ProTypes.string,
-  size: ProTypes.number,
+// Kiểm tra kiểu dữ liệu của props
+Avatar.propTypes = {
+  _id: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string, // avatarUrl có thể không có
+  size: PropTypes.number, // Kích thước mặc định là 80
 };

@@ -23,8 +23,8 @@ const createThread = async (
   if (!file) {
     return res.status(400).send("Không có file được tải lên");
   }
-  // const fileName = `${uuidv4()}-${file.originalname}`;
-  const fileName = file.originalname;
+  const fileName = `Media/${uuidv4()}-${file.originalname}`;
+  // const fileName = file.originalname;
   const fileUpload = bucket.file(fileName);
 
   // Tạo luồng ghi để tải tệp lên
@@ -103,7 +103,7 @@ const getThread = asyncHandler(
         return next(new AppError("User not found", 404));
       }
       const posts = await Thread.find()
-        .populate("author", "username")
+        .populate("author", "username _id avatar")
         .sort({ createdAt: -1 });
       // Lấy danh sách bài viết người dùng đã like
       const likedPosts = await Like.find({ user: req.user.id }).distinct(

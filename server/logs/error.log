@@ -1540,3 +1540,39 @@ Stack: Error: Cannot find /api/users/update-profile on this server
 Stack: Error: Bio cannot exceed 150 characters
     at G:\ThreadsClone\ThreadsClone\server\src\controllers\userController.ts:41:21
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-03T08:59:29.804Z [ERROR]: Error: Cannot find /api/users/update-profile on this server 
+Stack: Error: Cannot find /api/users/update-profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-04-03T08:59:30.783Z [ERROR]: Error: Cannot find /favicon.ico on this server 
+Stack: Error: Cannot find /favicon.ico on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-04-03T09:18:06.814Z [ERROR]: Error: Cannot find /api/users/update-profile on this server 
+Stack: Error: Cannot find /api/users/update-profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:42:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)

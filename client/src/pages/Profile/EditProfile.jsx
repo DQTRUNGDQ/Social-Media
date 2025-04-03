@@ -48,6 +48,7 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
     if (file) {
       const previewUrl = URL.createObjectURL(file);
       setTempAvatar(previewUrl);
+      setIsAvatarMenuOpen(false);
     }
   };
 
@@ -55,11 +56,20 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
 
   const handleSaveProfile = async () => {
     try {
-      await updateUserProfile(accessToken, tempBio);
+      const updatedUser = await updateUserProfile(
+        accessToken,
+        tempBio,
+        fileInputRef.current
+      );
 
       // Cập nhật UI ngay lập tức
       setBio(tempBio);
-      setUserData((prev) => ({ ...prev, bio: tempBio }));
+
+      setUserData((prev) => ({
+        ...prev,
+        bio: tempBio,
+        avatar: updatedUser.avatar,
+      }));
 
       setIsProfileModalOpen(false);
     } catch (error) {
@@ -131,7 +141,11 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
             </h1>
           </div>
           <div className="modal-header-pf" onClick={handleAvatarClick}>
-            <Avatar _id={userData._id} avatarUrl={userData.avatar} size={80} />
+            <Avatar
+              _id={userData._id}
+              avatarUrl={tempAvatar || userData.avatar}
+              size={80}
+            />
           </div>
           {isAvatarMenuOpen && (
             <div className="avatar-menu">

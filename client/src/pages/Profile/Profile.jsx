@@ -13,12 +13,7 @@ import Avatar from "../../assets/Avatar";
 export default function Profile() {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
-  const {
-    isProfileModalOpen,
-    setIsProfileModalOpen,
-    isAvatarMenuOpen,
-    setIsAvatarMenuOpen,
-  } = useModal();
+  const { isProfileModalOpen, setIsProfileModalOpen } = useModal();
   const [isFollowersOpen, setFollowersIsOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const [editSection, setEditSection] = useState(null); // NEW: Xác định phần nào được mở trong modal

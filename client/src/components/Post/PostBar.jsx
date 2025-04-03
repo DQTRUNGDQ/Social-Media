@@ -57,6 +57,9 @@ const PostBar = ({ onClick }) => {
         // Cập nhật state
         setPosts(formattedPosts);
         setLikedPosts(likedPostsData);
+        return {
+          author: postsResponse.data, //
+        };
       } catch (error) {
         setError("Có lỗi xảy ra khi tải bài viết.");
         console.log(error);

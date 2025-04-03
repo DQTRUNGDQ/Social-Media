@@ -22,20 +22,48 @@ export const fetchUserProfile = async (accessToken) => {
   }
 };
 
-export const updateUserProfile = async (accessToken, newBio) => {
+// export const updateUserProfile = async (accessToken, newBio) => {
+//   try {
+//     const res = await axios.put(
+//       `${API_URL}/update-profile`,
+//       { bio: newBio },
+//       {
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       }
+//     );
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error updating bio", error);
+//     throw error;
+//   }
+// };
+
+// export const uploadAvatar = async (accessToken, file) => {
+//   try {
+//     const formData = new FormData();
+//   }
+// }
+
+export const updateUserProfile = async (accessToken, newBio, fileInput) => {
   try {
-    const res = await axios.put(
-      `${API_URL}/update-profile`,
-      { bio: newBio },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    return res.data;
+    const formData = new FormData();
+    formData.append("bio", newBio);
+
+    const fileInput = document.querySelector('input[type="file"]');
+    const avatarFile = fileInput.files[0];
+    formData.append("avatar", avatarFile);
+
+    const res = await axios.put(`${API_URL}/update-profile`, formData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res.data.user;
   } catch (error) {
-    console.error("Error updating bio", error);
+    console.error("Error updating profile", error);
     throw error;
   }
 };

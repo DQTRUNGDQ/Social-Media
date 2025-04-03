@@ -52,6 +52,7 @@ var Thread_1 = require("~/models/Thread");
 var User_1 = require("~/models/User");
 var threadService_1 = require("~/services/threadService");
 var firebaseConfig_1 = require("~/config/firebaseConfig");
+var uuid_1 = require("uuid");
 var Hashtag_1 = require("~/models/Hashtag");
 var asyncHandler_1 = require("~/middlewares/asyncHandler");
 var console_1 = require("console");
@@ -66,7 +67,7 @@ var createThread = function (req, res) { return __awaiter(void 0, void 0, Promis
         if (!file) {
             return [2 /*return*/, res.status(400).send("Không có file được tải lên")];
         }
-        fileName = file.originalname;
+        fileName = "Media/" + uuid_1.v4() + "-" + file.originalname;
         fileUpload = firebaseConfig_1.bucket.file(fileName);
         blobStream = fileUpload.createWriteStream({
             metadata: {
@@ -152,7 +153,7 @@ var getThread = asyncHandler_1["default"](function (req, res, next) { return __a
                     return [2 /*return*/, next(new AppError_1.AppError("User not found", 404))];
                 }
                 return [4 /*yield*/, Thread_1["default"].find()
-                        .populate("author", "username")
+                        .populate("author", "username _id avatar")
                         .sort({ createdAt: -1 })];
             case 2:
                 posts = _b.sent();
