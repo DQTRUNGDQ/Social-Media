@@ -1,47 +1,46 @@
-// src/components/PostModal.jsx
 import React, { useEffect, useState, useRef } from "react";
 import "../../styles/Post.css";
-import images from "../../assets/loadImage";
 import imageCompression from "browser-image-compression";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { fileSchema } from "../../utils/validationSchema";
 import { Controller, useForm } from "react-hook-form";
 import api from "../../services/threadService";
-import { getEnCryptedToken } from "../../utils/tokenCrypto";
 import Avatar from "../../assets/Avatar";
-
-// const schema = yup.object().shape({
-//   mediaType: yup
-//     .string()
-//     .oneOf(["file", "url"])
-//     .required("Bạn phải chọn loại phương tiện"),
-//   mediaFile: fileSchema.when("mediaType", {
-//     is: "file",
-//     then: yup.mixed().required("Bạn phải chọn tệp").nullable(),
-//     otherwise: yup.mixed().notRequired(),
-//   }),
-//   // mediaUrl: yup.string().when("mediaType", {
-//   //   is: "url",
-//   //   then: yup.string().url("URL không hợp lệ").required("Bạn phải nhập URL"),
-//   //   otherwise: yup.string().notRequired(),
-//   // }),
-// });
+import { fetchUserProfile } from "../../services/userService";
 
 const PostModal = ({ isOpen, onClose }) => {
   const maxLength = 500;
   const warningLimit = 10;
-  const blockLimit = -7;
   const placeholderText = "Có điều gì mới?";
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [content, setContent] = useState("");
   const [remainingChars, setRemainingChars] = useState(maxLength);
-  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+  const [userData, setUserData] = useState(null);
+  const [userError, setUserError] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
+
+  const { control, handleSubmit, reset, watch, setValue, register } = useForm({
+    defaultValues: {
+      content: "",
+      mediaType: "file",
+      mediaFile: null,
+      mediaUrl: "",
+    },
+  });
+
+  const [preview, setPreview] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+
+  const fileInputRef = useRef(null);
+  const mediaType = watch("mediaType");
+  const [fileType, setFileType] = useState("");
+
+  // ======================== LOGIC ===========================
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-
       setContent((prevContent) => [
         ...prevContent,
         <br key={prevContent.length} />,
@@ -60,28 +59,6 @@ const PostModal = ({ isOpen, onClose }) => {
     }
   };
 
-  // Xử lý đăng bài
-  const { control, handleSubmit, reset, watch, setValue, register } = useForm({
-    // resolver: yupResolver(schema),
-    defaultValues: {
-      content: "",
-      mediaType: "file",
-      mediaFile: null,
-      mediaUrl: "",
-    },
-  });
-
-  const [preview, setPreview] = useState(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [uploading, setUploading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
-
-  // Refs để mở file input khi nhấn vào icon
-  const fileInputRef = useRef(null);
-
-  const mediaType = watch("mediaType");
-
   const onSubmit = async (data) => {
     const authToken = localStorage.getItem("accessToken");
     console.log("authToken:", authToken);
@@ -93,8 +70,6 @@ const PostModal = ({ isOpen, onClose }) => {
 
     if (data.mediaType === "file" && data.file && data.file.length > 0) {
       let file = data.file[0];
-
-      // Nếu là hình ảnh, nén trước khi gửi
       if (file.type.startsWith("image/")) {
         const options = {
           maxSizeMB: 1,
@@ -116,17 +91,16 @@ const PostModal = ({ isOpen, onClose }) => {
       mediaData = { mediaUrl: data.mediaUrl };
     }
 
-    // Tạo FormData nếu gửi file, hoặc JSON nếu gửi URL
     try {
       let res;
       if (data.mediaType === "file") {
         const formData = new FormData();
         formData.append("content", content);
-        const fileInput = document.querySelector('input[type="file"]'); // Giả sử bạn có input file
+        const fileInput = document.querySelector('input[type="file"]');
         const file = fileInput.files[0];
 
         if (file) {
-          formData.append("media", file); // Thêm tệp vào FormData
+          formData.append("media", file);
         }
 
         res = await api.post("/upload", formData, {
@@ -134,7 +108,6 @@ const PostModal = ({ isOpen, onClose }) => {
             Authorization: `Bearer ${authToken}`,
             "Content-Type": "multipart/form-data",
           },
-          body: formData,
           onUploadProgress: (ProgressEvent) => {
             const percentCompleted = Math.round(
               (ProgressEvent.loaded * 100) / ProgressEvent.total
@@ -146,7 +119,7 @@ const PostModal = ({ isOpen, onClose }) => {
         const payload = {
           content: data.content,
           mediaUrl: mediaData.mediaUrl,
-          mediaType: mediaData.mediaUrl.includes("image") ? "image" : "video", // Điều chỉnh theo logic của backend
+          mediaType: mediaData.mediaUrl.includes("image") ? "image" : "video",
         };
 
         res = await api.post("/upload", payload, {
@@ -156,14 +129,17 @@ const PostModal = ({ isOpen, onClose }) => {
         });
       }
 
-      // Xử lý phản hồi thành công
       console.log("Đăng bài thành công:", res.data);
       reset();
       setPreview(null);
       setUploadProgress(0);
     } catch (error) {
       console.error("Gặp lỗi xảy ra khi đăng bài:", error);
-      if (error.message && error.response.data && error.res.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setErrorMessage(error.response.data.message);
       } else {
         setErrorMessage("Đã xảy ra lỗi. Vui lòng thử lại.");
@@ -173,23 +149,19 @@ const PostModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const [fileType, setFileType] = useState("");
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const url = URL.createObjectURL(file); // Tạo URL tạm thời
+      const url = URL.createObjectURL(file);
       setPreview(url);
       setFileType(file.type);
       console.log("File selected:", file);
       console.log("File type: ", file.type);
       console.log("Preview URL:", url);
 
-      // Tạo đối tượng Image để lấy kích thước
       const img = new Image();
       img.src = url;
       img.onload = () => {
-        // Giảm kích thước chiều dài và chiều rộng đi
         const originalWidth = img.width;
         const originalHeight = img.height;
         const totalSize = originalWidth + originalHeight;
@@ -205,7 +177,6 @@ const PostModal = ({ isOpen, onClose }) => {
           newHeight = img.height / 2.5;
         }
 
-        // Lưu kích thước mới vào state
         setImageSize({
           width: newWidth > 0 ? newWidth : originalWidth,
           height: newHeight > 0 ? newHeight : originalHeight,
@@ -223,19 +194,53 @@ const PostModal = ({ isOpen, onClose }) => {
     }
   };
 
+  // ======================== EFFECTS ===========================
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const authToken = localStorage.getItem("accessToken");
+        if (!authToken) {
+          throw new Error("Không có token để xác thực");
+        }
+        const user = await fetchUserProfile(authToken);
+        setUserData(user);
+      } catch (error) {
+        setUserError("Lỗi khi lấy thông tin người dùng");
+        console.error(error);
+      } finally {
+        setUserLoading(false);
+      }
+    };
+    getUserData();
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       setIsTransitioning(true);
     } else {
-      // Delay hiding the modal to allow the closing animation to complete
       const timeout = setTimeout(() => setIsTransitioning(false), 300);
       return () => clearTimeout(timeout);
     }
   }, [isOpen]);
 
+  if (userLoading) {
+    return <p>Đang tải thông tin người dùng...</p>;
+  }
+
+  if (userError) {
+    return <p>{userError}</p>;
+  }
+
+  if (!userData) {
+    return <p>Không tìm thấy thông tin người dùng.</p>;
+  }
+
+  // ======================== RENDER ===========================
+
   return (
     <div className={`modal-overlay ${isOpen ? "open" : ""}`} onClick={onClose}>
-      <h2 class="modal-title">Chủ đề mới</h2>
+      <h2 className="modal-title">Chủ đề mới</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={`modal-content-post ${preview ? "has-image" : ""}`}
@@ -250,7 +255,7 @@ const PostModal = ({ isOpen, onClose }) => {
                   avatarUrl={userData.avatar}
                   size={40}
                 />
-                <span className="username">dqtrugg</span>
+                <span className="username">{userData.username}</span>
               </div>
 
               <div className="modal-information">
@@ -259,15 +264,15 @@ const PostModal = ({ isOpen, onClose }) => {
                     aria-placeholder={placeholderText}
                     onChange={handleFileChange}
                     contentEditable
-                    onkeyDown={handleKeyDown}
+                    onKeyDown={handleKeyDown}
                     onInput={handleInput}
                     value={content}
                     style={{
                       padding: "10px",
                       minHeight: "21px",
                       width: "100%",
-                      whiteSpace: "pre-wrap", // Giữ nguyên khoảng trắng và xuống dòng
-                      overflowWrap: "break-word", // Ngắt dòng nếu quá dài
+                      whiteSpace: "pre-wrap",
+                      overflowWrap: "break-word",
                       outline: "none",
                     }}
                     suppressContentEditableWarning={true}
@@ -286,10 +291,9 @@ const PostModal = ({ isOpen, onClose }) => {
                   </p>
                 </div>
 
-                {/* Hiển Thị Xem Trước */}
                 {mediaType === "file" && preview && (
                   <div className="media-preview" style={{ marginTop: "10px" }}>
-                    {fileType.startsWith("video/") ? ( // Kiểm tra loại tệp
+                    {fileType.startsWith("video/") ? (
                       <video width="100%" height="auto" controls autoPlay loop>
                         <source src={preview} type={fileType} />
                         Trình duyệt của bạn không hỗ trợ video.
@@ -385,7 +389,6 @@ const PostModal = ({ isOpen, onClose }) => {
                             </defs>
                           </svg>
                         </button>
-
                         <Controller
                           name="mediaFile"
                           control={control}

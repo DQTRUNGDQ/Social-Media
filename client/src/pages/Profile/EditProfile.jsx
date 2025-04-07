@@ -24,12 +24,11 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
   const avatarMenuRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  // BIO CHÍNH THỨC VÀ BIO TẠM THỜI
   const [bio, setBio] = useState("");
   const [tempBio, setTempBio] = useState(userData.bio || "");
-
-  // AVATAR TẠM THỜI (LƯU URL PREVIEW)
   const [tempAvatar, setTempAvatar] = useState(userData.avatar || "");
+
+  // ======================== LOGIC ===========================
 
   // XỬ LÝ CLICK VÀO AVATAR
   const handleAvatarClick = (e) => {
@@ -85,9 +84,18 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
         setIsBioModalOpen(false);
       } else {
         setIsProfileModalOpen(false);
+        setTempAvatar(null);
       }
     }
   };
+
+  // ======================== EFFECTS ===========================
+
+  useEffect(() => {
+    if (editSection === "bio") {
+      setIsBioModalOpen(true);
+    }
+  }, [editSection, setIsBioModalOpen]);
 
   // XỬ LÝ KHI CLICK RA KHỎI AVATAR
   useEffect(() => {
@@ -97,6 +105,7 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
         !avatarMenuRef.current.contains(event.target)
       ) {
         setIsAvatarMenuOpen(false);
+        setTempAvatar(null);
       }
     }
     document.addEventListener("mousedown", handleClicksOutside);
@@ -115,7 +124,6 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
   useEffect(() => {
     if (isProfileModalOpen) {
       setTimeout(() => setIsVisible(true), 10);
-      // Gọi API lấy dữ liệu khi mở modal
       fetchUserProfile(accessToken)
         .then((data) => {
           setBio(data.bio || ""); // Nếu chưa có bio thì để rỗng
@@ -129,6 +137,8 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
   }, [isProfileModalOpen, accessToken]);
 
   if (!isProfileModalOpen) return null;
+
+  // ======================== RENDER ===========================
 
   return (
     <div className={`profile-overlay ${"active"}`} onClick={handleOverlayClick}>
@@ -148,7 +158,7 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
             />
           </div>
           {isAvatarMenuOpen && (
-            <div className="avatar-menu">
+            <div className="avatar-menu" ref={avatarMenuRef}>
               <ul>
                 <button onClick={handleUploadClick}>Tải ảnh lên</button>
 

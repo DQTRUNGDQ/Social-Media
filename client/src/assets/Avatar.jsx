@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // Hàm để tạo avatar mặc định
-const getDefaultAvatar = (_id) => {
+export const getDefaultAvatar = (_id) => {
   return `https://robohash.org/${_id}.png?size=200x200&set=set1`;
 };
 

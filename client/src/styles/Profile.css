@@ -9,17 +9,19 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   overflow: hidden;
   z-index: 5;
 }
 
 .profile-main-content .profile-title {
-  font-weight: 600;
-  font-size: 18px;
-  margin-top: -30px;
-  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  margin: 20px 0;
+}
+
+.profile-container {
+  width: 50%;
 }
 
 .profile-container .profile-information {
@@ -139,7 +141,7 @@
 .profile-container .pro-options-item {
   display: flex;
   justify-content: center;
-  min-width: 150px;
+  min-width: 220px;
   height: 35px;
 }
 
@@ -223,6 +225,7 @@
   font-weight: 500;
   margin: 10px 0px;
   color: rgb(153, 153, 153);
+  height: 36.5px;
 }
 
 .profile-container .info-profile .btn-item {
@@ -233,6 +236,7 @@
   display: flex;
   justify-content: center;
   color: rgb(153, 153, 153);
+  cursor: pointer;
 }
 
 .profile-container .btn-item .btn-text {
@@ -268,6 +272,7 @@
 .profile-overlay.active {
   opacity: 1;
   visibility: visible;
+  z-index: 100;
 }
 
 .modal {
@@ -425,6 +430,13 @@ input:checked + .slider:before {
   align-items: center;
 }
 
+.profile-bio .empty {
+  color: #888;
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
 /* Tăng kích thước icon nếu cần */
 .profile-bio p img,
 .profile-bio p emoji {
@@ -532,7 +544,7 @@ input:checked + .slider:before {
   width: 100%;
   text-align: left;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   color: #000;
   font-weight: 600;
   padding: 5px 10px;

@@ -1,4 +1,3 @@
-// src/components/PostBar.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "../../styles/Post.css";
 import images from "../../assets/loadImage";
@@ -6,75 +5,102 @@ import api from "../../services/threadService";
 import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
 import Avatar from "../../assets/Avatar";
+import { fetchUserProfile } from "../../services/userService";
 
 const PostBar = ({ onClick }) => {
+  // State cho thông tin người dùng
+  const [userData, setUserData] = useState(null);
+  const [userError, setUserError] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
+
+  // State cho danh sách bài viết
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
-  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+  const [postsError, setPostsError] = useState(null);
+  const [postsLoading, setPostsLoading] = useState(true);
 
-  const [error, setError] = useState(null);
   const socket = useRef(null);
 
-  // HIỂN THỊ BÀI ĐĂNG
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const authToken = localStorage.getItem("accessToken");
-
-        // Lấy danh sách các bài viết từ API chính
-        const postsResponse = await api.get("/posts", {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-            "Content-Type": "application/json",
-          },
-        });
-
-        // Kiểm tra xem có bài viết nào đã like không
-        const postsData = postsResponse.data.posts || [];
-        const anyPostLiked = postsData.some((post) => post.isLiked); // Kiểm tra có bài viết nào đã like
-
-        // Nếu có bài viết nào đã like, mới gọi API likedPosts
-        let likedPostsData = [];
-        if (anyPostLiked) {
-          const likedPostsResponse = await api.get("/posts/liked", {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-              "Content-Type": "application/json",
-            },
-          });
-
-          likedPostsData = likedPostsResponse.data || [];
-        }
-
-        // Cập nhật trạng thái isLiked cho mỗi bài viết dựa trên likedPostsData
-        const formattedPosts = postsData.map((post) => ({
-          ...post,
-          isLiked: likedPostsData.some(
-            (likedPost) => likedPost && likedPost._id === post._id // Kiểm tra có likedPost không phải null/undefined
-          ),
-        }));
-
-        // Cập nhật state
-        setPosts(formattedPosts);
-        setLikedPosts(likedPostsData);
-        return {
-          author: postsResponse.data, //
-        };
-      } catch (error) {
-        setError("Có lỗi xảy ra khi tải bài viết.");
-        console.log(error);
+  // HÀM LẤY THÔNG TIN NGƯỜI DÙNG
+  const fetchUserData = async () => {
+    try {
+      const authToken = localStorage.getItem("accessToken");
+      if (!authToken) {
+        throw new Error("Không có token để xác thực");
       }
-    };
-    fetchPosts();
+      const user = await fetchUserProfile(authToken);
+      setUserData(user);
+    } catch (error) {
+      setUserError("Lỗi khi lấy thông tin người dùng");
+      console.error(error);
+    } finally {
+      setUserLoading(false);
+    }
+  };
 
+  // Hàm lấy danh sách bài viết và bài viết đã thích
+  const fetchPosts = async () => {
+    try {
+      const authToken = localStorage.getItem("accessToken");
+      if (!authToken) {
+        throw new Error("Không có token để xác thực");
+      }
+
+      // Lấy danh sách bài viết
+      const postsResponse = await api.get("/posts", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const postsData = postsResponse.data.posts || [];
+
+      // Lấy danh sách bài viết đã thích
+      const likedPostsResponse = await api.get("/posts/liked", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const likedPostsData = likedPostsResponse.data || [];
+
+      // Kết hợp dữ liệu bài viết với trạng thái isLiked
+      const formattedPosts = postsData.map((post) => ({
+        ...post,
+        isLiked: likedPostsData.some(
+          (likedPost) => likedPost && likedPost._id === post._id
+        ),
+      }));
+
+      setPosts(formattedPosts);
+      setLikedPosts(likedPostsData);
+    } catch (error) {
+      setPostsError("Lỗi khi tải bài viết");
+      console.error(error);
+    } finally {
+      setPostsLoading(false);
+    }
+  };
+
+  // useEffect để lấy thông tin người dùng
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  // useEffect để lấy danh sách bài viết (chỉ chạy khi đã có userData)
+  useEffect(() => {
+    if (userData) {
+      fetchPosts();
+    }
+  }, [userData]);
+
+  // useEffect cho socket.io để xử lý like realtime
+  useEffect(() => {
     socket.current = io("http://localhost:3000");
-
-    // Xử lý sự kiện nhận
     socket.current.on("connect", () => {
       socket.current.emit("getLikedPosts");
     });
     socket.current.on("likedPosts", (data) => {
-      console.log("Connected to server");
       const { postId, isLiked, likesCount } = data;
       setPosts((prevPosts) =>
         prevPosts.map((post) =>
@@ -87,21 +113,13 @@ const PostBar = ({ onClick }) => {
           : prevLikedPosts.filter((likedPostId) => likedPostId !== postId)
       );
     });
-    if (socket.connected) {
-      console.log("Socket is connected");
-    }
 
-    // Xóa kết nối WebSocket khi component unmount (tùy chọn)
     return () => {
       if (socket.current) socket.current.disconnect();
     };
   }, []);
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  // XỬ LÝ ĐỊNH DẠNG THỜI GIAN ĐĂNG BÀI
+  // HÀM ĐỊNH DẠNG THỜI GIAN BÀI VIẾT
   const formatPostTime = (createdAt) => {
     const now = new Date();
     const postTime = new Date(createdAt);
@@ -112,19 +130,18 @@ const PostBar = ({ onClick }) => {
     const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
     const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
 
-    // Xử lý các trường hợp
-    if (minutes < 1) return "Just now"; // < 1 phút
-    if (minutes < 60) return `${minutes}m`; // < 60 phút
-    if (hours < 24) return `${hours}h`; // < 24 giờ
-    if (days < 7) return `${days}d`; // < 7 ngày
+    if (minutes < 1) return "Vừa xong";
+    if (minutes < 60) return `${minutes} phút`;
+    if (hours < 24) return `${hours} giờ`;
+    if (days < 7) return `${days} ngày`;
 
-    // Nếu > 7 ngày, trả về định dạng dd/mm/yy
     const day = postTime.getDate().toString().padStart(2, "0");
     const month = (postTime.getMonth() + 1).toString().padStart(2, "0");
     const year = postTime.getFullYear();
     return `${day}/${month}/${year}`;
   };
 
+  // Hàm xử lý like/unlike bài viết
   const handleToggleLike = async (postId) => {
     try {
       const authToken = localStorage.getItem("accessToken");
@@ -140,7 +157,6 @@ const PostBar = ({ onClick }) => {
       );
 
       if (response.status === 200) {
-        // Cập nhật trạng thái like của bài viết
         const { isLiked, likesCount } = response.data;
         socket.current.emit("likePost", { postId, isLiked, likesCount });
         setPosts((prevPosts) =>
@@ -155,13 +171,28 @@ const PostBar = ({ onClick }) => {
         );
       }
     } catch (err) {
-      console.error("Thread no longer exists or has been deleted");
+      console.error("Bài viết không còn tồn tại hoặc đã bị xóa");
     }
   };
 
+  // Xử lý giao diện khi đang tải hoặc có lỗi
+  if (userError) {
+    return <p>{userError}</p>;
+  }
+
+  if (userLoading) {
+    return <p>Đang tải thông tin người dùng...</p>;
+  }
+
+  if (!userData) {
+    return <p>Không tìm thấy thông tin người dùng.</p>;
+  }
+
+  // Giao diện chính
   return (
-    <div class="bg-gray-100 p-4">
+    <div className="bg-gray-100 p-4">
       <div className="post-container">
+        {/* Thanh đăng bài */}
         <div className="post-bar">
           <Avatar _id={userData._id} avatarUrl={userData.avatar} size={50} />
           <input
@@ -175,27 +206,33 @@ const PostBar = ({ onClick }) => {
             Đăng
           </button>
         </div>
-        {Array.isArray(posts) && posts.length > 0 ? (
+
+        {/* Hiển thị danh sách bài viết */}
+        {postsError ? (
+          <p>{postsError}</p>
+        ) : postsLoading ? (
+          <p>Đang tải bài viết...</p>
+        ) : Array.isArray(posts) && posts.length > 0 ? (
           posts.map((post) => (
             <div
-              key={post.id}
-              class="posts-content max-w-l bg-white p-4 rounded-lg shadow-md"
+              key={post._id}
+              className="posts-content max-w-l bg-white p-4 rounded-lg shadow-md"
             >
-              <div class="flex items-center mb-4">
+              <div className="flex items-center mb-4">
                 <Avatar
                   _id={post.author?._id}
                   avatarUrl={post.author?.avatar}
                   size={40}
                 />
-                <div class="ml-3">
-                  <div class="font-bold">{post.author?.username}</div>
-                  <div class="text-gray-500 text-sm">
+                <div className="ml-3">
+                  <div className="font-bold">{post.author?.username}</div>
+                  <div className="text-gray-500 text-sm">
                     {formatPostTime(post.createdAt)}
                   </div>
                 </div>
               </div>
-              <div class="mb-4">
-                <p class="post-content">{post.content}</p>
+              <div className="mb-4">
+                <p className="post-content">{post.content}</p>
                 <p className="post-hashtags">
                   {Array.isArray(post.hashtags) ? (
                     post.hashtags.map((hashtag, index) => (
@@ -204,33 +241,31 @@ const PostBar = ({ onClick }) => {
                       </span>
                     ))
                   ) : (
-                    <span>No hashtags available</span>
+                    <span>Không có hashtag</span>
                   )}
                 </p>
-                <p class="text-lg post-translate">Translate</p>
+                <p className="text-lg post-translate">Dịch</p>
               </div>
-              <div class="grid ">
+              <div className="grid">
                 {post.images?.length > 0 && (
                   <div className="post-images">
                     {post.images.map((image, index) => (
                       <img
                         key={index}
                         src={image}
-                        alt={`Post Image ${index + 1}`}
+                        alt={`Hình ảnh ${index + 1}`}
                         width={400}
                         style={{ marginRight: "10px" }}
                       />
                     ))}
                   </div>
                 )}
-                {/* Hiển thị video nếu có */}
                 {post.videos?.length > 0 &&
                   post.videos.every((video) => video.startsWith("http")) && (
                     <div className="post-videos">
                       {post.videos.map((video, index) => (
                         <video
                           key={index}
-                          video
                           width="100%"
                           height="auto"
                           controls
@@ -244,21 +279,21 @@ const PostBar = ({ onClick }) => {
                     </div>
                   )}
               </div>
-              <div class="flex items-center mt-4 text-gray-500">
+              <div className="flex items-center mt-4 text-gray-500">
                 <button
                   className={`like-button ${post.isLiked ? "liked" : ""}`}
                   onClick={() => handleToggleLike(post._id)}
                 >
                   <i className="fa fa-heart heart-icon"></i>
-                  <span class="ml-1">{post.likesCount}</span>
+                  <span className="ml-1">{post.likesCount}</span>
                 </button>
-                <div class="flex items-center mr-4">
-                  <i class="fas fa-comment"></i>
-                  <span class="ml-1">0</span>
+                <div className="flex items-center mr-4">
+                  <i className="fas fa-comment"></i>
+                  <span className="ml-1">0</span>
                 </div>
-                <div class="flex items-center">
-                  <i class="fas fa-share"></i>
-                  <span class="ml-1">0</span>
+                <div className="flex items-center">
+                  <i className="fas fa-share"></i>
+                  <span className="ml-1">0</span>
                 </div>
               </div>
             </div>

@@ -6,6 +6,8 @@ import api from "../../services/threadService";
 import { Loading } from "../Loading/Loading";
 import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
+import Avatar from "../../assets/Avatar";
+import { fetchUserProfile } from "../../services/userService";
 
 const LikedPosts = ({ onClick }) => {
   const [posts, setPosts] = useState([]);
@@ -13,6 +15,95 @@ const LikedPosts = ({ onClick }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const socket = useRef(null);
+
+  // State cho thông tin người dùng
+  const [userData, setUserData] = useState(null);
+  const [userError, setUserError] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
+
+  // ======================== LOGIC ===========================
+
+  // HÀM LẤY THÔNG TIN NGƯỜI DÙNG
+  const fetchUserData = async () => {
+    try {
+      const authToken = localStorage.getItem("accessToken");
+      if (!authToken) {
+        throw new Error("Không có token để xác thực");
+      }
+      const user = await fetchUserProfile(authToken);
+      setUserData(user);
+    } catch (error) {
+      setUserError("Lỗi khi lấy thông tin người dùng");
+      console.error(error);
+    } finally {
+      setUserLoading(false);
+    }
+  };
+
+  // Xử lý thời gian đăng bài
+  const formatPostTime = (createdAt) => {
+    const now = new Date();
+    const postTime = new Date(createdAt);
+    const diffMs = now - postTime;
+
+    const minutes = Math.floor(diffMs / (1000 * 60));
+    const hours = Math.floor(diffMs / (1000 * 60 * 60));
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+
+    // Xử lý các trường hợp
+    if (minutes < 1) return "Just now"; // < 1 phút
+    if (minutes < 60) return `${minutes}m`; // < 60 phút
+    if (hours < 24) return `${hours}h`; // < 24 giờ
+    if (days < 7) return `${days}d`; // < 7 ngày
+
+    // Nếu > 7 ngày, trả về định dạng dd/mm/yy
+    const day = postTime.getDate().toString().padStart(2, "0");
+    const month = (postTime.getMonth() + 1).toString().padStart(2, "0");
+    const year = postTime.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  const handleToggleLike = async (postId) => {
+    try {
+      const authToken = localStorage.getItem("accessToken");
+      const response = await api.post(
+        "/like",
+        { threadId: postId },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        // Cập nhật trạng thái like của bài viết
+        const { isLiked, likesCount } = response.data;
+        socket.current.emit("likePost", { postId, isLiked, likesCount });
+        setPosts((prevPosts) =>
+          prevPosts.map((post) =>
+            post._id === postId ? { ...post, isLiked, likesCount } : post
+          )
+        );
+        setLikedPosts((prevLikedPosts) =>
+          isLiked
+            ? [...prevLikedPosts, postId]
+            : prevLikedPosts.filter((likedPostId) => likedPostId !== postId)
+        );
+      }
+    } catch (err) {
+      console.error("Thread no longer exists or has been deleted");
+    }
+  };
+
+  // ======================== EFFECTS ===========================
+
+  // useEffect để lấy thông tin người dùng
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -100,84 +191,11 @@ const LikedPosts = ({ onClick }) => {
     return <p>{error}</p>;
   }
 
-  // Xử lý thời gian đăng bài
-  const formatPostTime = (createdAt) => {
-    const now = new Date();
-    const postTime = new Date(createdAt);
-    const diffMs = now - postTime;
-
-    const minutes = Math.floor(diffMs / (1000 * 60));
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
-
-    // Xử lý các trường hợp
-    if (minutes < 1) return "Just now"; // < 1 phút
-    if (minutes < 60) return `${minutes}m`; // < 60 phút
-    if (hours < 24) return `${hours}h`; // < 24 giờ
-    if (days < 7) return `${days}d`; // < 7 ngày
-
-    // Nếu > 7 ngày, trả về định dạng dd/mm/yy
-    const day = postTime.getDate().toString().padStart(2, "0");
-    const month = (postTime.getMonth() + 1).toString().padStart(2, "0");
-    const year = postTime.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
-  const handleToggleLike = async (postId) => {
-    try {
-      const authToken = localStorage.getItem("accessToken");
-      const response = await api.post(
-        "/like",
-        { threadId: postId },
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        // Cập nhật trạng thái like của bài viết
-        const { isLiked, likesCount } = response.data;
-        socket.current.emit("likePost", { postId, isLiked, likesCount });
-        setPosts((prevPosts) =>
-          prevPosts.map((post) =>
-            post._id === postId ? { ...post, isLiked, likesCount } : post
-          )
-        );
-        setLikedPosts((prevLikedPosts) =>
-          isLiked
-            ? [...prevLikedPosts, postId]
-            : prevLikedPosts.filter((likedPostId) => likedPostId !== postId)
-        );
-      }
-    } catch (err) {
-      console.error("Thread no longer exists or has been deleted");
-    }
-  };
+  // ======================== RENDER ===========================
 
   return (
     <div class="bg-gray-100 p-4">
       <div className="post-container">
-        <div className="post-bar">
-          <img
-            src={images["avatar.jpg"]}
-            alt="Profile"
-            className="avatar-image"
-          />
-          <input
-            type="text"
-            placeholder="Bắt đầu thread..."
-            className="post-input"
-            readOnly
-            onClick={onClick}
-          />
-          <button className="post-button-bar" onClick={onClick}>
-            Đăng
-          </button>
-        </div>
         {Array.isArray(posts) && posts.length > 0 ? (
           posts.map((post) => (
             <div
@@ -185,12 +203,10 @@ const LikedPosts = ({ onClick }) => {
               class="posts-content max-w-l bg-white p-4 rounded-lg shadow-md"
             >
               <div class="flex items-center mb-4">
-                <img
-                  alt="Profile picture"
-                  class="w-10 h-10 rounded-full"
-                  height="40"
-                  src="https://storage.googleapis.com/a1aa/image/jZuQXyLaNh4AE5ABZdvUTSbXesEfFiPD9nHs8L7qNErG5x2TA.jpg"
-                  width="40"
+                <Avatar
+                  _id={post.author?._id}
+                  avatarUrl={post.author?.avatar}
+                  size={40}
                 />
                 <div class="ml-3">
                   <div class="font-bold">{post.author?.username}</div>

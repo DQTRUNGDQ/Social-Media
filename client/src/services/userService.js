@@ -22,30 +22,6 @@ export const fetchUserProfile = async (accessToken) => {
   }
 };
 
-// export const updateUserProfile = async (accessToken, newBio) => {
-//   try {
-//     const res = await axios.put(
-//       `${API_URL}/update-profile`,
-//       { bio: newBio },
-//       {
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       }
-//     );
-//     return res.data;
-//   } catch (error) {
-//     console.error("Error updating bio", error);
-//     throw error;
-//   }
-// };
-
-// export const uploadAvatar = async (accessToken, file) => {
-//   try {
-//     const formData = new FormData();
-//   }
-// }
-
 export const updateUserProfile = async (accessToken, newBio, fileInput) => {
   try {
     const formData = new FormData();
