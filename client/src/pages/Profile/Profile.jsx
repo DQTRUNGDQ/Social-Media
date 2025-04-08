@@ -184,7 +184,7 @@ export default function Profile() {
                 <Avatar
                   className="cursor-pointer"
                   _id={userData._id}
-                  avatarUrl={userData.avatar}
+                  avatarUrl={userData.avatar || ""}
                   size={40}
                 />
                 <div

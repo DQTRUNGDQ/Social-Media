@@ -554,3 +554,11 @@ input:checked + .slider:before {
 .avatar-menu button:hover {
   background: #f5f5f5;
 }
+
+.avatar-menu button:first-child {
+  color: #0095f6;
+}
+
+.avatar-menu button:nth-child(2) {
+  color: #ed4956;
+}

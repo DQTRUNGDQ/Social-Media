@@ -27,6 +27,7 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
   const [bio, setBio] = useState("");
   const [tempBio, setTempBio] = useState(userData.bio || "");
   const [tempAvatar, setTempAvatar] = useState(userData.avatar || "");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   // ======================== LOGIC ===========================
 
@@ -35,7 +36,7 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
     setIsAvatarMenuOpen(true);
   };
 
-  // XỬ LÝ KHI BẤM "UPLOAD ẢNH" VÀ XỬ LÝ THAY ĐỔI FILE INPUT
+  // XỬ LÝ KHI BẤM "UPLOAD ẢNH"/"XÓA ẢNH/HỦY BỎ" VÀ XỬ LÝ THAY ĐỔI FILE INPUT
   const handleUploadClick = (e) => {
     e.stopPropagation();
     if (fileInputRef.current) {
@@ -45,20 +46,34 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setSelectedFile(file);
       const previewUrl = URL.createObjectURL(file);
       setTempAvatar(previewUrl);
       setIsAvatarMenuOpen(false);
     }
   };
+  const handleRemoveAvatar = () => {
+    setTempAvatar("");
+    setSelectedFile(null);
+    setIsAvatarMenuOpen(false);
+  };
+  const handleCancelAvatarMenu = () => {
+    setIsAvatarMenuOpen(false);
+  };
 
   // XỬ LÝ LƯU THÔNG TIN ĐÃ THÊM / CHỈNH SỬA
 
   const handleSaveProfile = async () => {
+    const avatarToUpdate = selectedFile
+      ? selectedFile
+      : tempAvatar === null
+      ? ""
+      : null;
     try {
       const updatedUser = await updateUserProfile(
         accessToken,
         tempBio,
-        fileInputRef.current
+        avatarToUpdate
       );
 
       // Cập nhật UI ngay lập tức
@@ -150,10 +165,14 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
               {userData.name} ({userData.username})
             </h1>
           </div>
-          <div className="modal-header-pf" onClick={handleAvatarClick}>
+          <div
+            className="modal-header-pf"
+            onClick={handleAvatarClick}
+            ref={avatarMenuRef}
+          >
             <Avatar
               _id={userData._id}
-              avatarUrl={tempAvatar || userData.avatar}
+              avatarUrl={tempAvatar !== null ? tempAvatar : userData.avatar}
               size={80}
             />
           </div>
@@ -162,9 +181,8 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
               <ul>
                 <button onClick={handleUploadClick}>Tải ảnh lên</button>
 
-                <button onClick={() => setTempAvatar("")}>
-                  Xóa ảnh hiện tại
-                </button>
+                <button onClick={handleRemoveAvatar}>Xóa ảnh hiện tại</button>
+                <button onClick={handleCancelAvatarMenu}>Hủy bỏ</button>
               </ul>
             </div>
           )}

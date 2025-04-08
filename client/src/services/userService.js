@@ -29,7 +29,11 @@ export const updateUserProfile = async (accessToken, newBio, fileInput) => {
 
     const fileInput = document.querySelector('input[type="file"]');
     const avatarFile = fileInput.files[0];
-    formData.append("avatar", avatarFile);
+    if (avatarFile === "") {
+      formData.append("avatar", ""); // đánh dấu xóa
+    } else if (avatarFile) {
+      formData.append("avatar", avatarFile);
+    }
 
     const res = await axios.put(`${API_URL}/update-profile`, formData, {
       headers: {

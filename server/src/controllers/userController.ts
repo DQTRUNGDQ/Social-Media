@@ -31,9 +31,19 @@ export const getProfile = asyncHandler(
 
 export const updateUserProfile = asyncHandler(
   async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    const { bio, link } = req.body;
+    const { bio, link, avatar } = req.body;
     const file = req.file;
     console.log("Received file:", file); // Thêm dòng này để kiểm tra
+
+    // Hàm tách tên file từ URL public
+    const extractOldFileName = (url: string) => {
+      try {
+        const encoded = url.split("/o/")[1]?.split("?alt=media")[0];
+        return encoded ? decodeURIComponent(encoded) : null;
+      } catch {
+        return null;
+      }
+    };
 
     try {
       const user: IUser | null = await User.findById(req.user.id);
@@ -49,6 +59,15 @@ export const updateUserProfile = asyncHandler(
       if (link !== undefined) user.link = link;
 
       if (file) {
+        // Xoá avatar cũ trên Firebase nếu có
+        const oldFileName = extractOldFileName(user.avatar || "");
+        if (oldFileName) {
+          await bucket
+            .file(oldFileName)
+            .delete()
+            .catch(() => {});
+        }
+
         const fileName = `Avatar/${uuidv4()}-${file.originalname}`;
         const fileUpload = bucket.file(fileName);
 
@@ -69,19 +88,6 @@ export const updateUserProfile = asyncHandler(
             bucket.name
           }/o/${encodeURIComponent(fileName)}?alt=media`;
 
-          // Xoá avatar cũ trên Firebase nếu có
-          if (user.avatar) {
-            const oldFileName = user.avatar
-              .split("/o/")[1]
-              ?.split("?alt=media")[0];
-            if (oldFileName) {
-              await bucket
-                .file(decodeURIComponent(oldFileName))
-                .delete()
-                .catch(() => {});
-            }
-          }
-
           // Cật nhật avatar mới
           user.avatar = fileUrl;
           await user.save();
@@ -94,8 +100,32 @@ export const updateUserProfile = asyncHandler(
         });
 
         blobStream.end(file.buffer);
+      } else if (avatar === "") {
+        // Xóa avatar
+        const oldFileName = extractOldFileName(user.avatar || "");
+        if (oldFileName) {
+          await bucket
+            .file(oldFileName)
+            .delete()
+            .catch(() => {});
+        }
+
+        user.avatar = "";
       } else {
         // Nếu không có file mới, chỉ cập nhật thông tin khác
+        // if (avatar !== "" && !file)
+        if (!avatar && !file) {
+          // Người dùng muốn xóa ảnh
+          const oldFileName = extractOldFileName(user.avatar || "");
+          if (oldFileName) {
+            await bucket
+              .file(oldFileName)
+              .delete()
+              .catch(() => {});
+          }
+          // Nếu avatar là chuỗi rỗng, tức người dùng muốn xóa avatar
+          user.avatar = avatar; // có thể avatar === ""
+        }
         await user.save();
         res.status(200).json({
           message: "Profile updated successfully",
