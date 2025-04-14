@@ -7,17 +7,24 @@ import Avatar from "../../assets/Avatar";
 import { fetchUserProfile } from "../../services/userService";
 
 const PostModal = ({ isOpen, onClose }) => {
-  const maxLength = 500;
+  const maxLength = 1000;
   const warningLimit = 10;
   const placeholderText = "Có điều gì mới?";
+
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [content, setContent] = useState("");
-  const [remainingChars, setRemainingChars] = useState(maxLength);
   const [userData, setUserData] = useState(null);
   const [userError, setUserError] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
 
-  const { control, handleSubmit, reset, watch, setValue, register } = useForm({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    watch,
+    setValue,
+    register,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       content: "",
       mediaType: "file",
@@ -25,6 +32,11 @@ const PostModal = ({ isOpen, onClose }) => {
       mediaUrl: "",
     },
   });
+
+  const content = watch("content");
+  const remainingChars =
+    content !== undefined ? maxLength - content.length : maxLength;
+  const textareaRef = useRef(null);
 
   const [preview, setPreview] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -38,24 +50,11 @@ const PostModal = ({ isOpen, onClose }) => {
 
   // ======================== LOGIC ===========================
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      setContent((prevContent) => [
-        ...prevContent,
-        <br key={prevContent.length} />,
-      ]);
-    }
-  };
-
-  const handleInput = (e) => {
-    const text = e.currentTarget.textContent;
-    setContent(text);
-    const textLength = text.length;
-    const charsLeft = maxLength - textLength;
-
-    if (charsLeft <= warningLimit) {
-      setRemainingChars(charsLeft);
+  const autoResizeTextarea = () => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
     }
   };
 
@@ -224,6 +223,10 @@ const PostModal = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    autoResizeTextarea();
+  }, [content]);
+
   if (userLoading) {
     return <p>Đang tải thông tin người dùng...</p>;
   }
@@ -246,6 +249,73 @@ const PostModal = ({ isOpen, onClose }) => {
         className={`modal-content-post ${preview ? "has-image" : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
+        <div className="flex items-center justify-between w-full pb-2 px-4 border-b">
+          <button className="text-black text-lg ">Hủy bỏ</button>
+          <h2 className="text-lg font-semibold ">Bài viết mới</h2>
+          <div className="flex items-center space-x-4">
+            <svg
+              className="icon-post"
+              aria-label="Drafts"
+              role="img"
+              viewBox="0 0 24 24"
+            >
+              <title>Drafts</title>
+              <rect
+                height="15"
+                rx="4.5"
+                stroke="currentColor"
+                stroke-width="2"
+                width="15"
+                x="7"
+                y="7"
+              ></rect>
+              <path
+                clip-rule="evenodd"
+                d="M15.3833 4.50007C15.0018 4.15977 14.5475 3.9045 14.05 3.75672C13.7983 3.68195 13.432 3.6357 12.7078 3.68313C11.9633 3.73189 11.0102 3.86454 9.59538 4.06338C8.18054 4.26222 7.22784 4.39741 6.4987 4.55577C5.78946 4.7098 5.45011 4.85522 5.22879 4.99646C4.51904 5.44941 3.99637 6.14302 3.7566 6.95012C3.68183 7.2018 3.63558 7.56809 3.68301 8.29232C3.73177 9.03686 3.86442 9.98992 4.06326 11.4047C4.23845 12.6513 4.36423 13.5391 4.49997 14.2313V17.5001C4.49997 17.737 4.51175 17.9713 4.53475 18.2022C4.05772 17.8249 3.64282 17.3681 3.31041 16.8473C2.66675 15.8387 2.47208 14.4535 2.08272 11.6831C1.69337 8.91269 1.49869 7.52748 1.83941 6.38057C2.21619 5.11227 3.03754 4.02231 4.15285 3.31053C5.16142 2.66688 6.54662 2.4722 9.31703 2.08284C12.0874 1.69349 13.4726 1.49881 14.6196 1.83953C15.8878 2.21631 16.9778 3.03766 17.6896 4.15297C17.7623 4.26696 17.8294 4.38577 17.8916 4.51084C17.7619 4.50369 17.6314 4.50007 17.5 4.50007H15.3833Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              ></path>
+              <rect
+                fill="currentColor"
+                height="2"
+                rx="1"
+                width="9"
+                x="10"
+                y="12"
+              ></rect>
+              <rect
+                fill="currentColor"
+                height="2"
+                rx="1"
+                width="6"
+                x="10"
+                y="15"
+              ></rect>
+            </svg>
+            <svg
+              className="icon-post"
+              aria-label="More"
+              role="img"
+              viewBox="0 0 24 24"
+            >
+              <title>More</title>
+              <circle cx="12" cy="12" r="10"></circle>
+              <path
+                class="x9fz28n x1iq1zl9"
+                d="M7.5 13.5C6.67157 13.5 6 12.8284 6 12C6 11.1716 6.67157 10.5 7.5 10.5C8.32843 10.5 9 11.1716 9 12C9 12.8284 8.32843 13.5 7.5 13.5Z"
+              ></path>
+              <path
+                class="x9fz28n x1iq1zl9"
+                d="M12 13.5C11.1716 13.5 10.5 12.8284 10.5 12C10.5 11.1716 11.1716 10.5 12 10.5C12.8284 10.5 13.5 11.1716 13.5 12C13.5 12.8284 12.8284 13.5 12 13.5Z"
+              ></path>
+              <path
+                class="x9fz28n x1iq1zl9"
+                d="M16.5 13.5C15.6716 13.5 15 12.8284 15 12C15 11.1716 15.6716 10.5 16.5 10.5C17.3284 10.5 18 11.1716 18 12C18 12.8284 17.3284 13.5 16.5 13.5Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
         <div className="modal-content-sub-post">
           <div className="modal-container">
             <div className="modal-header">
@@ -260,35 +330,41 @@ const PostModal = ({ isOpen, onClose }) => {
 
               <div className="modal-information">
                 <div className="modal-input">
-                  <p
-                    aria-placeholder={placeholderText}
-                    onChange={handleFileChange}
-                    contentEditable
-                    onKeyDown={handleKeyDown}
-                    onInput={handleInput}
-                    value={content}
-                    style={{
-                      padding: "10px",
-                      minHeight: "21px",
-                      width: "100%",
-                      whiteSpace: "pre-wrap",
-                      overflowWrap: "break-word",
-                      outline: "none",
+                  <Controller
+                    name="content"
+                    control={control}
+                    rules={{
+                      maxLength: {
+                        value: maxLength,
+                        message: "Nội dung vượt quá ký tự cho phép.",
+                      },
                     }}
-                    suppressContentEditableWarning={true}
-                  >
-                    {content.length === 0 && (
-                      <span
-                        style={{
-                          position: "absolute",
-                          color: "#aaa",
-                          pointerEvents: "none",
+                    render={({ field }) => (
+                      <textarea
+                        {...field}
+                        ref={(e) => {
+                          field.ref(e); // Gán ref từ React Hook Form
+                          textareaRef.current = e; // Gán ref để truy cập DOM
                         }}
-                      >
-                        {placeholderText}
-                      </span>
+                        placeholder={placeholderText}
+                        style={{
+                          paddingLeft: "10px",
+                          maxHeight: "45vh",
+                          width: "100%",
+                          whiteSpace: "pre-wrap",
+                          overflowY: "auto",
+                          outline: "none",
+                          resize: "none",
+                        }}
+                      />
                     )}
-                  </p>
+                  />
+
+                  {errors.content && (
+                    <span style={{ color: "red" }}>
+                      {errors.content.message}
+                    </span>
+                  )}
                 </div>
 
                 {mediaType === "file" && preview && (

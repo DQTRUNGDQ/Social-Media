@@ -88,13 +88,13 @@
   background-color: white;
   padding: 20px;
   border-radius: 16px;
+  max-height: 80vh;
+  overflow-y: auto;
   max-width: 780px;
   width: 120%;
-  height: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   transition: transform 0.3s ease-in-out;
-  overflow-y: auto;
 }
 
 .modal-content-post.has-image {
@@ -142,21 +142,35 @@
 
 .modal-info-user {
   display: flex;
+  z-index: 10;
 }
 
 .modal-information {
-  margin-top: -30px;
+  margin-top: -20px;
   margin-left: 40px;
-  margin-bottom: 20px;
+  margin-bottom: -8px;
 }
 
 .modal-input {
+  margin-top: 2px;
   width: 90%;
   min-height: 21px;
   outline: none;
   font-size: 17.5px;
   color: #333;
   opacity: 0.8;
+  border: none;
+}
+
+.icon-post {
+  fill: none;
+  height: 24px;
+  width: 24px;
+}
+
+.icon-post:nth-child(2) {
+  stroke-width: 1.5;
+  stroke: #000;
 }
 
 /* .modal-input input {
@@ -214,6 +228,7 @@
   margin-left: 30px;
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .vertical-divider {
