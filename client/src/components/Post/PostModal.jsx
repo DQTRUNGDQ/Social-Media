@@ -5,6 +5,8 @@ import { Controller, useForm } from "react-hook-form";
 import api from "../../services/threadService";
 import Avatar from "../../assets/Avatar";
 import { fetchUserProfile } from "../../services/userService";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const PostModal = ({ isOpen, onClose }) => {
   const maxLength = 1000;
@@ -38,15 +40,17 @@ const PostModal = ({ isOpen, onClose }) => {
     content !== undefined ? maxLength - content.length : maxLength;
   const textareaRef = useRef(null);
 
-  const [preview, setPreview] = useState(null);
+  const [previews, setPreviews] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
+  const [imageSizes, setImageSizes] = useState([]);
+  const [mediaDimensions, setMediaDimensions] = useState(
+    previews.map(() => ({ width: null, height: null }))
+  );
   const [errorMessage, setErrorMessage] = useState("");
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
 
   const fileInputRef = useRef(null);
   const mediaType = watch("mediaType");
-  const [fileType, setFileType] = useState("");
 
   // ======================== LOGIC ===========================
 
@@ -60,77 +64,74 @@ const PostModal = ({ isOpen, onClose }) => {
 
   const onSubmit = async (data) => {
     const authToken = localStorage.getItem("accessToken");
-    console.log("authToken:", authToken);
     setUploading(true);
     setErrorMessage("");
     setUploadProgress(0);
 
-    let mediaData = {};
-
-    if (data.mediaType === "file" && data.file && data.file.length > 0) {
-      let file = data.file[0];
-      if (file.type.startsWith("image/")) {
-        const options = {
-          maxSizeMB: 1,
-          maxWidthOrHeight: 1920,
-          useWebWorker: true,
-        };
-        try {
-          const compressedFile = await imageCompression(file, options);
-          file = compressedFile;
-        } catch (error) {
-          console.error("Lỗi khi nén hình ảnh:", error);
-          setErrorMessage("Nén hình ảnh thất bại");
-          setUploading(false);
-          return;
-        }
-      }
-      mediaData = { file };
-    } else if (data.mediaType === "url" && data.mediaUrl) {
-      mediaData = { mediaUrl: data.mediaUrl };
-    }
-
     try {
-      let res;
-      if (data.mediaType === "file") {
-        const formData = new FormData();
-        formData.append("content", content);
-        const fileInput = document.querySelector('input[type="file"]');
-        const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append("content", data.content);
 
-        if (file) {
-          formData.append("media", file);
+      if (data.mediaType === "file" && data.file && data.file.length > 0) {
+        for (let i = 0; i < data.file.length; i++) {
+          let file = data.file[i];
+          if (file.type.startsWith("image/")) {
+            const options = {
+              maxSizeMB: 1,
+              maxWidthOrHeight: 1920,
+              useWebWorker: true,
+            };
+            try {
+              const compressedFile = await imageCompression(file, options);
+              formData.append("media", compressedFile);
+            } catch (error) {
+              console.error("Lỗi khi nén hình ảnh:", error);
+              setErrorMessage("Nén hình ảnh thất bại");
+              setUploading(false);
+              return;
+            }
+          } else {
+            formData.append("media", file);
+          }
         }
-
-        res = await api.post("/upload", formData, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-            "Content-Type": "multipart/form-data",
-          },
-          onUploadProgress: (ProgressEvent) => {
-            const percentCompleted = Math.round(
-              (ProgressEvent.loaded * 100) / ProgressEvent.total
-            );
-            setUploadProgress(percentCompleted);
-          },
-        });
-      } else if (data.mediaType === "url") {
+      } else if (data.mediaType === "url" && data.mediaUrl) {
         const payload = {
           content: data.content,
-          mediaUrl: mediaData.mediaUrl,
-          mediaType: mediaData.mediaUrl.includes("image") ? "image" : "video",
+          mediaUrl: data.mediaUrl,
+          mediaType: data.mediaUrl.includes("image") ? "image" : "video",
         };
 
-        res = await api.post("/upload", payload, {
+        const res = await api.post("/upload", payload, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
+
+        console.log("Đăng bài thành công:", res.data);
+        reset();
+        setPreviews([]);
+        setImageSizes([]);
+        setUploadProgress(0);
+        return;
       }
+
+      const res = await api.post("/upload", formData, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress: (ProgressEvent) => {
+          const percentCompleted = Math.round(
+            (ProgressEvent.loaded * 100) / ProgressEvent.total
+          );
+          setUploadProgress(percentCompleted);
+        },
+      });
 
       console.log("Đăng bài thành công:", res.data);
       reset();
-      setPreview(null);
+      setPreviews([]);
+      setImageSizes([]);
       setUploadProgress(0);
     } catch (error) {
       console.error("Gặp lỗi xảy ra khi đăng bài:", error);
@@ -149,41 +150,49 @@ const PostModal = ({ isOpen, onClose }) => {
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPreview(url);
-      setFileType(file.type);
-      console.log("File selected:", file);
-      console.log("File type: ", file.type);
-      console.log("Preview URL:", url);
+    const files = Array.from(e.target.files);
+    if (files.length > 0) {
+      const newPreviews = [];
+      const newSizes = [];
 
-      const img = new Image();
-      img.src = url;
-      img.onload = () => {
-        const originalWidth = img.width;
-        const originalHeight = img.height;
-        const totalSize = originalWidth + originalHeight;
+      files.forEach((file) => {
+        const url = URL.createObjectURL(file);
+        newPreviews.push({ url, type: file.type });
 
-        let newWidth = originalWidth;
-        let newHeight = originalHeight;
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+          const originalWidth = img.width;
+          const originalHeight = img.height;
+          const totalSize = originalWidth + originalHeight;
 
-        if (totalSize > 6000) {
-          newWidth = img.width / 9.5;
-          newHeight = img.height / 9.5;
-        } else if (totalSize < 2000) {
-          newWidth = img.width / 2.5;
-          newHeight = img.height / 2.5;
-        }
+          let newWidth = originalWidth;
+          let newHeight = originalHeight;
 
-        setImageSize({
-          width: newWidth > 0 ? newWidth : originalWidth,
-          height: newHeight > 0 ? newHeight : originalHeight,
-        });
-      };
+          if (totalSize > 6000) {
+            newWidth = img.width / 9.5;
+            newHeight = img.height / 9.5;
+          } else if (totalSize < 2000) {
+            newWidth = img.width / 2.5;
+            newHeight = img.height / 2.5;
+          }
+
+          newSizes.push({
+            width: newWidth > 0 ? newWidth : originalWidth,
+            height: newHeight > 0 ? newHeight : originalHeight,
+          });
+
+          if (newSizes.length === files.length) {
+            setImageSizes(newSizes);
+          }
+        };
+      });
+
+      setPreviews(newPreviews);
       setValue("file", e.target.files);
     } else {
-      setPreview(null);
+      setPreviews([]);
+      setImageSizes([]);
     }
   };
 
@@ -191,6 +200,44 @@ const PostModal = ({ isOpen, onClose }) => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
+  };
+
+  // Xử lý hiển thị bản xem trước ảnh/video hiển thị hướng của bức ảnh (ngang/dọc)
+  const updateOrientation = (idx, width, height) => {
+    setPreviews((prev) => {
+      const clone = [...prev];
+      clone[idx] = {
+        ...clone[idx],
+        orientation: width > height ? "landscape" : "portrait",
+      };
+      return clone;
+    });
+  };
+
+  // Xử lý để hiển thị bản xem trước ảnh/video cùng kích thước và tỷ lệ
+  const handleUpdateDimensions = (index, width, height) => {
+    const newDimensions = [...mediaDimensions];
+    newDimensions[index] = { width, height };
+    setMediaDimensions(newDimensions);
+
+    // Gọi updateOrientation để cập nhật orientation (landscape/portrait)
+    updateOrientation(index, width, height);
+  };
+
+  const removePreview = (index) => {
+    setPreviews((prev) => {
+      const newPreviews = prev.filter((_, i) => i !== index);
+      // Đồng bộ mediaDimensions
+      setMediaDimensions((prevDimensions) =>
+        prevDimensions.filter((_, i) => i !== index)
+      );
+      return newPreviews;
+    });
+  };
+
+  // Ngăn chặn sự kiện mặc định trên video khi kéo
+  const preventDefaultDrag = (e) => {
+    e.preventDefault();
   };
 
   // ======================== EFFECTS ===========================
@@ -227,6 +274,12 @@ const PostModal = ({ isOpen, onClose }) => {
     autoResizeTextarea();
   }, [content]);
 
+  useEffect(() => {
+    return () => {
+      previews.forEach((preview) => URL.revokeObjectURL(preview.url));
+    };
+  }, [previews]);
+
   if (userLoading) {
     return <p>Đang tải thông tin người dùng...</p>;
   }
@@ -245,8 +298,9 @@ const PostModal = ({ isOpen, onClose }) => {
     <div className={`modal-overlay ${isOpen ? "open" : ""}`} onClick={onClose}>
       <h2 className="modal-title">Chủ đề mới</h2>
       <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={`modal-content-post ${preview ? "has-image" : ""}`}
+        className={`modal-content-post ${
+          previews.length > 0 ? "has-image" : ""
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between w-full pb-2 px-4 border-b">
@@ -343,8 +397,8 @@ const PostModal = ({ isOpen, onClose }) => {
                       <textarea
                         {...field}
                         ref={(e) => {
-                          field.ref(e); // Gán ref từ React Hook Form
-                          textareaRef.current = e; // Gán ref để truy cập DOM
+                          field.ref(e);
+                          textareaRef.current = e;
                         }}
                         placeholder={placeholderText}
                         style={{
@@ -367,25 +421,82 @@ const PostModal = ({ isOpen, onClose }) => {
                   )}
                 </div>
 
-                {mediaType === "file" && preview && (
-                  <div className="media-preview" style={{ marginTop: "10px" }}>
-                    {fileType.startsWith("video/") ? (
-                      <video width="100%" height="auto" controls autoPlay loop>
-                        <source src={preview} type={fileType} />
-                        Trình duyệt của bạn không hỗ trợ video.
-                      </video>
-                    ) : (
-                      <img
-                        src={preview}
-                        alt="Preview"
-                        style={{
-                          display: "block",
-                          width: imageSize.width,
-                          height: imageSize.height,
-                          objectFit: "cover",
-                        }}
-                      />
-                    )}
+                {mediaType === "file" && previews?.length > 0 && (
+                  <div className="mb-4 flex gap-2 overflow-x-auto scrollbar-hide">
+                    <Swiper
+                      spaceBetween={8}
+                      slidesPerView="auto"
+                      freeMode={true}
+                      style={{ display: "flex", alignItems: "flex-start" }}
+                    >
+                      {previews.map((preview, index) => (
+                        <SwiperSlide
+                          key={preview.url || index}
+                          className="!w-auto !h-auto inline- cursor-grab"
+                        >
+                          <div
+                            className="relative flex-shrink-0 w-48 md:w-56 rounded-lg overflow-hidden bg-gray-100"
+                            style={{
+                              width: "auto", // Chiều rộng tự điều chỉnh theo tỷ lệ
+                              height: "100%", // Chiều cao sẽ bị giới hạn bởi maxHeight
+                              aspectRatio:
+                                mediaDimensions[index]?.width /
+                                  mediaDimensions[index]?.height || "1/1", // Giữ tỷ lệ gốc
+                              maxWidth: "650px",
+                              maxHeight: "400px",
+                            }}
+                          >
+                            {preview.type.startsWith("video/") ? (
+                              <video
+                                className="object-cover w-full h-full"
+                                controls
+                                autoPlay
+                                loop
+                                onLoadedMetadata={(e) =>
+                                  handleUpdateDimensions(
+                                    index,
+                                    e.target.videoWidth,
+                                    e.target.videoHeight
+                                  )
+                                }
+                                onMouseDown={preventDefaultDrag} // Ngăn sự kiện kéo mặc định
+                                onTouchStart={preventDefaultDrag} // Ngăn sự kiện kéo mặc định trên cảm ứng
+                                style={{ pointerEvents: "auto" }}
+                              >
+                                <source src={preview.url} type={preview.type} />
+                                Trình duyệt của bạn không hỗ trợ video.
+                              </video>
+                            ) : (
+                              <img
+                                src={preview.url}
+                                alt={`Preview ${index}`}
+                                className="object-cover w-full h-full"
+                                loading="lazy"
+                                onLoad={(e) =>
+                                  handleUpdateDimensions(
+                                    index,
+                                    e.target.naturalWidth,
+                                    e.target.naturalHeight
+                                  )
+                                }
+                              />
+                            )}
+                            {/* nút xóa */}
+                            <button
+                              type="button"
+                              onClick={() => removePreview(index)}
+                              className="absolute top-1 right-1 bg-black bg-opacity-50 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"
+                            >
+                              ×
+                            </button>
+                            {/* label Alt */}
+                            <div className="absolute bottom-1 left-1 bg-black bg-opacity-50 text-white text-xs px-1 rounded">
+                              Alt
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
                 )}
               </div>
@@ -399,6 +510,7 @@ const PostModal = ({ isOpen, onClose }) => {
                           {...register("mediaType", { required: true })}
                           type="file"
                           accept="image/*,video/*"
+                          multiple
                           style={{ display: "none" }}
                           ref={fileInputRef}
                           onChange={(e) => {
@@ -592,8 +704,13 @@ const PostModal = ({ isOpen, onClose }) => {
           </div>
 
           <div className="modal-actions">
-            <button type="submit" className="post-button">
-              Đăng
+            <button
+              type="button"
+              onSubmit={handleSubmit(onSubmit)}
+              className="post-button"
+              disabled={uploading}
+            >
+              {uploading ? `Đang tải (${uploadProgress}%)` : "Đăng"}
             </button>
           </div>
         </div>

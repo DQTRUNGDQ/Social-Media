@@ -90,15 +90,11 @@
   border-radius: 16px;
   max-height: 80vh;
   overflow-y: auto;
-  max-width: 780px;
+  max-width: 850px;
   width: 120%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   transition: transform 0.3s ease-in-out;
-}
-
-.modal-content-post.has-image {
-  height: 600px;
 }
 
 .modal-content-sub-post {
@@ -346,4 +342,12 @@
 .like-button.liked .heart-icon {
   color: red;
   transform: scale(1.2);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
