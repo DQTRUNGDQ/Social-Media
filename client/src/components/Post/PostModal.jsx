@@ -83,7 +83,12 @@ const PostModal = ({ isOpen, onClose }) => {
             };
             try {
               const compressedFile = await imageCompression(file, options);
-              formData.append("media", compressedFile);
+              // Tạo File object với tên gốc nếu không thư viện imageCompression sẽ trả về dưới dạng Blob/File
+              const fileWithName = new File([compressedFile], file.name, {
+                type: compressedFile.type,
+                lastModified: compressedFile.lastModified,
+              });
+              formData.append("media", fileWithName);
             } catch (error) {
               console.error("Lỗi khi nén hình ảnh:", error);
               setErrorMessage("Nén hình ảnh thất bại");
@@ -152,10 +157,28 @@ const PostModal = ({ isOpen, onClose }) => {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     if (files.length > 0) {
+      const allowedTypes = [
+        "image/jpeg",
+        "image/jpg",
+        "image/png",
+        "image/gif",
+        "image/webp",
+        "video/mp4",
+        "video/mpeg",
+        "video/webm",
+        "video/quicktime",
+        "video/x-msvideo",
+      ];
       const newPreviews = [];
       const newSizes = [];
 
-      files.forEach((file) => {
+      for (const file of files) {
+        if (!allowedTypes.includes(file.type)) {
+          setErrorMessage(
+            `File ${file.name} không hợp lệ. Chỉ hỗ trợ ảnh (JPEG, PNG, GIF, WebP) và video (MP4, MPEG, WebM, MOV, AVI).`
+          );
+          return;
+        }
         const url = URL.createObjectURL(file);
         newPreviews.push({ url, type: file.type });
 
@@ -176,17 +199,8 @@ const PostModal = ({ isOpen, onClose }) => {
             newWidth = img.width / 2.5;
             newHeight = img.height / 2.5;
           }
-
-          newSizes.push({
-            width: newWidth > 0 ? newWidth : originalWidth,
-            height: newHeight > 0 ? newHeight : originalHeight,
-          });
-
-          if (newSizes.length === files.length) {
-            setImageSizes(newSizes);
-          }
         };
-      });
+      }
 
       setPreviews(newPreviews);
       setValue("file", e.target.files);
@@ -706,7 +720,7 @@ const PostModal = ({ isOpen, onClose }) => {
           <div className="modal-actions">
             <button
               type="button"
-              onSubmit={handleSubmit(onSubmit)}
+              onClick={handleSubmit(onSubmit)}
               className="post-button"
               disabled={uploading}
             >

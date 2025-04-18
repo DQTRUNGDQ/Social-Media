@@ -2,94 +2,100 @@ import { NextFunction, Request, Response } from "express";
 import Thread from "~/models/Thread";
 import User, { IUser } from "~/models/User";
 import { AuthenticatedRequest } from "../middlewares/auth";
-import { processPostContent } from "~/services/threadService";
-import { bucket } from "~/config/firebaseConfig";
-import { v4 as uuidv4 } from "uuid";
 import Hashtag from "~/models/Hashtag";
 import asyncHandler from "~/middlewares/asyncHandler";
 import { error } from "console";
 import { AppError } from "~/utils/AppError";
+import { v4 as uuidv4 } from "uuid";
 import Like from "~/models/Like";
+import cloudinary from "~/config/cloudinary";
+import { CloudinaryUploadResponse } from "~/models/cloudinary";
+import { processPostContent } from "~/services/threadService";
 
-const createThread = async (
-  req: AuthenticatedRequest,
-  res: Response
-): Promise<Response> => {
-  const { content } = req.body;
-  const { textContent, hashtags } = processPostContent(content);
+const createThread = asyncHandler(
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    const { content } = req.body;
+    const { textContent, hashtags } = processPostContent(content);
+    const files = req.files as Express.Multer.File[];
+    // Kiểm tra file upload
 
-  // Lấy các tệp để upload lên Firebase
-  const file = req.file;
-  if (!file) {
-    return res.status(400).send("Không có file được tải lên");
-  }
-  const fileName = `Media/${uuidv4()}-${file.originalname}`;
-  // const fileName = file.originalname;
-  const fileUpload = bucket.file(fileName);
+    if (!files || files.length === 0) {
+      throw new AppError("No files uploaded", 400);
+    }
 
-  // Tạo luồng ghi để tải tệp lên
-  const blobStream = fileUpload.createWriteStream({
-    metadata: {
-      contentType: file.mimetype,
-    },
-  });
+    // Upload file lên Cloudinary
+    const uploadedMedia = [];
+    for (const file of files) {
+      // Xác định loại file
+      const isVideo = file.mimetype.startsWith("video/");
+      const resourceType = isVideo ? "video" : "image";
+      const folder = `Gens/Media/${resourceType}s`;
 
-  blobStream.on("error", (error) => {
-    return res.status(500).json({ message: "Lỗi khi upload file", error });
-  });
+      const uploadResult = await new Promise<CloudinaryUploadResponse>(
+        (resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            {
+              resource_type: resourceType,
+              folder: folder,
+              public_id: `${uuidv4()}-${file.originalname}`,
+            },
+            (error, result) => {
+              if (error)
+                reject(
+                  new AppError("Failed to upload file to Cloudinary", 500)
+                );
+              else resolve(result as CloudinaryUploadResponse);
+            }
+          );
+          uploadStream.end(file.buffer);
+        }
+      );
 
-  blobStream.on("finish", async () => {
-    await fileUpload.makePublic();
-
-    const fileUrl = `https://firebasestorage.googleapis.com/v0/b/${
-      bucket.name
-    }/o/${encodeURIComponent(fileName)}?alt=media`;
+      uploadedMedia.push({
+        url: uploadResult.secure_url,
+        publicId: uploadResult.public_id,
+        type: resourceType,
+      });
+    }
 
     // Tạo đối tượng Thread mới
     const newThread = {
       content: textContent,
       hashtags,
-      images: file.mimetype.includes("image") ? [fileUrl] : [],
-      videos: file.mimetype.includes("video") ? [fileUrl] : [],
-      mediaUrl: fileUrl,
-      mediaType: file.mimetype.includes("image") ? "image" : "video",
+      images: uploadedMedia.filter((m) => m.type === "image").map((m) => m.url),
+      videos: uploadedMedia.filter((m) => m.type === "video").map((m) => m.url),
+      mediaUrl: uploadedMedia[0]?.url,
+      mediaType: uploadedMedia[0]?.type,
       author: req.user,
       createdAt: new Date(),
+      cloudinaryPublicIds: uploadedMedia.map((m) => m.publicId), // Lưu public_id để quản lý file
     };
 
-    // console.log("User:", req.user);
+    // Lưu thread vào database
+    const post = await Thread.create(newThread);
 
-    try {
-      const post = await Thread.create(newThread); // Lưu thông tin post vào cơ sở dữ liệu
-      // Cập nhật hashtags
-      for (const hashtag of hashtags) {
-        let existingHashtag = await Hashtag.findOne({ name: hashtag });
+    // Cập nhật hashtags
+    for (const hashtag of hashtags) {
+      let existingHashtag = await Hashtag.findOne({ name: hashtag });
 
-        if (!existingHashtag) {
-          // Nếu hashtag chưa tồn tại, tạo mới
-          existingHashtag = new Hashtag({ name: hashtag });
-        }
-
-        // Cập nhật số lần sử dụng và thêm threadId vào mảng threads
-        existingHashtag.usageCount += 1; // Tăng usageCount
-        if (!existingHashtag.threadsId.includes(post.id)) {
-          existingHashtag.threadsId.push(post.id); // Thêm threadId
-        }
-
-        await existingHashtag.save(); // Lưu lại
+      if (!existingHashtag) {
+        existingHashtag = new Hashtag({ name: hashtag });
       }
-      return res.status(200).json({ message: "Bài viết đã được tạo!", post });
-    } catch (error) {
-      return res.status(500).json({ message: "Lỗi khi tạo bài viết", error });
+
+      existingHashtag.usageCount += 1;
+      if (!existingHashtag.threadsId.includes(post.id)) {
+        existingHashtag.threadsId.push(post.id);
+      }
+
+      await existingHashtag.save();
     }
-  });
 
-  blobStream.end(file.buffer);
-
-  return new Promise((relsove) => {
-    blobStream.on("finish", () => relsove(res));
-  });
-};
+    res.status(201).json({
+      message: "Thread created successfully",
+      post,
+    });
+  }
+);
 
 const getThread = asyncHandler(
   async (

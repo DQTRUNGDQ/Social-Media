@@ -50,95 +50,118 @@ exports.__esModule = true;
 exports.getLikedThreads = exports.toggleLike = exports.createThread = exports.getThread = void 0;
 var Thread_1 = require("~/models/Thread");
 var User_1 = require("~/models/User");
-var threadService_1 = require("~/services/threadService");
-var firebaseConfig_1 = require("~/config/firebaseConfig");
-var uuid_1 = require("uuid");
 var Hashtag_1 = require("~/models/Hashtag");
 var asyncHandler_1 = require("~/middlewares/asyncHandler");
 var console_1 = require("console");
 var AppError_1 = require("~/utils/AppError");
+var uuid_1 = require("uuid");
 var Like_1 = require("~/models/Like");
-var createThread = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
-    var content, _a, textContent, hashtags, file, fileName, fileUpload, blobStream;
-    return __generator(this, function (_b) {
-        content = req.body.content;
-        _a = threadService_1.processPostContent(content), textContent = _a.textContent, hashtags = _a.hashtags;
-        file = req.file;
-        if (!file) {
-            return [2 /*return*/, res.status(400).send("Không có file được tải lên")];
-        }
-        fileName = "Media/" + uuid_1.v4() + "-" + file.originalname;
-        fileUpload = firebaseConfig_1.bucket.file(fileName);
-        blobStream = fileUpload.createWriteStream({
-            metadata: {
-                contentType: file.mimetype
-            }
-        });
-        blobStream.on("error", function (error) {
-            return res.status(500).json({ message: "Lỗi khi upload file", error: error });
-        });
-        blobStream.on("finish", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var fileUrl, newThread, post, _i, hashtags_1, hashtag, existingHashtag, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, fileUpload.makePublic()];
-                    case 1:
-                        _a.sent();
-                        fileUrl = "https://firebasestorage.googleapis.com/v0/b/" + firebaseConfig_1.bucket.name + "/o/" + encodeURIComponent(fileName) + "?alt=media";
-                        newThread = {
-                            content: textContent,
-                            hashtags: hashtags,
-                            images: file.mimetype.includes("image") ? [fileUrl] : [],
-                            videos: file.mimetype.includes("video") ? [fileUrl] : [],
-                            mediaUrl: fileUrl,
-                            mediaType: file.mimetype.includes("image") ? "image" : "video",
-                            author: req.user,
-                            createdAt: new Date()
-                        };
-                        _a.label = 2;
-                    case 2:
-                        _a.trys.push([2, 9, , 10]);
-                        return [4 /*yield*/, Thread_1["default"].create(newThread)];
-                    case 3:
-                        post = _a.sent();
-                        _i = 0, hashtags_1 = hashtags;
-                        _a.label = 4;
-                    case 4:
-                        if (!(_i < hashtags_1.length)) return [3 /*break*/, 8];
-                        hashtag = hashtags_1[_i];
-                        return [4 /*yield*/, Hashtag_1["default"].findOne({ name: hashtag })];
-                    case 5:
-                        existingHashtag = _a.sent();
-                        if (!existingHashtag) {
-                            // Nếu hashtag chưa tồn tại, tạo mới
-                            existingHashtag = new Hashtag_1["default"]({ name: hashtag });
-                        }
-                        // Cập nhật số lần sử dụng và thêm threadId vào mảng threads
-                        existingHashtag.usageCount += 1; // Tăng usageCount
-                        if (!existingHashtag.threadsId.includes(post.id)) {
-                            existingHashtag.threadsId.push(post.id); // Thêm threadId
-                        }
-                        return [4 /*yield*/, existingHashtag.save()];
-                    case 6:
-                        _a.sent(); // Lưu lại
-                        _a.label = 7;
-                    case 7:
-                        _i++;
-                        return [3 /*break*/, 4];
-                    case 8: return [2 /*return*/, res.status(200).json({ message: "Bài viết đã được tạo!", post: post })];
-                    case 9:
-                        error_1 = _a.sent();
-                        return [2 /*return*/, res.status(500).json({ message: "Lỗi khi tạo bài viết", error: error_1 })];
-                    case 10: return [2 /*return*/];
+var cloudinary_1 = require("~/config/cloudinary");
+var threadService_1 = require("~/services/threadService");
+var createThread = asyncHandler_1["default"](function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
+    var content, _a, textContent, hashtags, files, uploadedMedia, _loop_1, _i, files_1, file, newThread, post, _b, hashtags_1, hashtag, existingHashtag;
+    var _c, _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
+            case 0:
+                content = req.body.content;
+                _a = threadService_1.processPostContent(content), textContent = _a.textContent, hashtags = _a.hashtags;
+                files = req.files;
+                // Kiểm tra file upload
+                if (!files || files.length === 0) {
+                    throw new AppError_1.AppError("No files uploaded", 400);
                 }
-            });
-        }); });
-        blobStream.end(file.buffer);
-        return [2 /*return*/, new Promise(function (relsove) {
-                blobStream.on("finish", function () { return relsove(res); });
-            })];
+                uploadedMedia = [];
+                _loop_1 = function (file) {
+                    var isVideo, resourceType, folder, uploadResult;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                isVideo = file.mimetype.startsWith("video/");
+                                resourceType = isVideo ? "video" : "image";
+                                folder = "Gens/Media/" + resourceType + "s";
+                                return [4 /*yield*/, new Promise(function (resolve, reject) {
+                                        var uploadStream = cloudinary_1["default"].uploader.upload_stream({
+                                            resource_type: resourceType,
+                                            folder: folder,
+                                            public_id: uuid_1.v4() + "-" + file.originalname
+                                        }, function (error, result) {
+                                            if (error)
+                                                reject(new AppError_1.AppError("Failed to upload file to Cloudinary", 500));
+                                            else
+                                                resolve(result);
+                                        });
+                                        uploadStream.end(file.buffer);
+                                    })];
+                            case 1:
+                                uploadResult = _a.sent();
+                                uploadedMedia.push({
+                                    url: uploadResult.secure_url,
+                                    publicId: uploadResult.public_id,
+                                    type: resourceType
+                                });
+                                return [2 /*return*/];
+                        }
+                    });
+                };
+                _i = 0, files_1 = files;
+                _e.label = 1;
+            case 1:
+                if (!(_i < files_1.length)) return [3 /*break*/, 4];
+                file = files_1[_i];
+                return [5 /*yield**/, _loop_1(file)];
+            case 2:
+                _e.sent();
+                _e.label = 3;
+            case 3:
+                _i++;
+                return [3 /*break*/, 1];
+            case 4:
+                newThread = {
+                    content: textContent,
+                    hashtags: hashtags,
+                    images: uploadedMedia.filter(function (m) { return m.type === "image"; }).map(function (m) { return m.url; }),
+                    videos: uploadedMedia.filter(function (m) { return m.type === "video"; }).map(function (m) { return m.url; }),
+                    mediaUrl: (_c = uploadedMedia[0]) === null || _c === void 0 ? void 0 : _c.url,
+                    mediaType: (_d = uploadedMedia[0]) === null || _d === void 0 ? void 0 : _d.type,
+                    author: req.user,
+                    createdAt: new Date(),
+                    cloudinaryPublicIds: uploadedMedia.map(function (m) { return m.publicId; })
+                };
+                return [4 /*yield*/, Thread_1["default"].create(newThread)];
+            case 5:
+                post = _e.sent();
+                _b = 0, hashtags_1 = hashtags;
+                _e.label = 6;
+            case 6:
+                if (!(_b < hashtags_1.length)) return [3 /*break*/, 10];
+                hashtag = hashtags_1[_b];
+                return [4 /*yield*/, Hashtag_1["default"].findOne({ name: hashtag })];
+            case 7:
+                existingHashtag = _e.sent();
+                if (!existingHashtag) {
+                    existingHashtag = new Hashtag_1["default"]({ name: hashtag });
+                }
+                existingHashtag.usageCount += 1;
+                if (!existingHashtag.threadsId.includes(post.id)) {
+                    existingHashtag.threadsId.push(post.id);
+                }
+                return [4 /*yield*/, existingHashtag.save()];
+            case 8:
+                _e.sent();
+                _e.label = 9;
+            case 9:
+                _b++;
+                return [3 /*break*/, 6];
+            case 10:
+                res.status(201).json({
+                    message: "Thread created successfully",
+                    post: post
+                });
+                return [2 /*return*/];
+        }
     });
-}); };
+}); });
 exports.createThread = createThread;
 var getThread = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
     var user, posts, likedPosts, likedPostIds_1, formattedPosts, _a;
@@ -177,7 +200,7 @@ var getThread = asyncHandler_1["default"](function (req, res, next) { return __a
 }); });
 exports.getThread = getThread;
 var toggleLike = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
-    var threadId, userId, thread, user, username, existingLike, newLike, error_2;
+    var threadId, userId, thread, user, username, existingLike, newLike, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -246,8 +269,8 @@ var toggleLike = asyncHandler_1["default"](function (req, res, next) { return __
                 _a.label = 9;
             case 9: return [3 /*break*/, 11];
             case 10:
-                error_2 = _a.sent();
-                next(error_2);
+                error_1 = _a.sent();
+                next(error_1);
                 return [3 /*break*/, 11];
             case 11: return [2 /*return*/];
         }

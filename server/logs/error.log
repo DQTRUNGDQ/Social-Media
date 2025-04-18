@@ -2576,3 +2576,63 @@ Stack: Error: Failed to upload avatar
     at emitErrorNT (node:internal/streams/destroy:169:8)
     at emitErrorCloseNT (node:internal/streams/destroy:128:3)
     at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2025-04-18T00:18:56.908Z [ERROR]: Error: Failed to upload avatar 
+Stack: Error: Failed to upload avatar
+    at Writable.<anonymous> (G:\ThreadsClone\ThreadsClone\server\src\controllers\userController.ts:82:23)
+    at Writable.emit (node:events:531:35)
+    at Writable.emit (node:domain:488:12)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2025-04-18T00:41:33.052Z [ERROR]: Error: Failed to upload avatar 
+Stack: Error: Failed to upload avatar
+    at Writable.<anonymous> (G:\ThreadsClone\ThreadsClone\server\src\controllers\userController.ts:82:23)
+    at Writable.emit (node:events:531:35)
+    at Writable.emit (node:domain:488:12)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2025-04-18T00:48:13.642Z [ERROR]: Error: Failed to upload avatar 
+Stack: Error: Failed to upload avatar
+    at Writable.<anonymous> (G:\ThreadsClone\ThreadsClone\server\src\controllers\userController.ts:82:23)
+    at Writable.emit (node:events:531:35)
+    at Writable.emit (node:domain:488:12)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:128:3)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+2025-04-18T04:02:18.970Z [ERROR]: Error: Chỉ cho phép các định dạng ảnh hoặc video hợp lệ 
+Stack: Error: Chỉ cho phép các định dạng ảnh hoặc video hợp lệ
+    at fileFilter (G:\ThreadsClone\ThreadsClone\server\src\middlewares\uploadMiddleware.ts:18:8)
+    at wrappedFileFilter (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:519:28)
+    at Multipart.emit (node:domain:488:12)
+    at HeaderParser.cb (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+2025-04-18T04:07:00.731Z [ERROR]: Error: Chỉ cho phép các định dạng ảnh hoặc video hợp lệ 
+Stack: Error: Chỉ cho phép các định dạng ảnh hoặc video hợp lệ
+    at fileFilter (G:\ThreadsClone\ThreadsClone\server\src\middlewares\uploadMiddleware.ts:18:8)
+    at wrappedFileFilter (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:519:28)
+    at Multipart.emit (node:domain:488:12)
+    at HeaderParser.cb (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+2025-04-18T04:17:05.785Z [ERROR]: Error: Invalid file type: mimetype=image/jpeg, extname=.. Allowed mimetypes: image/jpeg, image/jpg, image/png, image/gif, image/webp, video/mp4, video/mpeg, video/webm, video/quicktime, video/x-msvideo 
+Stack: Error: Invalid file type: mimetype=image/jpeg, extname=.. Allowed mimetypes: image/jpeg, image/jpg, image/png, image/gif, image/webp, video/mp4, video/mpeg, video/webm, video/quicktime, video/x-msvideo
+    at fileFilter (G:\ThreadsClone\ThreadsClone\server\src\middlewares\uploadMiddleware.ts:60:8)
+    at wrappedFileFilter (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (G:\ThreadsClone\ThreadsClone\server\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:519:28)
+    at Multipart.emit (node:domain:488:12)
+    at HeaderParser.cb (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)

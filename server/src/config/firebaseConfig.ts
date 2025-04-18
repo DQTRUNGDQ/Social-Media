@@ -3,7 +3,7 @@ import serviceAccount from "../../firebase-adminsdk.json";
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as ServiceAccount),
-  storageBucket: "gs://thread-clone-cd460.appspot.com",
+  storageBucket: "social-media-e435b.firebasestorage.app",
 });
 
 const bucket = admin.storage().bucket();

@@ -5,7 +5,7 @@ var uploadMiddleware_1 = require("~/middlewares/uploadMiddleware");
 var threadController_1 = require("~/controllers/threadController");
 var auth_1 = require("~/middlewares/auth");
 var router = express_1["default"].Router();
-router.post("/upload", uploadMiddleware_1["default"].single("media"), auth_1["default"], threadController_1.createThread);
+router.post("/upload", uploadMiddleware_1["default"].array("media", 10), auth_1["default"], threadController_1.createThread);
 router.get("/posts", auth_1["default"], threadController_1.getThread);
 router.post("/like", auth_1["default"], threadController_1.toggleLike);
 router.get("/posts/liked", auth_1["default"], threadController_1.getLikedThreads);

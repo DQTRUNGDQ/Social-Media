@@ -49,6 +49,7 @@ interface IThread extends Document {
   commentsCount: number;
   sharesCount: number;
   repostsCount: number;
+  cloudinaryPublicIds: [{ type: String }]; // Lưu nhiều public_id
 }
 
 const threadSchema = new Schema<IThread>({

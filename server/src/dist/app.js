@@ -11,10 +11,13 @@ var userRoutes_1 = require("./routes/userRoutes");
 var threadRoutes_1 = require("./routes/threadRoutes");
 var errorHandler_1 = require("./middlewares/errorHandler");
 var AppError_1 = require("./utils/AppError");
+var cloudinary_1 = require("./config/cloudinary");
 var app = express_1["default"]();
 require("dotenv").config();
 // Connect to MongoDB
 db_1["default"]();
+// Connect to Cloudinary
+cloudinary_1.checkCloudinaryConnection();
 app.use(cookie_parser_1["default"]());
 app.use(cors_1["default"]({
     origin: "http://localhost:3000",

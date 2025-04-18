@@ -9,12 +9,16 @@ import userRoutes from "./routes/userRoutes";
 import threadRoutes from "./routes/threadRoutes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { AppError } from "./utils/AppError";
+import { checkCloudinaryConnection } from "./config/cloudinary";
 
 const app = express();
 require("dotenv").config();
 
 // Connect to MongoDB
 connectDB();
+
+// Connect to Cloudinary
+checkCloudinaryConnection();
 
 app.use(cookieParser());
 
