@@ -37,7 +37,8 @@ const createThread = asyncHandler(
             {
               resource_type: resourceType,
               folder: folder,
-              public_id: `${uuidv4()}-${file.originalname}`,
+              public_id: `${uuidv4()}-${file}`,
+              overwrite: true,
             },
             (error, result) => {
               if (error)

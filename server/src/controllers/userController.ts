@@ -2,10 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import User, { IUser } from "~/models/User";
 import asyncHandler from "~/middlewares/asyncHandler";
 import { AppError } from "~/utils/AppError";
-import { v4 as uuidv4 } from "uuid";
-import { bucket } from "~/config/firebaseConfig";
-import { error } from "console";
-import { blob } from "node:stream/consumers";
+import cloudinary from "~/config/cloudinary";
+import { CloudinaryUploadResponse } from "~/models/cloudinary";
 
 interface AuthenticatedRequest extends Request {
   user?: any;
@@ -35,16 +33,6 @@ export const updateUserProfile = asyncHandler(
     const file = req.file;
     console.log("Received file:", file); // Thêm dòng này để kiểm tra
 
-    // Hàm tách tên file từ URL public
-    const extractOldFileName = (url: string) => {
-      try {
-        const encoded = url.split("/o/")[1]?.split("?alt=media")[0];
-        return encoded ? decodeURIComponent(encoded) : null;
-      } catch {
-        return null;
-      }
-    };
-
     try {
       const user: IUser | null = await User.findById(req.user.id);
       if (!user) {
@@ -59,79 +47,52 @@ export const updateUserProfile = asyncHandler(
       if (link !== undefined) user.link = link;
 
       if (file) {
-        // Xoá avatar cũ trên Firebase nếu có
-        const oldFileName = extractOldFileName(user.avatar || "");
-        if (oldFileName) {
-          await bucket
-            .file(oldFileName)
-            .delete()
-            .catch(() => {});
+        // Kiểm tra file có là ảnh không
+        const isImage = file.mimetype.startsWith("image/");
+        if (!isImage) {
+          return next(
+            new AppError("Only image files are allowd for avatar", 400)
+          );
         }
 
-        const fileName = `Avatar/${uuidv4()}-${file.originalname}`;
-        const fileUpload = bucket.file(fileName);
-
-        const blobStream = fileUpload.createWriteStream({
-          metadata: {
-            contentType: file.mimetype,
-          },
-        });
-
-        blobStream.on("error", (error) => {
-          console.error("Error uploading to Firebase:", error);
-          return next(new AppError("Failed to upload avatar", 500));
-        });
-
-        blobStream.on("finish", async () => {
-          await fileUpload.makePublic();
-          const fileUrl = `https://firebasestorage.googleapis.com/v0/b/${
-            bucket.name
-          }/o/${encodeURIComponent(fileName)}?alt=media`;
-
-          // Cật nhật avatar mới
-          user.avatar = fileUrl;
-          await user.save();
-
-          return res.status(200).json({
-            message: "Profile updated successfully",
-            avatar: user.avatar,
-            user,
-          });
-        });
-
-        blobStream.end(file.buffer);
-      } else if (avatar === "") {
-        // Xóa avatar
-        const oldFileName = extractOldFileName(user.avatar || "");
-        if (oldFileName) {
-          await bucket
-            .file(oldFileName)
-            .delete()
-            .catch(() => {});
-        }
-
-        user.avatar = "";
-      } else {
-        // Nếu không có file mới, chỉ cập nhật thông tin khác
-        // if (avatar !== "" && !file)
-        if (!avatar && !file) {
-          // Người dùng muốn xóa ảnh
-          const oldFileName = extractOldFileName(user.avatar || "");
-          if (oldFileName) {
-            await bucket
-              .file(oldFileName)
-              .delete()
-              .catch(() => {});
+        const folder = "Gens/Media/avatars";
+        const uploadResult = await new Promise<CloudinaryUploadResponse>(
+          (resolve, reject) => {
+            const uploadStream = cloudinary.uploader.upload_stream(
+              {
+                resource_type: "image",
+                folder: folder,
+                public_id: `${user._id}-avatar`,
+                overwrite: true,
+              },
+              (error, result) => {
+                if (error)
+                  reject(
+                    new AppError("Failed to upload avatar to Cloudinary", 500)
+                  );
+                else resolve(result as CloudinaryUploadResponse);
+              }
+            );
+            uploadStream.end(file.buffer);
           }
-          // Nếu avatar là chuỗi rỗng, tức người dùng muốn xóa avatar
-          user.avatar = avatar; // có thể avatar === ""
+        );
+
+        // Cập nhật thông tin avatar mới
+        user.avatar = uploadResult.secure_url;
+        user.cloudinaryPublicId = uploadResult.public_id;
+      } else if (avatar === "") {
+        if (user.cloudinaryPublicId) {
+          await cloudinary.uploader.destroy(user.cloudinaryPublicId);
         }
-        await user.save();
-        res.status(200).json({
-          message: "Profile updated successfully",
-          user,
-        });
+        user.avatar = "";
+        user.cloudinaryPublicId = "";
       }
+
+      await user.save();
+      res.status(200).json({
+        message: "Profile updated successfully",
+        user,
+      });
     } catch (error: any) {
       if (error.name === "ValidationError") {
         return next(new AppError(error.message, 400));

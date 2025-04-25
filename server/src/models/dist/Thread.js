@@ -58,7 +58,8 @@ var threadSchema = new mongoose_1.Schema({
     sharesCount: {
         type: Number,
         "default": 0
-    }
+    },
+    cloudinaryPublicIds: [{ type: String }]
 });
 var commentSchema = new mongoose_1.Schema({
     threadId: { type: mongoose_1.Schema.Types.ObjectId, ref: "Thread", required: true },

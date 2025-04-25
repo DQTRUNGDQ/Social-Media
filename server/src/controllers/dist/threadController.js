@@ -84,7 +84,8 @@ var createThread = asyncHandler_1["default"](function (req, res) { return __awai
                                         var uploadStream = cloudinary_1["default"].uploader.upload_stream({
                                             resource_type: resourceType,
                                             folder: folder,
-                                            public_id: uuid_1.v4() + "-" + file.originalname
+                                            public_id: uuid_1.v4() + "-" + file,
+                                            overwrite: true
                                         }, function (error, result) {
                                             if (error)
                                                 reject(new AppError_1.AppError("Failed to upload file to Cloudinary", 500));

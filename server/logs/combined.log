@@ -2636,3 +2636,15 @@ Stack: Error: Invalid file type: mimetype=image/jpeg, extname=.. Allowed mimetyp
     at SBMH.ssCb [as _cb] (G:\ThreadsClone\ThreadsClone\server\node_modules\busboy\lib\types\multipart.js:394:37)
     at feed (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:248:10)
     at SBMH.push (G:\ThreadsClone\ThreadsClone\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+2025-04-25T09:18:35.148Z [ERROR]: Error: Thread validation failed: content: thread content is required 
+Stack: ValidationError: Thread validation failed: content: thread content is required
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-04-25T09:24:30.856Z [ERROR]: Error: Thread validation failed: content: thread content is required 
+Stack: ValidationError: Thread validation failed: content: thread content is required
+    at model.Document.invalidate (G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3318:32)
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
+    at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)

@@ -6,6 +6,8 @@ import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
 import Avatar from "../../assets/Avatar";
 import { fetchUserProfile } from "../../services/userService";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const PostBar = ({ onClick }) => {
   // State cho thông tin người dùng
@@ -20,6 +22,10 @@ const PostBar = ({ onClick }) => {
   const [postsLoading, setPostsLoading] = useState(true);
 
   const socket = useRef(null);
+
+  const [mediaDimensions, setMediaDimensions] = useState(
+    posts.map(() => ({ width: null, height: null }))
+  );
 
   // HÀM LẤY THÔNG TIN NGƯỜI DÙNG
   const fetchUserData = async () => {
@@ -82,6 +88,28 @@ const PostBar = ({ onClick }) => {
     }
   };
 
+  // Xử lý hiển thị bản xem trước ảnh/video hiển thị hướng của bức ảnh (ngang/dọc)
+  const updateOrientation = (idx, width, height) => {
+    setPosts((prev) => {
+      const clone = [...prev];
+      clone[idx] = {
+        ...clone[idx],
+        orientation: width > height ? "landscape" : "portrait",
+      };
+      return clone;
+    });
+  };
+
+  // Xử lý để hiển thị bản xem trước ảnh/video cùng kích thước và tỷ lệ
+  const handleUpdateDimensions = (index, width, height) => {
+    const newDimensions = [...mediaDimensions];
+    newDimensions[index] = { width, height };
+    setMediaDimensions(newDimensions);
+
+    // Gọi updateOrientation để cập nhật orientation (landscape/portrait)
+    updateOrientation(index, width, height);
+  };
+
   // useEffect để lấy thông tin người dùng
   useEffect(() => {
     fetchUserData();
@@ -118,6 +146,11 @@ const PostBar = ({ onClick }) => {
       if (socket.current) socket.current.disconnect();
     };
   }, []);
+
+  // Ngăn chặn sự kiện mặc định trên video khi kéo
+  const preventDefaultDrag = (e) => {
+    e.preventDefault();
+  };
 
   // HÀM ĐỊNH DẠNG THỜI GIAN BÀI VIẾT
   const formatPostTime = (createdAt) => {
@@ -214,10 +247,7 @@ const PostBar = ({ onClick }) => {
           <p>Đang tải bài viết...</p>
         ) : Array.isArray(posts) && posts.length > 0 ? (
           posts.map((post) => (
-            <div
-              key={post._id}
-              className="posts-content max-w-l bg-white p-4 rounded-lg shadow-md"
-            >
+            <div className="posts-content max-w-l bg-white p-4 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <Avatar
                   _id={post.author?._id}
@@ -247,37 +277,96 @@ const PostBar = ({ onClick }) => {
                 <p className="text-lg post-translate">Dịch</p>
               </div>
               <div className="grid">
-                {post.images?.length > 0 && (
-                  <div className="post-images">
-                    {post.images.map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`Hình ảnh ${index + 1}`}
-                        width={400}
-                        style={{ marginRight: "10px" }}
-                      />
-                    ))}
-                  </div>
-                )}
-                {post.videos?.length > 0 &&
-                  post.videos.every((video) => video.startsWith("http")) && (
-                    <div className="post-videos">
-                      {post.videos.map((video, index) => (
-                        <video
+                <Swiper
+                  spaceBetween={8}
+                  slidesPerView="auto"
+                  freeMode={true}
+                  style={{ display: "flex", alignItems: "flex-start" }}
+                >
+                  {post.images?.length > 0 && (
+                    <div className="post-image">
+                      {post.images.map((image, index) => (
+                        <SwiperSlide
                           key={index}
-                          width="100%"
-                          height="auto"
-                          controls
-                          autoPlay
-                          loop
+                          className="!w-auto !h-auto incline- cursor-grab"
                         >
-                          <source src={video} type="video/mp4" />
-                          Trình duyệt của bạn không hỗ trợ video.
-                        </video>
+                          <div
+                            className="relative flex-shrink-0 w-48 md:w-56 rounded-lg overflow-hidden bg-gray-100"
+                            style={{
+                              width: "auto", // Chiều rộng tự điều chỉnh theo tỷ lệ
+                              height: "100%", // Chiều cao sẽ bị giới hạn bởi maxHeight
+                              aspectRatio:
+                                mediaDimensions[index]?.width /
+                                  mediaDimensions[index]?.height || "1/1", // Giữ tỷ lệ gốc
+                              maxWidth: "650px",
+                              maxHeight: "400px",
+                            }}
+                          >
+                            <img
+                              key={index}
+                              src={image}
+                              alt={`Hình ảnh ${index + 1}`}
+                              className="object-cover w-full h-full"
+                              loading="lazy"
+                              onLoad={(e) =>
+                                handleUpdateDimensions(
+                                  index,
+                                  e.target.naturalWidth,
+                                  e.target.naturalHeight
+                                )
+                              }
+                            />
+                          </div>
+                        </SwiperSlide>
                       ))}
                     </div>
                   )}
+                  {post.videos?.length > 0 &&
+                    post.videos.every((video) => video.startsWith("http")) && (
+                      <div className="post-videos">
+                        {post.videos.map((video, index) => (
+                          <SwiperSlide
+                            key={index}
+                            className="!w-auto !h-auto incline- cursor-grab"
+                          >
+                            <div
+                              className="relative flex-shrink-0 w-48 md:w-56 rounded-lg overflow-hidden bg-gray-100"
+                              style={{
+                                width: "auto", // Chiều rộng tự điều chỉnh theo tỷ lệ
+                                height: "100%", // Chiều cao sẽ bị giới hạn bởi maxHeight
+                                aspectRatio:
+                                  mediaDimensions[index]?.width /
+                                    mediaDimensions[index]?.height || "1/1", // Giữ tỷ lệ gốc
+                                maxWidth: "650px",
+                                maxHeight: "400px",
+                              }}
+                            >
+                              <video
+                                key={index}
+                                className="object-cover w-full h-full"
+                                controls
+                                autoPlay
+                                loop
+                                onLoadedMetadata={(e) =>
+                                  handleUpdateDimensions(
+                                    index,
+                                    e.target.videoWidth,
+                                    e.target.videoHeight
+                                  )
+                                }
+                                onMouseDown={preventDefaultDrag} // Ngăn sự kiện kéo mặc định
+                                onTouchStart={preventDefaultDrag} // Ngăn sự kiện kéo mặc định trên cảm ứng
+                                style={{ pointerEvents: "auto" }}
+                              >
+                                <source src={video} type="video/mp4" />
+                                Trình duyệt của bạn không hỗ trợ video.
+                              </video>
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </div>
+                    )}
+                </Swiper>
               </div>
               <div className="flex items-center mt-4 text-gray-500">
                 <button

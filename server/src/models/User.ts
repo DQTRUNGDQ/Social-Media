@@ -30,6 +30,7 @@ export interface IUser extends Document {
   following: mongoose.Types.ObjectId[];
   posts: mongoose.Types.ObjectId[];
   tokenVersion: number;
+  cloudinaryPublicId: string;
   generateAuthTokens(): Promise<{ accessToken: string; refreshToken: string }>;
   invalidateTokens(): Promise<void>;
 }
@@ -155,6 +156,7 @@ const userSchema: Schema<IUser> = new Schema({
     type: Number,
     default: 0,
   },
+  cloudinaryPublicId: { type: String, default: "" },
 });
 
 // Hash mật khẩu trước khi lưu người dùng

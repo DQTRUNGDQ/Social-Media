@@ -157,7 +157,8 @@ var userSchema = new mongoose_1.Schema({
     tokenVersion: {
         type: Number,
         "default": 0
-    }
+    },
+    cloudinaryPublicId: { type: String, "default": "" }
 });
 // Hash mật khẩu trước khi lưu người dùng
 userSchema.pre("save", function (next) {
