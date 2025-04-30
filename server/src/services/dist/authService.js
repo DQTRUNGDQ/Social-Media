@@ -55,7 +55,7 @@ var dotenv_1 = require("dotenv");
 dotenv_1.config();
 // Đăng ký người dùng mới
 exports.registerUser = function (userData) { return __awaiter(void 0, void 0, Promise, function () {
-    var user, tokens, _a, followers, following, posts, userWithoutFields;
+    var user, _a, followers, following, posts, userWithoutFields;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -63,11 +63,8 @@ exports.registerUser = function (userData) { return __awaiter(void 0, void 0, Pr
                 return [4 /*yield*/, user.save()];
             case 1:
                 _b.sent();
-                return [4 /*yield*/, user.generateAuthTokens()];
-            case 2:
-                tokens = _b.sent();
                 _a = user.toObject(), followers = _a.followers, following = _a.following, posts = _a.posts, userWithoutFields = __rest(_a, ["followers", "following", "posts"]);
-                return [2 /*return*/, { user: userWithoutFields, tokens: tokens }];
+                return [2 /*return*/, { user: userWithoutFields }];
         }
     });
 }); };

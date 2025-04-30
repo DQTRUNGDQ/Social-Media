@@ -56,7 +56,7 @@ exports.sendResetCodeEmail = function (email, resetCode) { return __awaiter(void
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, transporter.sendMail({
-                    from: '"Threads" <Threads@official.com>',
+                    from: '"Gens" <Gens@official.com>',
                     to: email,
                     subject: "Password Reset Code",
                     text: "You requested a password reset. Use the following code to reset your password: " + resetCode,

@@ -65,27 +65,29 @@ var User_1 = require("~/models/User");
 var emailService_1 = require("~/services/emailService");
 var tokenService_1 = require("../services/tokenService");
 var jsonwebtoken_1 = require("jsonwebtoken");
+var express_validator_1 = require("express-validator");
+var httpError_1 = require("~/utils/httpError");
+var httpStatus_1 = require("~/constants/httpStatus");
+var logger_1 = require("~/utils/logger");
 // Controller đăng ký
 exports.register = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
-    var _a, username, otherFields, generatedUsername, _b, user, tokens, error_1;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
+    var _a, username, otherFields, generatedUsername, user, error_1;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                _c.trys.push([0, 2, , 3]);
+                _b.trys.push([0, 2, , 3]);
                 _a = req.body, username = _a.username, otherFields = __rest(_a, ["username"]);
                 generatedUsername = username || generateRandomUsername();
                 return [4 /*yield*/, authService.registerUser(__assign(__assign({}, otherFields), { username: generatedUsername }))];
             case 1:
-                _b = _c.sent(), user = _b.user, tokens = _b.tokens;
+                user = (_b.sent()).user;
                 res.status(201).send({
                     message: message_1.USERS_MESSAGES.REGISTER_SUCCESS,
-                    user: user,
-                    accessToken: tokens.accessToken,
-                    refreshToken: tokens.refreshToken
+                    user: user
                 });
                 return [3 /*break*/, 3];
             case 2:
-                error_1 = _c.sent();
+                error_1 = _b.sent();
                 res.status(400).send({ error: error_1.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -94,11 +96,15 @@ exports.register = function (req, res) { return __awaiter(void 0, void 0, Promis
 }); };
 // Controller đăng nhập
 exports.login = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
-    var _a, email, password, tokens, error_2;
+    var errors, _a, email, password, tokens, error_2, statusCode;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
+                errors = express_validator_1.validationResult(req);
+                if (errors.isEmpty()) {
+                    throw new httpError_1.HttpError(httpStatus_1["default"].BAD_REQUEST, "Invalid email or password", errors.array());
+                }
                 _a = req.body, email = _a.email, password = _a.password;
                 return [4 /*yield*/, authService.loginUser(email, password)];
             case 1:
@@ -108,9 +114,10 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, Promise, 
                         httpOnly: true,
                         secure: process.env.NODE_ENV === "production",
                         sameSite: "strict",
-                        maxAge: 7 * 24 * 60 * 60 * 1000
+                        maxAge: 7 * 24 * 60 * 60 * 1000,
+                        path: "/"
                     };
-                res.send({
+                res.status(httpStatus_1["default"].OK).json({
                     result: {
                         message: message_1.USERS_MESSAGES.LOGIN_SUCCESS,
                         accessToken: tokens.accessToken
@@ -119,7 +126,14 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, Promise, 
                 return [3 /*break*/, 3];
             case 2:
                 error_2 = _b.sent();
-                res.status(400).send({ error: error_2.message });
+                logger_1["default"].error("Login error: " + error_2.message, { error: error_2 });
+                statusCode = error_2 instanceof httpError_1.HttpError
+                    ? error_2.statusCode
+                    : httpStatus_1["default"].INTERNAL_SERVER_ERROR;
+                res.status(statusCode).json({
+                    error: error_2.message || "Internal server error",
+                    details: error_2.details || null
+                });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

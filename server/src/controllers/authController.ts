@@ -4,15 +4,19 @@ import { USERS_MESSAGES } from "../constants/message";
 import User from "~/models/User";
 import { sendResetCodeEmail } from "~/services/emailService";
 import { generateResetCode, verifyResetCode } from "../services/tokenService";
-import bcrypt from "bcrypt";
+
 import jwt from "jsonwebtoken";
+import { validationResult } from "express-validator";
+import { HttpError } from "~/utils/httpError";
+import HTTP_STATUS from "~/constants/httpStatus";
+import logger from "~/utils/logger";
 
 // Controller đăng ký
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { username, ...otherFields } = req.body;
     const generatedUsername = username || generateRandomUsername();
-    const { user, tokens } = await authService.registerUser({
+    const { user } = await authService.registerUser({
       ...otherFields,
       username: generatedUsername,
     });
@@ -20,8 +24,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     res.status(201).send({
       message: USERS_MESSAGES.REGISTER_SUCCESS,
       user,
-      accessToken: tokens.accessToken,
-      refreshToken: tokens.refreshToken,
     });
   } catch (error: any) {
     res.status(400).send({ error: error.message });
@@ -31,7 +33,18 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 // Controller đăng nhập
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
+    // Kiểm tra lỗi validation
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      throw new HttpError(
+        HTTP_STATUS.BAD_REQUEST,
+        "Invalid email or password",
+        errors.array()
+      );
+    }
+
     const { email, password } = req.body;
+
     const { tokens } = await authService.loginUser(email, password);
 
     res.cookie("refreshToken", tokens.refreshToken),
@@ -39,16 +52,25 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict", // Chống CSRF
-        maxAge: 7 * 24 * 60 * 60 * 1000, // Refresh token sống trong 7 ngày
+        maxAge: 7 * 24 * 60 * 60 * 1000, // Refresh token tồn tại trong 7 ngày
+        path: "/",
       };
-    res.send({
+    res.status(HTTP_STATUS.OK).json({
       result: {
         message: USERS_MESSAGES.LOGIN_SUCCESS,
         accessToken: tokens.accessToken,
       },
     });
   } catch (error: any) {
-    res.status(400).send({ error: error.message });
+    logger.error(`Login error: ${error.message}`, { error });
+    const statusCode =
+      error instanceof HttpError
+        ? error.statusCode
+        : HTTP_STATUS.INTERNAL_SERVER_ERROR;
+    res.status(statusCode).json({
+      error: error.message || "Internal server error",
+      details: error.details || null,
+    });
   }
 };
 

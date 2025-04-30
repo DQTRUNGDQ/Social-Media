@@ -10,15 +10,12 @@ interface IAuthTokens {
 }
 
 // Đăng ký người dùng mới
-export const registerUser = async (
-  userData: any
-): Promise<{ user: any; tokens: IAuthTokens }> => {
+export const registerUser = async (userData: any): Promise<{ user: any }> => {
   const user = new User(userData);
   await user.save();
-  const tokens = await user.generateAuthTokens();
   // Xóa trường không mong muốn hiển thị khỏi đối tượng người dùng trước khi trả về
   const { followers, following, posts, ...userWithoutFields } = user.toObject();
-  return { user: userWithoutFields, tokens };
+  return { user: userWithoutFields };
 };
 
 // Đăng nhập người dùng

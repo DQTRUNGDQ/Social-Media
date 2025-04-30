@@ -42,6 +42,19 @@ var jsonwebtoken_1 = require("jsonwebtoken");
 var dotenv_1 = require("dotenv");
 var RefreshToken_1 = require("./RefreshToken");
 dotenv_1.config();
+// Định nghĩa các giá trị hợp lệ cho vai trò và trạng thái tài khoản
+var ROLES = {
+    TOPADMIN: "Top admin",
+    ADMIN: "admin",
+    USER: "user",
+    MODERATOR: "Moderator"
+};
+var ACCOUNTS_STATUS = {
+    PENDING: "pending",
+    ACTIVE: "active",
+    INACTIVE: "inactive",
+    SUSPENDED: "suspended"
+};
 // Định nghĩa schema cho token
 var tokenSchema = new mongoose_1.Schema({
     accessToken: {
@@ -147,19 +160,35 @@ var userSchema = new mongoose_1.Schema({
         },
     ],
     /*tokens: [
-      {
-        token: {
-          type: String,
-          required: true,
-        },
+    {
+      token: {
+        type: String,
+        required: true,
       },
-    ],*/
+    },
+  ],*/
     tokenVersion: {
         type: Number,
         "default": 0
     },
-    cloudinaryPublicId: { type: String, "default": "" }
-});
+    cloudinaryPublicId: { type: String, "default": "" },
+    roles: {
+        type: [String],
+        required: true,
+        "default": [ROLES.USER],
+        "enum": Object.values(ROLES),
+        validate: {
+            validator: function (roles) { return roles.length > 0; },
+            message: "User must have at least one role"
+        }
+    },
+    status: {
+        type: String,
+        required: true,
+        "default": ACCOUNTS_STATUS.PENDING,
+        "enum": Object.values(ACCOUNTS_STATUS)
+    }
+}, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 // Hash mật khẩu trước khi lưu người dùng
 userSchema.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function () {

@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendResetCodeEmail = async (email: string, resetCode: string) => {
   await transporter.sendMail({
-    from: '"Threads" <Threads@official.com>',
+    from: '"Gens" <Gens@official.com>',
     to: email,
     subject: "Password Reset Code",
     text: `You requested a password reset. Use the following code to reset your password: ${resetCode}`,

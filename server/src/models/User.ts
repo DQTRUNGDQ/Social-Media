@@ -7,11 +7,30 @@ import { RefreshToken } from "./RefreshToken";
 config();
 
 // Định nghĩa giao diện cho token
+
 interface IToken {
   accessToken: string;
   refreshToken: string;
   createdAt: Date;
 }
+
+// Định nghĩa các giá trị hợp lệ cho vai trò và trạng thái tài khoản
+const ROLES = {
+  TOPADMIN: "Top admin",
+  ADMIN: "admin",
+  USER: "user",
+  MODERATOR: "Moderator",
+} as const;
+
+const ACCOUNTS_STATUS = {
+  PENDING: "pending",
+  ACTIVE: "active",
+  INACTIVE: "inactive",
+  SUSPENDED: "suspended",
+} as const;
+
+type Role = (typeof ROLES)[keyof typeof ROLES];
+type AccountStatus = (typeof ACCOUNTS_STATUS)[keyof typeof ACCOUNTS_STATUS];
 
 // Định nghĩa giao diện cho người dùng
 
@@ -31,6 +50,8 @@ export interface IUser extends Document {
   posts: mongoose.Types.ObjectId[];
   tokenVersion: number;
   cloudinaryPublicId: string;
+  roles: Role[];
+  status: AccountStatus;
   generateAuthTokens(): Promise<{ accessToken: string; refreshToken: string }>;
   invalidateTokens(): Promise<void>;
 }
@@ -57,94 +78,95 @@ const tokenSchema: Schema<IToken> = new Schema({
 });
 
 // Định nghĩa schema cho người dùng
-const userSchema: Schema<IUser> = new Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-    minlength: 3,
-    maxlength: 30,
-  },
-  username: {
-    type: String,
-    unique: true,
-    trim: true,
-    minlength: 3,
-    maxlength: 30,
-    validate: {
-      validator: function (value: string) {
-        // Kiểm tra username có bắt đầu bằng '@' và chỉ chứa ký tự hợp lệ
-        return /^@[a-zA-Z0-9_]{2,29}$/.test(value);
+const userSchema: Schema<IUser> = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 3,
+      maxlength: 30,
+    },
+    username: {
+      type: String,
+      unique: true,
+      trim: true,
+      minlength: 3,
+      maxlength: 30,
+      validate: {
+        validator: function (value: string) {
+          // Kiểm tra username có bắt đầu bằng '@' và chỉ chứa ký tự hợp lệ
+          return /^@[a-zA-Z0-9_]{2,29}$/.test(value);
+        },
+        message: (props) =>
+          `Username phải bắt đầu bằng '@' và chỉ chứa chữ cái, số, gạch dưới, dài từ 3 đến 30 ký tự.`,
       },
-      message: (props) =>
-        `Username phải bắt đầu bằng '@' và chỉ chứa chữ cái, số, gạch dưới, dài từ 3 đến 30 ký tự.`,
     },
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    lowercase: true,
-    validate(value: string) {
-      if (!validator.isEmail(value)) {
-        throw new Error("Invalid email format");
-      }
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      validate(value: string) {
+        if (!validator.isEmail(value)) {
+          throw new Error("Invalid email format");
+        }
+      },
     },
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 8,
-    trim: true,
-  },
-  date_of_birth: {
-    type: Date,
-    required: true, // Bắt buộc phải có giá trị cho trường này
-  },
-  created_at: {
-    type: Date,
-    default: Date.now, // Gán mặc định là thời gian hiện tại khi tạo mới tài liệu
-  },
-  updated_at: {
-    type: Date,
-    default: Date.now, // Gán mặc định là thời gian hiện tại khi tạo mới tài liệu
-  },
-  avatar: {
-    type: String,
-    default: "",
-  },
-  bio: {
-    type: String,
-    maxlength: 200,
-  },
-  link: {
-    type: String,
-    validate(value: string) {
-      if (value && !validator.isURL(value)) {
-        throw new Error("Invalid URL");
-      }
+    password: {
+      type: String,
+      required: true,
+      minlength: 8,
+      trim: true,
     },
-  },
-  followers: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    date_of_birth: {
+      type: Date,
+      required: true, // Bắt buộc phải có giá trị cho trường này
     },
-  ],
-  following: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    created_at: {
+      type: Date,
+      default: Date.now, // Gán mặc định là thời gian hiện tại khi tạo mới tài liệu
     },
-  ],
-  posts: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Post",
+    updated_at: {
+      type: Date,
+      default: Date.now, // Gán mặc định là thời gian hiện tại khi tạo mới tài liệu
     },
-  ],
-  /*tokens: [
+    avatar: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      maxlength: 200,
+    },
+    link: {
+      type: String,
+      validate(value: string) {
+        if (value && !validator.isURL(value)) {
+          throw new Error("Invalid URL");
+        }
+      },
+    },
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    posts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
+    /*tokens: [
     {
       token: {
         type: String,
@@ -152,12 +174,30 @@ const userSchema: Schema<IUser> = new Schema({
       },
     },
   ],*/
-  tokenVersion: {
-    type: Number,
-    default: 0,
+    tokenVersion: {
+      type: Number,
+      default: 0,
+    },
+    cloudinaryPublicId: { type: String, default: "" },
+    roles: {
+      type: [String],
+      required: true,
+      default: [ROLES.USER],
+      enum: Object.values(ROLES),
+      validate: {
+        validator: (roles: string[]) => roles.length > 0,
+        message: "User must have at least one role",
+      },
+    },
+    status: {
+      type: String,
+      required: true,
+      default: ACCOUNTS_STATUS.PENDING,
+      enum: Object.values(ACCOUNTS_STATUS),
+    },
   },
-  cloudinaryPublicId: { type: String, default: "" },
-});
+  { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
+);
 
 // Hash mật khẩu trước khi lưu người dùng
 userSchema.pre<IUser>("save", async function (next) {

@@ -2648,3 +2648,43 @@ Stack: ValidationError: Thread validation failed: content: thread content is req
     at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\document.js:3079:17
     at G:\ThreadsClone\ThreadsClone\server\node_modules\mongoose\lib\schemaType.js:1388:9
     at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-04-26T02:41:49.719Z [ERROR]: Error: No files uploaded 
+Stack: Error: No files uploaded
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:23:13
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\asyncHandler.ts:7:5
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-26T02:41:51.243Z [ERROR]: Error: No files uploaded 
+Stack: Error: No files uploaded
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:23:13
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\asyncHandler.ts:7:5
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-26T02:41:51.995Z [ERROR]: Error: No files uploaded 
+Stack: Error: No files uploaded
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:23:13
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\asyncHandler.ts:7:5
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-26T02:41:52.652Z [ERROR]: Error: No files uploaded 
+Stack: Error: No files uploaded
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:23:13
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\asyncHandler.ts:7:5
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-26T02:42:03.780Z [ERROR]: Error: No files uploaded 
+Stack: Error: No files uploaded
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:23:13
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\asyncHandler.ts:7:5
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
