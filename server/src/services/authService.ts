@@ -1,7 +1,13 @@
+import { sendVerificationEmail } from "./emailService";
 import { RefreshToken } from "./../models/RefreshToken";
 import User from "../models/User";
 import jwt from "jsonwebtoken";
+import logger from "~/utils/logger";
+import crypto from "crypto";
+
 import { config } from "dotenv";
+import { HttpError } from "~/utils/httpError";
+import HTTP_STATUS from "~/constants/httpStatus";
 config();
 
 interface IAuthTokens {
@@ -11,11 +17,61 @@ interface IAuthTokens {
 
 // Đăng ký người dùng mới
 export const registerUser = async (userData: any): Promise<{ user: any }> => {
-  const user = new User(userData);
-  await user.save();
-  // Xóa trường không mong muốn hiển thị khỏi đối tượng người dùng trước khi trả về
-  const { followers, following, posts, ...userWithoutFields } = user.toObject();
-  return { user: userWithoutFields };
+  try {
+    const user = new User({
+      ...userData,
+      status: "pending",
+      emailVerified: false,
+    });
+
+    // Tạo token xác minh email
+    const verificationToken = crypto.randomBytes(32).toString("hex");
+    user.emailVerificationToken = verificationToken;
+
+    await user.save();
+
+    // Gửi Email xác minh
+    await sendVerificationEmail(user.email, verificationToken);
+
+    // Xóa trường không mong muốn hiển thị khỏi đối tượng người dùng trước khi trả về
+    const { followers, following, posts, ...userWithoutFields } =
+      user.toObject();
+    return { user: userWithoutFields };
+  } catch (error: any) {
+    logger.error(`Register service error: ${error.message}`);
+    throw error instanceof HttpError
+      ? error
+      : new HttpError(
+          HTTP_STATUS.INTERNAL_SERVER_ERROR,
+          "Internal server error"
+        );
+  }
+};
+
+// Xác minh Email
+export const verifyEmail = async (token: string): Promise<void> => {
+  try {
+    const user = await User.findOne({ emailVerificationToken: token });
+    if (!user) {
+      throw new HttpError(
+        HTTP_STATUS.BAD_REQUEST,
+        "Invalid or expired verification token"
+      );
+    }
+    user.emailVerified = true;
+    user.emailVerificationToken = undefined;
+    await user.save();
+
+    logger.info(`Email verified for user: ${user.email}`);
+  } catch (error: any) {
+    logger.error(`Verify email service error: ${error.message}`);
+    throw error instanceof HttpError
+      ? error
+      : new HttpError(
+          HTTP_STATUS.INTERNAL_SERVER_ERROR,
+          "Internal server error"
+        );
+  }
 };
 
 // Đăng nhập người dùng
@@ -30,6 +86,7 @@ export const loginUser = async (
 };
 
 // Đăng xuất người dùng
+
 export const logoutUser = async (refreshToken: string): Promise<void> => {
   const decoded = jwt.verify(
     refreshToken,

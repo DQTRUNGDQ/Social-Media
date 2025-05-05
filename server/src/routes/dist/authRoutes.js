@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var express_1 = require("express");
+var express_validator_1 = require("express-validator");
 var authController_1 = require("../controllers/authController");
 var authController_2 = require("../controllers/authController");
 var validation_1 = require("../middlewares/validation");
@@ -17,6 +18,11 @@ router.post("/request-password-reset", authController_2.requestPasswordReset);
 router.post("/verify-reset-code", authController_2.VerifyResetCode);
 // Route để đặt lại mật khẩu sau khi mã xác thực đã được xác minh
 router.post("/reset-password", authController_2.resetPassword);
+// Route để xác thực địa chỉ Email
+router.get("/verify-email", [
+    express_validator_1.query("token").notEmpty().withMessage("Verification token is required"),
+    authController_1.verifyEmail,
+]);
 // Route để refresh accessToken
 router.post("/refresh-token", authController_1.refreshToken);
 exports["default"] = router;

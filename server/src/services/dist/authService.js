@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -47,24 +58,74 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 exports.__esModule = true;
-exports.logoutUser = exports.loginUser = exports.registerUser = void 0;
+exports.logoutUser = exports.loginUser = exports.verifyEmail = exports.registerUser = void 0;
+var emailService_1 = require("./emailService");
 var RefreshToken_1 = require("./../models/RefreshToken");
 var User_1 = require("../models/User");
 var jsonwebtoken_1 = require("jsonwebtoken");
+var logger_1 = require("~/utils/logger");
+var crypto_1 = require("crypto");
 var dotenv_1 = require("dotenv");
+var httpError_1 = require("~/utils/httpError");
+var httpStatus_1 = require("~/constants/httpStatus");
 dotenv_1.config();
 // Đăng ký người dùng mới
 exports.registerUser = function (userData) { return __awaiter(void 0, void 0, Promise, function () {
-    var user, _a, followers, following, posts, userWithoutFields;
+    var user, verificationToken, _a, followers, following, posts, userWithoutFields, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                user = new User_1["default"](userData);
+                _b.trys.push([0, 3, , 4]);
+                user = new User_1["default"](__assign(__assign({}, userData), { status: "pending", emailVerified: false }));
+                verificationToken = crypto_1["default"].randomBytes(32).toString("hex");
+                user.emailVerificationToken = verificationToken;
                 return [4 /*yield*/, user.save()];
             case 1:
                 _b.sent();
+                // Gửi Email xác minh
+                return [4 /*yield*/, emailService_1.sendVerificationEmail(user.email, verificationToken)];
+            case 2:
+                // Gửi Email xác minh
+                _b.sent();
                 _a = user.toObject(), followers = _a.followers, following = _a.following, posts = _a.posts, userWithoutFields = __rest(_a, ["followers", "following", "posts"]);
                 return [2 /*return*/, { user: userWithoutFields }];
+            case 3:
+                error_1 = _b.sent();
+                logger_1["default"].error("Register service error: " + error_1.message);
+                throw error_1 instanceof httpError_1.HttpError
+                    ? error_1
+                    : new httpError_1.HttpError(httpStatus_1["default"].INTERNAL_SERVER_ERROR, "Internal server error");
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+// Xác minh Email
+exports.verifyEmail = function (token) { return __awaiter(void 0, void 0, Promise, function () {
+    var user, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                return [4 /*yield*/, User_1["default"].findOne({ emailVerificationToken: token })];
+            case 1:
+                user = _a.sent();
+                if (!user) {
+                    throw new httpError_1.HttpError(httpStatus_1["default"].BAD_REQUEST, "Invalid or expired verification token");
+                }
+                user.emailVerified = true;
+                user.emailVerificationToken = undefined;
+                return [4 /*yield*/, user.save()];
+            case 2:
+                _a.sent();
+                logger_1["default"].info("Email verified for user: " + user.email);
+                return [3 /*break*/, 4];
+            case 3:
+                error_2 = _a.sent();
+                logger_1["default"].error("Verify email service error: " + error_2.message);
+                throw error_2 instanceof httpError_1.HttpError
+                    ? error_2
+                    : new httpError_1.HttpError(httpStatus_1["default"].INTERNAL_SERVER_ERROR, "Internal server error");
+            case 4: return [2 /*return*/];
         }
     });
 }); };

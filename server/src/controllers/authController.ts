@@ -10,10 +10,21 @@ import { validationResult } from "express-validator";
 import { HttpError } from "~/utils/httpError";
 import HTTP_STATUS from "~/constants/httpStatus";
 import logger from "~/utils/logger";
+import asyncHandler from "~/middlewares/asyncHandler";
+import { AuthenticatedRequest } from "~/middlewares/auth";
 
 // Controller đăng ký
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new HttpError(
+        HTTP_STATUS.BAD_REQUEST,
+        " Invalid input",
+        errors.array()
+      );
+    }
+
     const { username, ...otherFields } = req.body;
     const generatedUsername = username || generateRandomUsername();
     const { user } = await authService.registerUser({
@@ -21,12 +32,19 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       username: generatedUsername,
     });
 
-    res.status(201).send({
+    res.status(HTTP_STATUS.CREATED).send({
       message: USERS_MESSAGES.REGISTER_SUCCESS,
       user,
+      info: "Please check your email to verify your account.",
     });
   } catch (error: any) {
-    res.status(400).send({ error: error.message });
+    logger.error(`Register error: ${error.message}`, { error });
+    const statusCode =
+      error instanceof HttpError ? error.statusCode : HTTP_STATUS.BAD_REQUEST;
+    res.status(statusCode).send({
+      error: error.message || HTTP_STATUS.INTERNAL_SERVER_ERROR,
+      details: error.details || null,
+    });
   }
 };
 
@@ -111,6 +129,41 @@ export const requestPasswordReset = async (
     return res.status(500).send({ error: error.message });
   }
 };
+
+// Controller xác minh email
+
+export const verifyEmail = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    NextFunction
+  ): Promise<void> => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        throw new HttpError(
+          HTTP_STATUS.BAD_REQUEST,
+          "Invalid input",
+          errors.array()
+        );
+      }
+      const { token } = req.query;
+      await authService.verifyEmail(token as string);
+
+      res.status(HTTP_STATUS.OK).render("verify-success");
+    } catch (error: any) {
+      logger.error(`Verify email error: ${error.message}`, { error });
+      const statusCode =
+        error instanceof HttpError
+          ? error.statusCode
+          : HTTP_STATUS.INTERNAL_SERVER_ERROR;
+      res.status(statusCode).send({
+        errors: error.message || "Internal server error",
+        details: error.details || null,
+      });
+    }
+  }
+);
 
 // Controller xác thực mã code reset
 

@@ -12,6 +12,7 @@ var threadRoutes_1 = require("./routes/threadRoutes");
 var errorHandler_1 = require("./middlewares/errorHandler");
 var AppError_1 = require("./utils/AppError");
 var cloudinary_1 = require("./config/cloudinary");
+var path_1 = require("path");
 var app = express_1["default"]();
 require("dotenv").config();
 // Connect to MongoDB
@@ -28,6 +29,9 @@ app.use(cors_1["default"]({
 app.use(express_1["default"].json());
 app.use(body_parser_1["default"].json());
 app.use(body_parser_1["default"].urlencoded({ extended: true }));
+// Cấu hình EJS
+app.set("view engine", "ejs");
+app.set("views", path_1["default"].join(__dirname, "views/emails"));
 // Routes
 app.use("/api/auth", authRoutes_1["default"]);
 // app.use("/api/post", postRoutes);

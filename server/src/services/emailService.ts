@@ -1,5 +1,9 @@
 import nodemailer from "nodemailer";
 import { config } from "dotenv";
+import ejs from "ejs";
+import path from "path";
+import { fileURLToPath } from "url";
+
 config();
 
 const transporter = nodemailer.createTransport({
@@ -22,5 +26,23 @@ export const sendResetCodeEmail = async (email: string, resetCode: string) => {
     subject: "Password Reset Code",
     text: `You requested a password reset. Use the following code to reset your password: ${resetCode}`,
     html: `<p><strong>You requested a password reset. Use the following code to reset your password: ${resetCode}</strong></p>`,
+  });
+};
+
+export const sendVerificationEmail = async (email: string, token: string) => {
+  const verificationUrl = `${process.env.APP_URL}/api/auth/verify-email?token=${token}`;
+  const templatePath = path.join(
+    __dirname,
+    "../views/emails/email-verification.ejs"
+  );
+
+  // Render Template với dữ liệu
+  const htmlContent = await ejs.renderFile(templatePath, { verificationUrl });
+  await transporter.sendMail({
+    from: '"Gens" <Gens@official.com>',
+    to: email,
+    subject: "Verify your Email",
+    text: `Làm ơn xác thực địa chỉ email của bạn bằng cách nhấp vào đường dẫn: ${verificationUrl}`,
+    html: htmlContent,
   });
 };

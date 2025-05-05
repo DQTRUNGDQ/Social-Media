@@ -1,6 +1,8 @@
 import express from "express";
+import { query } from "express-validator";
 import {
   register,
+  verifyEmail,
   login,
   logout,
   refreshToken,
@@ -35,6 +37,12 @@ router.post("/verify-reset-code", VerifyResetCode);
 
 // Route để đặt lại mật khẩu sau khi mã xác thực đã được xác minh
 router.post("/reset-password", resetPassword);
+
+// Route để xác thực địa chỉ Email
+router.get("/verify-email", [
+  query("token").notEmpty().withMessage("Verification token is required"),
+  verifyEmail,
+]);
 
 // Route để refresh accessToken
 router.post("/refresh-token", refreshToken);

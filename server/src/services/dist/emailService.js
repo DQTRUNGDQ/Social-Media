@@ -36,9 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.sendResetCodeEmail = void 0;
+exports.sendVerificationEmail = exports.sendResetCodeEmail = void 0;
 var nodemailer_1 = require("nodemailer");
 var dotenv_1 = require("dotenv");
+var ejs_1 = require("ejs");
+var path_1 = require("path");
 dotenv_1.config();
 var transporter = nodemailer_1["default"].createTransport({
     host: "smtp.gmail.com",
@@ -63,6 +65,29 @@ exports.sendResetCodeEmail = function (email, resetCode) { return __awaiter(void
                     html: "<p><strong>You requested a password reset. Use the following code to reset your password: " + resetCode + "</strong></p>"
                 })];
             case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); };
+exports.sendVerificationEmail = function (email, token) { return __awaiter(void 0, void 0, void 0, function () {
+    var verificationUrl, templatePath, htmlContent;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                verificationUrl = process.env.APP_URL + "/api/auth/verify-email?token=" + token;
+                templatePath = path_1["default"].join(__dirname, "../views/emails/email-verification.ejs");
+                return [4 /*yield*/, ejs_1["default"].renderFile(templatePath, { verificationUrl: verificationUrl })];
+            case 1:
+                htmlContent = _a.sent();
+                return [4 /*yield*/, transporter.sendMail({
+                        from: '"Gens" <Gens@official.com>',
+                        to: email,
+                        subject: "Verify your Email",
+                        text: "L\u00E0m \u01A1n x\u00E1c th\u1EF1c \u0111\u1ECBa ch\u1EC9 email c\u1EE7a b\u1EA1n b\u1EB1ng c\u00E1ch nh\u1EA5p v\u00E0o \u0111\u01B0\u1EDDng d\u1EABn: " + verificationUrl,
+                        html: htmlContent
+                    })];
+            case 2:
                 _a.sent();
                 return [2 /*return*/];
         }

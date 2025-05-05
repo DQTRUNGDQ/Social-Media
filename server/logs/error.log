@@ -2688,3 +2688,77 @@ Stack: Error: No files uploaded
     at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
     at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-05T03:20:41.140Z [ERROR]: Error: Cannot find /auth/verify-email?token=14c2a707963feeebecd8cf65b9f4acda3b1c836286c49ec987a5810add5d2c52 on this server 
+Stack: Error: Cannot find /auth/verify-email?token=14c2a707963feeebecd8cf65b9f4acda3b1c836286c49ec987a5810add5d2c52 on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:46:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-05T03:20:42.241Z [ERROR]: Error: Cannot find /favicon.ico on this server 
+Stack: Error: Cannot find /favicon.ico on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:46:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-05T03:28:26.518Z [ERROR]: Error: Cannot find /auth/verify-email?token=5fb8941885a06c4cb9c56e1dd78a17794cb6ff63457e47cb83880de50e080356 on this server 
+Stack: Error: Cannot find /auth/verify-email?token=5fb8941885a06c4cb9c56e1dd78a17794cb6ff63457e47cb83880de50e080356 on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:46:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-05T03:29:56.024Z [ERROR]: Error: Cannot find /api/auth/verify-email?token=34270419e737274c1267f8578366ee875443380b86b7212ce0e961c658232ffb on this server 
+Stack: Error: Cannot find /api/auth/verify-email?token=34270419e737274c1267f8578366ee875443380b86b7212ce0e961c658232ffb on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:46:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-05T03:53:05.587Z [ERROR]: Register service error: E11000 duplicate key error collection: Threads.users index: name_1 dup key: { name: "AdminGens" }
+2025-05-05T03:53:05.595Z [ERROR]: Register error: Internal server error
+2025-05-05T03:53:12.361Z [ERROR]: Register service error: E11000 duplicate key error collection: Threads.users index: name_1 dup key: { name: "AdminGens" }
+2025-05-05T03:53:12.363Z [ERROR]: Register error: Internal server error
+2025-05-05T03:54:43.786Z [ERROR]: Error: Cannot find /api/auth/verify-email?token=85f322477f35019fc31f9d683a2710df3117da9ab16e69a38ea206ebbc859a90 on this server 
+Stack: Error: Cannot find /api/auth/verify-email?token=85f322477f35019fc31f9d683a2710df3117da9ab16e69a38ea206ebbc859a90 on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:46:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-05T04:38:12.113Z [ERROR]: Error: Failed to lookup view "verify-success" in views directory "G:\ThreadsClone\ThreadsClone\server\src\views" 
+Stack: Error: Failed to lookup view "verify-success" in views directory "G:\ThreadsClone\ThreadsClone\server\src\views"
+    at Function.render (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\application.js:597:17)
+    at ServerResponse.render (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:1049:7)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:153:34
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-05T04:39:52.015Z [ERROR]: Verify email service error: Invalid or expired verification token
+2025-05-05T04:39:52.018Z [ERROR]: Verify email error: Invalid or expired verification token
+2025-05-05T04:39:55.192Z [ERROR]: Verify email service error: Invalid or expired verification token
+2025-05-05T04:39:55.193Z [ERROR]: Verify email error: Invalid or expired verification token

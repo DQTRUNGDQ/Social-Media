@@ -52,6 +52,8 @@ export interface IUser extends Document {
   cloudinaryPublicId: string;
   roles: Role[];
   status: AccountStatus;
+  emailVerified: boolean;
+  emailVerificationToken?: string;
   generateAuthTokens(): Promise<{ accessToken: string; refreshToken: string }>;
   invalidateTokens(): Promise<void>;
 }
@@ -195,6 +197,8 @@ const userSchema: Schema<IUser> = new Schema(
       default: ACCOUNTS_STATUS.PENDING,
       enum: Object.values(ACCOUNTS_STATUS),
     },
+    emailVerified: { type: Boolean, default: false },
+    emailVerificationToken: { type: String },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
@@ -204,6 +208,9 @@ userSchema.pre<IUser>("save", async function (next) {
   const user = this;
   if (user.isModified("password")) {
     user.password = await bcrypt.hash(user.password, 10);
+  }
+  if (this.emailVerified && this.status === "pending") {
+    this.status = "active";
   }
   next();
 });

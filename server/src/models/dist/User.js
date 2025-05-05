@@ -187,7 +187,9 @@ var userSchema = new mongoose_1.Schema({
         required: true,
         "default": ACCOUNTS_STATUS.PENDING,
         "enum": Object.values(ACCOUNTS_STATUS)
-    }
+    },
+    emailVerified: { type: Boolean, "default": false },
+    emailVerificationToken: { type: String }
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 // Hash mật khẩu trước khi lưu người dùng
 userSchema.pre("save", function (next) {
@@ -204,6 +206,9 @@ userSchema.pre("save", function (next) {
                     _a.password = _b.sent();
                     _b.label = 2;
                 case 2:
+                    if (this.emailVerified && this.status === "pending") {
+                        this.status = "active";
+                    }
                     next();
                     return [2 /*return*/];
             }

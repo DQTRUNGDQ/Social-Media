@@ -10,6 +10,7 @@ import threadRoutes from "./routes/threadRoutes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { AppError } from "./utils/AppError";
 import { checkCloudinaryConnection } from "./config/cloudinary";
+import path from "path";
 
 const app = express();
 require("dotenv").config();
@@ -34,6 +35,10 @@ app.use(express.json());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Cấu hình EJS
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views/emails"));
 
 // Routes
 app.use("/api/auth", authRoutes);
