@@ -55,16 +55,22 @@ var transporter = nodemailer_1["default"].createTransport({
     }
 });
 exports.sendResetCodeEmail = function (email, resetCode) { return __awaiter(void 0, void 0, void 0, function () {
+    var templatePath, htmlContent;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, transporter.sendMail({
-                    from: '"Gens" <Gens@official.com>',
-                    to: email,
-                    subject: "Password Reset Code",
-                    text: "You requested a password reset. Use the following code to reset your password: " + resetCode,
-                    html: "<p><strong>You requested a password reset. Use the following code to reset your password: " + resetCode + "</strong></p>"
-                })];
+            case 0:
+                templatePath = path_1["default"].join(__dirname, "../views/emails/reset-password-email.ejs");
+                return [4 /*yield*/, ejs_1["default"].renderFile(templatePath, { resetCode: resetCode })];
             case 1:
+                htmlContent = _a.sent();
+                return [4 /*yield*/, transporter.sendMail({
+                        from: '"Gens" <Gens@official.com>',
+                        to: email,
+                        subject: "Password Reset Code",
+                        text: "You requested a password reset. Use the following code to reset your password: " + resetCode,
+                        html: htmlContent
+                    })];
+            case 2:
                 _a.sent();
                 return [2 /*return*/];
         }

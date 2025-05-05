@@ -189,7 +189,8 @@ var userSchema = new mongoose_1.Schema({
         "enum": Object.values(ACCOUNTS_STATUS)
     },
     emailVerified: { type: Boolean, "default": false },
-    emailVerificationToken: { type: String }
+    emailVerificationToken: { type: String },
+    emailVerificationTokenExpires: { type: Date }
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 // Hash mật khẩu trước khi lưu người dùng
 userSchema.pre("save", function (next) {

@@ -71,7 +71,7 @@ var httpStatus_1 = require("~/constants/httpStatus");
 dotenv_1.config();
 // Đăng ký người dùng mới
 exports.registerUser = function (userData) { return __awaiter(void 0, void 0, Promise, function () {
-    var user, verificationToken, _a, followers, following, posts, userWithoutFields, error_1;
+    var user, verificationToken, _a, followers, following, posts, emailVerificationToken, emailVerificationTokenExpires, userWithoutFields, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -79,6 +79,7 @@ exports.registerUser = function (userData) { return __awaiter(void 0, void 0, Pr
                 user = new User_1["default"](__assign(__assign({}, userData), { status: "pending", emailVerified: false }));
                 verificationToken = crypto_1["default"].randomBytes(32).toString("hex");
                 user.emailVerificationToken = verificationToken;
+                user.emailVerificationTokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
                 return [4 /*yield*/, user.save()];
             case 1:
                 _b.sent();
@@ -87,7 +88,7 @@ exports.registerUser = function (userData) { return __awaiter(void 0, void 0, Pr
             case 2:
                 // Gửi Email xác minh
                 _b.sent();
-                _a = user.toObject(), followers = _a.followers, following = _a.following, posts = _a.posts, userWithoutFields = __rest(_a, ["followers", "following", "posts"]);
+                _a = user.toObject(), followers = _a.followers, following = _a.following, posts = _a.posts, emailVerificationToken = _a.emailVerificationToken, emailVerificationTokenExpires = _a.emailVerificationTokenExpires, userWithoutFields = __rest(_a, ["followers", "following", "posts", "emailVerificationToken", "emailVerificationTokenExpires"]);
                 return [2 /*return*/, { user: userWithoutFields }];
             case 3:
                 error_1 = _b.sent();
@@ -106,7 +107,10 @@ exports.verifyEmail = function (token) { return __awaiter(void 0, void 0, Promis
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, User_1["default"].findOne({ emailVerificationToken: token })];
+                return [4 /*yield*/, User_1["default"].findOne({
+                        emailVerificationToken: token,
+                        emailVerificationTokenExpires: { $gt: new Date() }
+                    })];
             case 1:
                 user = _a.sent();
                 if (!user) {
@@ -114,6 +118,7 @@ exports.verifyEmail = function (token) { return __awaiter(void 0, void 0, Promis
                 }
                 user.emailVerified = true;
                 user.emailVerificationToken = undefined;
+                user.emailVerificationTokenExpires = undefined;
                 return [4 /*yield*/, user.save()];
             case 2:
                 _a.sent();

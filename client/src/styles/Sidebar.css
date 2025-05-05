@@ -10,11 +10,13 @@ svg {
 }
 
 .logo-sb {
+  max-width: 100px;
+  height: auto;
   padding: 15px 0;
 }
 
 .logo-sb svg {
-  width: 40px;
+  width: 80px;
   height: 70px;
   margin-left: 15px;
 }

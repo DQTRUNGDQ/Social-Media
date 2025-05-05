@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-const RESET_CODE_EXPIRATION = 10 * 60 * 1000; // 10 phút
+const RESET_CODE_EXPIRATION = 15 * 60 * 1000; // 15 phút
 
 interface ResetCodeData {
   userId: string;
@@ -13,7 +13,7 @@ const resetCodes: Map<string, ResetCodeData> = new Map();
 // Tạo ra mã xác thực ngẫu nhiên
 
 export const generateResetCode = (userId: string): string => {
-  const code = crypto.randomBytes(3).toString("hex"); //Mã xác thực ngẫu nhiên
+  const code = crypto.randomBytes(3).toString("hex").toUpperCase(); //Mã xác thực ngẫu nhiên
   resetCodes.set(userId, {
     userId,
     code,

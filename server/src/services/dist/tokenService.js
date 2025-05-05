@@ -2,11 +2,11 @@
 exports.__esModule = true;
 exports.verifyResetCode = exports.generateResetCode = void 0;
 var crypto_1 = require("crypto");
-var RESET_CODE_EXPIRATION = 10 * 60 * 1000; // 10 phút
+var RESET_CODE_EXPIRATION = 15 * 60 * 1000; // 15 phút
 var resetCodes = new Map();
 // Tạo ra mã xác thực ngẫu nhiên
 exports.generateResetCode = function (userId) {
-    var code = crypto_1["default"].randomBytes(3).toString("hex"); //Mã xác thực ngẫu nhiên
+    var code = crypto_1["default"].randomBytes(3).toString("hex").toUpperCase(); //Mã xác thực ngẫu nhiên
     resetCodes.set(userId, {
         userId: userId,
         code: code,

@@ -96,10 +96,17 @@ exports.register = function (req, res) { return __awaiter(void 0, void 0, Promis
                 error_1 = _b.sent();
                 logger_1["default"].error("Register error: " + error_1.message, { error: error_1 });
                 statusCode = error_1 instanceof httpError_1.HttpError ? error_1.statusCode : httpStatus_1["default"].BAD_REQUEST;
-                res.status(statusCode).send({
-                    error: error_1.message || httpStatus_1["default"].INTERNAL_SERVER_ERROR,
-                    details: error_1.details || null
-                });
+                if (error_1.message === "Invalid or expired verification token") {
+                    res.status(httpStatus_1["default"].BAD_REQUEST).render("verify-error", {
+                        message: "Token không hợp lệ hoặc đã hết hạn. Vui lòng yêu cầu lại email xác minh."
+                    });
+                }
+                else {
+                    res.status(statusCode).send({
+                        error: error_1.message || httpStatus_1["default"].INTERNAL_SERVER_ERROR,
+                        details: error_1.details || null
+                    });
+                }
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -113,7 +120,7 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, Promise, 
             case 0:
                 _b.trys.push([0, 2, , 3]);
                 errors = express_validator_1.validationResult(req);
-                if (errors.isEmpty()) {
+                if (!errors.isEmpty()) {
                     throw new httpError_1.HttpError(httpStatus_1["default"].BAD_REQUEST, "Invalid email or password", errors.array());
                 }
                 _a = req.body, email = _a.email, password = _a.password;
@@ -176,34 +183,48 @@ exports.logout = function (req, res) { return __awaiter(void 0, void 0, Promise,
 }); };
 // Controller quên mật khẩu
 exports.requestPasswordReset = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
-    var email, user, resetCode, error_4;
+    var errors, email, user, resetCode, error_4, statusCode;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                _a.trys.push([0, 4, , 5]);
+                errors = express_validator_1.validationResult(req);
+                if (!errors.isEmpty()) {
+                    throw new httpError_1.HttpError(httpStatus_1["default"].BAD_REQUEST, "Invalid input", errors.array());
+                }
                 email = req.body.email;
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 4, , 5]);
                 return [4 /*yield*/, User_1["default"].findOne({ email: email })];
-            case 2:
+            case 1:
                 user = _a.sent();
                 if (!user) {
                     return [2 /*return*/, res.status(404).send({ message: message_1.USERS_MESSAGES.USER_NOT_FOUND })];
                 }
                 resetCode = tokenService_1.generateResetCode(user.id.toString());
+                return [4 /*yield*/, user.save()];
+            case 2:
+                _a.sent();
                 return [4 /*yield*/, emailService_1.sendResetCodeEmail(email, resetCode)];
             case 3:
                 _a.sent();
-                return [2 /*return*/, res.status(200).send({ message: "Password reset code sent" })];
+                return [2 /*return*/, res
+                        .status(httpStatus_1["default"].OK)
+                        .send({ message: "Password reset code sent to your email" })];
             case 4:
                 error_4 = _a.sent();
-                return [2 /*return*/, res.status(500).send({ error: error_4.message })];
+                logger_1["default"].error("Send reset password code error: " + error_4.message, { error: error_4 });
+                statusCode = error_4 instanceof httpError_1.HttpError
+                    ? error_4.statusCode
+                    : httpStatus_1["default"].INTERNAL_SERVER_ERROR;
+                return [2 /*return*/, res.status(statusCode).send({
+                        error: error_4.message || httpStatus_1["default"].INTERNAL_SERVER_ERROR,
+                        details: error_4.details || null
+                    })];
             case 5: return [2 /*return*/];
         }
     });
 }); };
 // Controller xác minh email
-exports.verifyEmail = asyncHandler_1["default"](function (req, res, NextFunction) { return __awaiter(void 0, void 0, Promise, function () {
+exports.verifyEmail = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
     var errors, token, error_5, statusCode;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -217,7 +238,7 @@ exports.verifyEmail = asyncHandler_1["default"](function (req, res, NextFunction
                 return [4 /*yield*/, authService.verifyEmail(token)];
             case 1:
                 _a.sent();
-                res.status(httpStatus_1["default"].OK).render("verify-success");
+                res.status(httpStatus_1["default"].OK).render("emails/verify-success");
                 return [3 /*break*/, 3];
             case 2:
                 error_5 = _a.sent();
@@ -235,7 +256,7 @@ exports.verifyEmail = asyncHandler_1["default"](function (req, res, NextFunction
     });
 }); });
 // Controller xác thực mã code reset
-exports.VerifyResetCode = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
+exports.VerifyResetCode = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
     var _a, email, resetCode, user, isValid, error_6;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -265,9 +286,9 @@ exports.VerifyResetCode = function (req, res) { return __awaiter(void 0, void 0,
             case 4: return [2 /*return*/];
         }
     });
-}); };
+}); });
 // Controller reset password
-exports.resetPassword = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
+exports.resetPassword = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
     var _a, email, resetCode, newPassword, user, isValid, error_7;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -303,9 +324,9 @@ exports.resetPassword = function (req, res) { return __awaiter(void 0, void 0, P
             case 5: return [2 /*return*/];
         }
     });
-}); };
+}); });
 // Controller Auto Refresh AccessToken
-exports.refreshToken = function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
+exports.refreshToken = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
     var refreshToken, decoded, user, newAccessToken, error_8;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -334,7 +355,7 @@ exports.refreshToken = function (req, res) { return __awaiter(void 0, void 0, Pr
             case 4: return [2 /*return*/];
         }
     });
-}); };
+}); });
 function generateRandomUsername() {
     var words = [
         "cool",

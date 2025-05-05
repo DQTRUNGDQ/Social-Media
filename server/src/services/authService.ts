@@ -24,9 +24,12 @@ export const registerUser = async (userData: any): Promise<{ user: any }> => {
       emailVerified: false,
     });
 
-    // Tạo token xác minh email
+    // Tạo token xác minh email và thời hạn (24 giờ)
     const verificationToken = crypto.randomBytes(32).toString("hex");
     user.emailVerificationToken = verificationToken;
+    user.emailVerificationTokenExpires = new Date(
+      Date.now() + 24 * 60 * 60 * 1000
+    );
 
     await user.save();
 
@@ -34,8 +37,14 @@ export const registerUser = async (userData: any): Promise<{ user: any }> => {
     await sendVerificationEmail(user.email, verificationToken);
 
     // Xóa trường không mong muốn hiển thị khỏi đối tượng người dùng trước khi trả về
-    const { followers, following, posts, ...userWithoutFields } =
-      user.toObject();
+    const {
+      followers,
+      following,
+      posts,
+      emailVerificationToken,
+      emailVerificationTokenExpires,
+      ...userWithoutFields
+    } = user.toObject();
     return { user: userWithoutFields };
   } catch (error: any) {
     logger.error(`Register service error: ${error.message}`);
@@ -51,7 +60,10 @@ export const registerUser = async (userData: any): Promise<{ user: any }> => {
 // Xác minh Email
 export const verifyEmail = async (token: string): Promise<void> => {
   try {
-    const user = await User.findOne({ emailVerificationToken: token });
+    const user = await User.findOne({
+      emailVerificationToken: token,
+      emailVerificationTokenExpires: { $gt: new Date() },
+    });
     if (!user) {
       throw new HttpError(
         HTTP_STATUS.BAD_REQUEST,
@@ -60,6 +72,7 @@ export const verifyEmail = async (token: string): Promise<void> => {
     }
     user.emailVerified = true;
     user.emailVerificationToken = undefined;
+    user.emailVerificationTokenExpires = undefined;
     await user.save();
 
     logger.info(`Email verified for user: ${user.email}`);

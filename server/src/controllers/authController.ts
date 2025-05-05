@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import * as authService from "../services/authService";
 import { USERS_MESSAGES } from "../constants/message";
 import User from "~/models/User";
@@ -41,10 +41,17 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     logger.error(`Register error: ${error.message}`, { error });
     const statusCode =
       error instanceof HttpError ? error.statusCode : HTTP_STATUS.BAD_REQUEST;
-    res.status(statusCode).send({
-      error: error.message || HTTP_STATUS.INTERNAL_SERVER_ERROR,
-      details: error.details || null,
-    });
+    if (error.message === "Invalid or expired verification token") {
+      res.status(HTTP_STATUS.BAD_REQUEST).render("verify-error", {
+        message:
+          "Token không hợp lệ hoặc đã hết hạn. Vui lòng yêu cầu lại email xác minh.",
+      });
+    } else {
+      res.status(statusCode).send({
+        error: error.message || HTTP_STATUS.INTERNAL_SERVER_ERROR,
+        details: error.details || null,
+      });
+    }
   }
 };
 
@@ -53,7 +60,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     // Kiểm tra lỗi validation
     const errors = validationResult(req);
-    if (errors.isEmpty()) {
+    if (!errors.isEmpty()) {
       throw new HttpError(
         HTTP_STATUS.BAD_REQUEST,
         "Invalid email or password",
@@ -111,9 +118,18 @@ export const requestPasswordReset = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const { email } = req.body;
-
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new HttpError(
+        HTTP_STATUS.BAD_REQUEST,
+        "Invalid input",
+        errors.array()
+      );
+    }
+
+    const { email } = req.body;
+
     // Tìm người dùng theo email
     const user = await User.findOne({ email });
     if (!user) {
@@ -122,11 +138,22 @@ export const requestPasswordReset = async (
 
     // Tạo mã xác thực và gửi email
     const resetCode = generateResetCode(user.id.toString());
+    await user.save();
     await sendResetCodeEmail(email, resetCode);
 
-    return res.status(200).send({ message: "Password reset code sent" });
+    return res
+      .status(HTTP_STATUS.OK)
+      .send({ message: "Password reset code sent to your email" });
   } catch (error: any) {
-    return res.status(500).send({ error: error.message });
+    logger.error(`Send reset password code error: ${error.message}`, { error });
+    const statusCode =
+      error instanceof HttpError
+        ? error.statusCode
+        : HTTP_STATUS.INTERNAL_SERVER_ERROR;
+    return res.status(statusCode).send({
+      error: error.message || HTTP_STATUS.INTERNAL_SERVER_ERROR,
+      details: error.details || null,
+    });
   }
 };
 
@@ -136,7 +163,7 @@ export const verifyEmail = asyncHandler(
   async (
     req: AuthenticatedRequest,
     res: Response,
-    NextFunction
+    next: NextFunction
   ): Promise<void> => {
     try {
       const errors = validationResult(req);
@@ -150,7 +177,7 @@ export const verifyEmail = asyncHandler(
       const { token } = req.query;
       await authService.verifyEmail(token as string);
 
-      res.status(HTTP_STATUS.OK).render("verify-success");
+      res.status(HTTP_STATUS.OK).render("emails/verify-success");
     } catch (error: any) {
       logger.error(`Verify email error: ${error.message}`, { error });
       const statusCode =
@@ -167,97 +194,106 @@ export const verifyEmail = asyncHandler(
 
 // Controller xác thực mã code reset
 
-export const VerifyResetCode = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  const { email, resetCode } = req.body;
+export const VerifyResetCode = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const { email, resetCode } = req.body;
 
-  try {
-    // Xác thực mã và lưu trạng thái xác thực
-    const user = await User.findOne({ email });
-    if (!user) {
-      throw new Error("User not found");
-    }
-    const isValid = verifyResetCode(user.id, resetCode);
-    if (!isValid) {
-      res.status(400).send({ message: "Invalid or expired reset code" });
-    }
+    try {
+      // Xác thực mã và lưu trạng thái xác thực
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new Error("User not found");
+      }
+      const isValid = verifyResetCode(user.id, resetCode);
+      if (!isValid) {
+        res.status(400).send({ message: "Invalid or expired reset code" });
+      }
 
-    res.status(200).send({
-      message: "Reset code verified, you can now reset your password",
-    });
-  } catch (error: any) {
-    res.status(500).send({ error: error.message });
+      res.status(200).send({
+        message: "Reset code verified, you can now reset your password",
+      });
+    } catch (error: any) {
+      res.status(500).send({ error: error.message });
+    }
   }
-};
+);
 
 // Controller reset password
 
-export const resetPassword = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  const { email, resetCode, newPassword } = req.body;
-  console.log("Reset code received in backend:", resetCode);
-  try {
-    // Tìm người dùng theo email
-    const user = await User.findOne({ email });
-    if (!user) {
-      res.status(404).send({ message: "User not found" });
-      return;
+export const resetPassword = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const { email, resetCode, newPassword } = req.body;
+    console.log("Reset code received in backend:", resetCode);
+    try {
+      // Tìm người dùng theo email
+      const user = await User.findOne({ email });
+      if (!user) {
+        res.status(404).send({ message: "User not found" });
+        return;
+      }
+
+      // Kiểm tra mã xác nhận và thời gian hết hạn
+      const isValid = verifyResetCode(user.id, resetCode);
+      if (!isValid) {
+        res.status(400).send({ message: "Invalid or expired reset code" });
+      }
+
+      // Băm mật khẩu mới và cập nhật
+      user.password = newPassword; // Đặt mật khẩu mới vào
+      user.markModified("password"); // Đánh dấu trường password là đã thay đổi
+      await user.save();
+
+      res.status(200).send({ message: "PASSWORD UPDATED SUCCESSFULLY" });
+    } catch (error: any) {
+      res.status(500).send({ error: error.message });
     }
-
-    // Kiểm tra mã xác nhận và thời gian hết hạn
-    const isValid = verifyResetCode(user.id, resetCode);
-    if (!isValid) {
-      res.status(400).send({ message: "Invalid or expired reset code" });
-    }
-
-    // Băm mật khẩu mới và cập nhật
-    user.password = newPassword; // Đặt mật khẩu mới vào
-    user.markModified("password"); // Đánh dấu trường password là đã thay đổi
-    await user.save();
-
-    res.status(200).send({ message: "PASSWORD UPDATED SUCCESSFULLY" });
-  } catch (error: any) {
-    res.status(500).send({ error: error.message });
   }
-};
+);
 
 // Controller Auto Refresh AccessToken
-export const refreshToken = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  const refreshToken = req.cookies.refreshToken;
+export const refreshToken = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const refreshToken = req.cookies.refreshToken;
 
-  if (!refreshToken) {
-    res.status(401).json({ message: "No refresh token provided" });
-  }
-
-  try {
-    const decoded = jwt.verify(
-      refreshToken,
-      process.env.JWT_REFRESH_SECRET as string
-    ) as { id: string };
-
-    const user = await User.findById(decoded.id);
-
-    if (!user) {
-      throw new Error("User not found");
+    if (!refreshToken) {
+      res.status(401).json({ message: "No refresh token provided" });
     }
 
-    const newAccessToken = jwt.sign(
-      { id: user.id.toString() },
-      process.env.JWT_ACCESS_SECRET as string,
-      { expiresIn: process.env.JWT_ACCESS_EXPIRATION }
-    );
-    res.status(200).json({ accessToken: newAccessToken });
-  } catch (error) {
-    res.status(403).json({ message: "Invalid refresh token" });
+    try {
+      const decoded = jwt.verify(
+        refreshToken,
+        process.env.JWT_REFRESH_SECRET as string
+      ) as { id: string };
+
+      const user = await User.findById(decoded.id);
+
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      const newAccessToken = jwt.sign(
+        { id: user.id.toString() },
+        process.env.JWT_ACCESS_SECRET as string,
+        { expiresIn: process.env.JWT_ACCESS_EXPIRATION }
+      );
+      res.status(200).json({ accessToken: newAccessToken });
+    } catch (error) {
+      res.status(403).json({ message: "Invalid refresh token" });
+    }
   }
-};
+);
 
 function generateRandomUsername(): string {
   const words = [

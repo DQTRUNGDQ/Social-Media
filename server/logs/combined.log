@@ -2766,3 +2766,53 @@ Stack: Error: Failed to lookup view "verify-success" in views directory "G:\Thre
 2025-05-05T04:39:55.192Z [ERROR]: Verify email service error: Invalid or expired verification token
 2025-05-05T04:39:55.193Z [ERROR]: Verify email error: Invalid or expired verification token
 2025-05-05T04:40:20.539Z [INFO]: Email verified for user: trungthpthy123@gmail.com
+2025-05-05T08:23:09.539Z [INFO]: Email verified for user: trungthpthy123@gmail.com
+2025-05-05T08:23:10.581Z [ERROR]: Error: Cannot find /favicon.ico on this server 
+Stack: Error: Cannot find /favicon.ico on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-05T09:07:31.513Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:162:21)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:216:23
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-05T09:08:39.669Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:162:21)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:220:23
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-05T09:11:34.838Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:162:21)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:220:23
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-05T09:23:27.234Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:23:42.890Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:23:59.827Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:24:30.242Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:24:31.922Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:24:32.603Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:24:32.753Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:24:38.043Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:24:47.989Z [ERROR]: Login error: Invalid email or password
+2025-05-05T09:25:11.240Z [ERROR]: Login error: Invalid email or password

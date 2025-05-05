@@ -54,6 +54,7 @@ export interface IUser extends Document {
   status: AccountStatus;
   emailVerified: boolean;
   emailVerificationToken?: string;
+  emailVerificationTokenExpires?: Date;
   generateAuthTokens(): Promise<{ accessToken: string; refreshToken: string }>;
   invalidateTokens(): Promise<void>;
 }
@@ -199,6 +200,7 @@ const userSchema: Schema<IUser> = new Schema(
     },
     emailVerified: { type: Boolean, default: false },
     emailVerificationToken: { type: String },
+    emailVerificationTokenExpires: { type: Date },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );

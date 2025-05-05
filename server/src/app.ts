@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Cấu hình EJS
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views/emails"));
+app.set("views", path.join(__dirname, "views"));
 
 // Routes
 app.use("/api/auth", authRoutes);

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Verified - Gens</title>
+    <title>Email Verification Failed - Gens</title>
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
@@ -25,7 +25,7 @@
         width: 90%;
       }
       .header {
-        background-color: #1da1f2;
+        background-color: #e74c3c;
         color: #ffffff;
         padding: 20px;
         border-radius: 10px 10px 0 0;
@@ -34,9 +34,9 @@
         margin: 0;
         font-size: 24px;
       }
-      .success-icon {
+      .error-icon {
         font-size: 50px;
-        color: #2ecc71;
+        color: #e74c3c;
         margin: 20px 0;
       }
       .message {
@@ -71,16 +71,15 @@
       <div class="header">
         <h1>Gens</h1>
       </div>
-      <div class="success-icon">✔</div>
+      <div class="error-icon">✖</div>
       <div class="message">
-        Chúc mừng! Email của bạn đã được xác minh thành công.<br />
-        Bây giờ bạn có thể
-        <a href="http://localhost:3000/login" style="color: #1da1f2"
-          >đăng nhập</a
-        >
-        để bắt đầu sử dụng Gens.
+        <%= message %><br />
+        Vui lòng
+        <a href="https://gens.com/resend" style="color: #1da1f2"
+          >yêu cầu lại email xác minh</a
+        >.
       </div>
-      <a href="http://localhost:3000/login" class="button">Đi đến Đăng nhập</a>
+      <a href="https://gens.com/resend" class="button">Yêu cầu Lại</a>
     </div>
   </body>
 </html>

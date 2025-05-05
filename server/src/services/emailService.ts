@@ -20,12 +20,19 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendResetCodeEmail = async (email: string, resetCode: string) => {
+  const templatePath = path.join(
+    __dirname,
+    "../views/emails/reset-password-email.ejs"
+  );
+
+  // Render template với dữ liệu
+  const htmlContent = await ejs.renderFile(templatePath, { resetCode });
   await transporter.sendMail({
     from: '"Gens" <Gens@official.com>',
     to: email,
     subject: "Password Reset Code",
     text: `You requested a password reset. Use the following code to reset your password: ${resetCode}`,
-    html: `<p><strong>You requested a password reset. Use the following code to reset your password: ${resetCode}</strong></p>`,
+    html: htmlContent,
   });
 };
 
