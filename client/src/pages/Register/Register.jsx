@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -22,11 +22,68 @@ export default function Register({ onClose }) {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    clearErrors,
   } = useForm();
 
   const [isRegistered, setIsRegistered] = useState(false);
 
+  // ======================== LOGIC ===========================
+
+  // Hàm tính số ngày tối đa trong một tháng
+  const getDaysInMonth = (month, year) => {
+    if (month === 2) {
+      // Kiểm tra năm nhuận
+      const isLeapYear =
+        (year % 4 === 0) & (year % 100 !== 0) || year % 400 === 0;
+      return isLeapYear ? 29 : 28;
+    }
+    return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month - 1];
+  };
+
+  // Kiểm tra ngày sinh
+  const validateDate = (day, month, year) => {
+    if (!day || !month || !year) {
+      return "Vui lòng chọn đầy đủ ngày, tháng, năm.";
+    }
+
+    const maxDays = getDaysInMonth(month, year);
+    if (day > maxDays) {
+      if (month === 2 && day === 29) {
+        return `Năm ${year} không phải năm nhuận, tháng 2 chỉ có 28 ngày.`;
+      }
+      return `Tháng ${month} chỉ có ${maxDays} ngày.`;
+    }
+
+    const selectedDate = new Date(year, month - 1, day);
+    const today = new Date();
+
+    // Kiểm tra xem ngày có thực sự tồn tại không
+    if (selectedDate > today) {
+      return "Ngày sinh không thể trong tương lai.";
+    }
+    let age = today.getFullYear() - selectedDate.getFullYear();
+    const m = today.getMonth() - selectedDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < selectedDate.getDate())) {
+      age--;
+    }
+    if (age < 13) {
+      return "Bạn phải từ 13 tuổi trở lên.";
+    }
+    if (age > 120) {
+      return "Tuổi không hợp lý.";
+    }
+    return true;
+  };
+
   const onSubmit = async (data) => {
+    const { day, month, year } = data;
+    const validationResult = validateDate(day, month, year);
+    if (validationResult !== true) {
+      setError("date_of_birth", { type: "manual", message: validationResult });
+      return;
+    }
+
     try {
       const res = await axios.post("http://localhost:5000/api/auth/register", {
         name: data.name,
@@ -49,6 +106,22 @@ export default function Register({ onClose }) {
     }
   };
 
+  useEffect(() => {
+    if (day && month && year) {
+      const validationResult = validateDate(day, month, year);
+      if (validationResult === true) {
+        clearErrors("date_of_birth");
+      } else {
+        setError("date_of_birth", {
+          type: "manual",
+          message: validationResult,
+        });
+      }
+    } else {
+      clearErrors("date_of_birth");
+    }
+  }, [day, month, year, setError, clearErrors]);
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="overlay flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -56,7 +129,7 @@ export default function Register({ onClose }) {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          Threads
+          Gens
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mb-14">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-4 sm:pr-8 sm:pl-8">
@@ -129,8 +202,8 @@ export default function Register({ onClose }) {
               </div>
 
               <h2 className="text-sm font-bold">Ngày sinh</h2>
-              <div className="space-y-4">
-                <div className="flex space-x-4">
+              <div className="space-y-4 ">
+                <div className="flex space-x-4 ">
                   <div className="flex-1">
                     <label
                       htmlFor="day"
@@ -209,6 +282,11 @@ export default function Register({ onClose }) {
                     </div>
                   </div>
                 </div>
+                {errors.date_of_birth && (
+                  <div className="text-red-600 text-sm ">
+                    {errors.date_of_birth.message}
+                  </div>
+                )}
               </div>
 
               <button
@@ -220,6 +298,7 @@ export default function Register({ onClose }) {
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Bạn đã có tài khoản?{" "}
                 <a
+                  onClick={onClose}
                   href="#"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >

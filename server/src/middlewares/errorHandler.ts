@@ -9,6 +9,11 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
+  if (res.headersSent) {
+    logger.warn("Headers already sent, skipping errorHandler");
+    return next(err);
+  }
+
   const statusCode = err instanceof AppError ? err.statusCode : 500;
   const isOperational = err instanceof AppError && err.isOperational;
 

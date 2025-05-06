@@ -58,6 +58,7 @@ var uuid_1 = require("uuid");
 var Like_1 = require("~/models/Like");
 var cloudinary_1 = require("~/config/cloudinary");
 var threadService_1 = require("~/services/threadService");
+var httpStatus_1 = require("~/constants/httpStatus");
 var createThread = asyncHandler_1["default"](function (req, res) { return __awaiter(void 0, void 0, Promise, function () {
     var content, _a, textContent, hashtags, files, uploadedMedia, _loop_1, _i, files_1, file, newThread, post, _b, hashtags_1, hashtag, existingHashtag;
     var _c, _d;
@@ -287,11 +288,8 @@ var getLikedThreads = asyncHandler_1["default"](function (req, res, next) { retu
                 return [4 /*yield*/, Like_1["default"].find({ user: userId }).populate("threadId")];
             case 1:
                 likedThreads = _a.sent();
-                if (!likedThreads || likedThreads.length === 0) {
-                    res.status(404).json([]);
-                }
-                likedThreadData = likedThreads.map(function (like) { return like.threadId; });
-                res.status(200).json(likedThreadData);
+                likedThreadData = likedThreads.map(function (like) { return like.threadId; }) || [];
+                res.status(httpStatus_1["default"].OK).json(likedThreadData);
                 return [2 /*return*/];
         }
     });

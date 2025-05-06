@@ -4,10 +4,10 @@ export default function Footer() {
       <footer className="footer-styled">
         <ul>
           <li className="mg-r10">
-            <span>© 2024 </span>
+            <span>© 2025 </span>
           </li>
           <li>
-            <span>Điều khoản Threads</span>
+            <span>Điều khoản Gens</span>
           </li>
           <li>
             <span>Chính sách bảo mật</span>

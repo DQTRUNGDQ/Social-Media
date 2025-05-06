@@ -2811,3 +2811,182 @@ Stack: Error: Cannot set headers after they are sent to the client
 2025-05-05T09:24:38.043Z [ERROR]: Login error: Invalid email or password
 2025-05-05T09:24:47.989Z [ERROR]: Login error: Invalid email or password
 2025-05-05T09:25:11.240Z [ERROR]: Login error: Invalid email or password
+2025-05-06T04:00:09.392Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:162:21)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:220:23
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:00:55.880Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:162:21)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:220:23
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:01:36.470Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:162:21)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\authController.ts:220:23
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:07:24.179Z [ERROR]: Login error: Login is Unsuccessful
+2025-05-06T04:07:29.167Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:07:29.296Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:07:34.763Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:07:34.949Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:07:56.462Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:07:56.590Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:10:04.150Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:10:04.333Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:10:05.898Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:10:06.013Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:03.842Z [ERROR]: Login error: Login is Unsuccessful
+2025-05-06T04:14:05.771Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:05.889Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:15.731Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:43.364Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:43.544Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:46.101Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:14:46.269Z [ERROR]: Error: Cannot set headers after they are sent to the client 
+Stack: Error: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:703:11)
+    at ServerResponse.header (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.send (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:174:12)
+    at ServerResponse.json (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\response.js:278:15)
+    at G:\ThreadsClone\ThreadsClone\server\src\controllers\threadController.ts:219:21
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-06T04:39:23.254Z [ERROR]: Verify email service error: Invalid or expired verification token
+2025-05-06T04:39:23.255Z [ERROR]: Verify email error: Invalid or expired verification token
+2025-05-06T04:39:24.321Z [ERROR]: Error: Cannot find /favicon.ico on this server 
+Stack: Error: Cannot find /favicon.ico on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)

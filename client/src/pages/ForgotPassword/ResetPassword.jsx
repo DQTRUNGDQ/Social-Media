@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { resetPassword } from "../../services/authService";
 
-const ResetPassword = ({ email, resetCode }) => {
+const ResetPassword = ({ email, resetCode, onClose }) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -45,17 +45,17 @@ const ResetPassword = ({ email, resetCode }) => {
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             required
-            placeholder="Password"
+            placeholder="Mật khẩu mới"
           />
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-            placeholder="Confirm Password"
+            placeholder="Nhập lại mật khẩu mới"
           />
-          <button type="submit" className="submit-button">
-            Reset my Password
+          <button type="submit" className="submit-button" onClick={onClose()}>
+            Thiết lập lại mật khẩu
           </button>
         </form>
         {errorMessage && <p>{errorMessage}</p>}

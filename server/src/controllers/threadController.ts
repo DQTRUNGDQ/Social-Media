@@ -11,6 +11,7 @@ import Like from "~/models/Like";
 import cloudinary from "~/config/cloudinary";
 import { CloudinaryUploadResponse } from "~/models/cloudinary";
 import { processPostContent } from "~/services/threadService";
+import HTTP_STATUS from "~/constants/httpStatus";
 
 const createThread = asyncHandler(
   async (req: AuthenticatedRequest, res: Response): Promise<void> => {
@@ -206,17 +207,9 @@ const getLikedThreads = asyncHandler(
     next: NextFunction
   ): Promise<void> => {
     const userId = req.user.id;
-
-    // Tìm tất cả những bài viết mà người dùng đã like
     const likedThreads = await Like.find({ user: userId }).populate("threadId");
-
-    if (!likedThreads || likedThreads.length === 0) {
-      res.status(404).json([]);
-    }
-
-    const likedThreadData = likedThreads.map((like) => like.threadId);
-
-    res.status(200).json(likedThreadData);
+    const likedThreadData = likedThreads.map((like) => like.threadId) || [];
+    res.status(HTTP_STATUS.OK).json(likedThreadData);
   }
 );
 

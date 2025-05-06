@@ -27,6 +27,8 @@ const Login = ({ setIsAuthenticated }) => {
   const { setAccessToken } = useAuthToken();
   const navigate = useNavigate();
 
+  // ======================== LOGIC ===========================
+
   const handleLogin = async (event) => {
     event.preventDefault();
     setLoginAttempted(true); // Update state when clicking "Login"
@@ -92,9 +94,14 @@ const Login = ({ setIsAuthenticated }) => {
       setErrorMessage("Invalid reset code. Please check and try again.");
     }
   };
+
+  // ======================== EFFECTS ===========================
+
   useEffect(() => {
     console.log("Current step updated to:", step);
   }, [step]);
+
+  // ======================== RENDER ===========================
 
   return (
     <div className="login-main">
@@ -110,7 +117,7 @@ const Login = ({ setIsAuthenticated }) => {
         <div className="form-login">
           <form onSubmit={handleLogin}>
             <div className="txt-login txt-align">
-              Login with your Threads account
+              Đăng nhập với tài khoản Gens của bạn
             </div>
             <div className="form-input">
               <input
@@ -125,14 +132,14 @@ const Login = ({ setIsAuthenticated }) => {
               <input
                 className="input-styled"
                 type="password"
-                placeholder="Password"
+                placeholder="Mật khẩu"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="mg-b">
               <button type="submit" className="login-btn">
-                <div className="login-btn-styled">Login</div>
+                <div className="login-btn-styled">Đăng nhập</div>
               </button>
             </div>
 
@@ -158,7 +165,7 @@ const Login = ({ setIsAuthenticated }) => {
             <div className="txt-align">
               <span className="forgot-pw">
                 <button type="button" onClick={handleForgotPasswordClick}>
-                  Forgot password
+                  Quên mật khẩu
                 </button>
               </span>
             </div>
@@ -175,7 +182,7 @@ const Login = ({ setIsAuthenticated }) => {
                     className="register"
                     onClick={handleRegisterClick}
                   >
-                    Create account
+                    Tạo tài khoản
                   </button>
                 </div>
               </div>
@@ -190,7 +197,7 @@ const Login = ({ setIsAuthenticated }) => {
                 />
               </div>
               <div className="content-method">
-                <span>Continue with Google</span>
+                <span>Tiếp tục với Google</span>
               </div>
               <i
                 className="fa-solid fa-angle-right"

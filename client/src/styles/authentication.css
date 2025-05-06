@@ -117,7 +117,7 @@ body::-webkit-scrollbar {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: rgb(255, 255, 255);
+  background: #f9f9f9;
   padding: 16px 16px;
   color: rgb(153, 153, 153);
 }
@@ -235,6 +235,7 @@ body::-webkit-scrollbar {
   color: #000;
   font-size: 35px;
   font-weight: 700;
+  text-align: center;
 }
 
 .logo-sb-fg {
