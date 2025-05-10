@@ -52,7 +52,7 @@ const Login = ({ setIsAuthenticated }) => {
       navigate("/home");
     } catch (error) {
       console.error(error);
-      setErrorMessage("Incorrect password or email");
+      setErrorMessage("Mật khẩu hoặc Email không đúng!");
       setSuccessMessage("");
     }
   };

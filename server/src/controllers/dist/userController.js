@@ -36,11 +36,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.updateUserProfile = exports.getProfile = void 0;
+exports.updateUserProfile = exports.getProfileByID = exports.getProfile = void 0;
 var User_1 = require("~/models/User");
 var asyncHandler_1 = require("~/middlewares/asyncHandler");
 var AppError_1 = require("~/utils/AppError");
 var cloudinary_1 = require("~/config/cloudinary");
+var express_validator_1 = require("express-validator");
+var httpError_1 = require("~/utils/httpError");
+var httpStatus_1 = require("~/constants/httpStatus");
+var message_1 = require("~/constants/message");
+var userService_1 = require("~/services/userService");
+var logger_1 = require("~/utils/logger");
 exports.getProfile = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
     var user, error_1;
     return __generator(this, function (_a) {
@@ -63,12 +69,46 @@ exports.getProfile = asyncHandler_1["default"](function (req, res, next) { retur
         }
     });
 }); });
+exports.getProfileByID = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, Promise, function () {
+    var errors, _id, user, error_2, statusCode;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                errors = express_validator_1.validationResult(req);
+                if (!errors.isEmpty()) {
+                    throw new httpError_1.HttpError(httpStatus_1["default"].BAD_REQUEST, message_1.USERS_MESSAGES.USER_NOT_FOUND, errors.array());
+                }
+                _id = req.params._id;
+                return [4 /*yield*/, userService_1.UserService.getUserProfilebyID(_id)];
+            case 1:
+                user = (_a.sent()).user;
+                res.status(httpStatus_1["default"].OK).send({
+                    message: message_1.USERS_MESSAGES.GET_ME_SUCCESS,
+                    user: user
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                logger_1["default"].error("Get user profile error: " + error_2.message, { error: error_2 });
+                statusCode = error_2 instanceof httpError_1.HttpError
+                    ? error_2.statusCode
+                    : httpStatus_1["default"].INTERNAL_SERVER_ERROR;
+                res.status(statusCode).send({
+                    error: error_2.message || httpStatus_1["default"].INTERNAL_SERVER_ERROR,
+                    details: error_2.details || null
+                });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 exports.updateUserProfile = asyncHandler_1["default"](function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, bio, link, avatar, file, user_1, isImage, folder_1, uploadResult, error_2;
+    var _a, bio, link, deleteAvatar, file, user_1, isImage, folder_1, uploadResult, error_3;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, bio = _a.bio, link = _a.link, avatar = _a.avatar;
+                _a = req.body, bio = _a.bio, link = _a.link, deleteAvatar = _a.deleteAvatar;
                 file = req.file;
                 console.log("Received file:", file); // Thêm dòng này để kiểm tra
                 _b.label = 1;
@@ -115,7 +155,7 @@ exports.updateUserProfile = asyncHandler_1["default"](function (req, res, next) 
                 user_1.cloudinaryPublicId = uploadResult.public_id;
                 return [3 /*break*/, 7];
             case 4:
-                if (!(avatar === "")) return [3 /*break*/, 7];
+                if (!(deleteAvatar === "1")) return [3 /*break*/, 7];
                 if (!user_1.cloudinaryPublicId) return [3 /*break*/, 6];
                 return [4 /*yield*/, cloudinary_1["default"].uploader.destroy(user_1.cloudinaryPublicId)];
             case 5:
@@ -134,9 +174,9 @@ exports.updateUserProfile = asyncHandler_1["default"](function (req, res, next) 
                 });
                 return [3 /*break*/, 10];
             case 9:
-                error_2 = _b.sent();
-                if (error_2.name === "ValidationError") {
-                    return [2 /*return*/, next(new AppError_1.AppError(error_2.message, 400))];
+                error_3 = _b.sent();
+                if (error_3.name === "ValidationError") {
+                    return [2 /*return*/, next(new AppError_1.AppError(error_3.message, 400))];
                 }
                 res.status(500).json({ error: "Server error" });
                 return [3 /*break*/, 10];

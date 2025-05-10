@@ -64,11 +64,9 @@ const EditProfileModal = ({ userData, setUserData, editSection }) => {
   // XỬ LÝ LƯU THÔNG TIN ĐÃ THÊM / CHỈNH SỬA
 
   const handleSaveProfile = async () => {
-    const avatarToUpdate = selectedFile
-      ? selectedFile
-      : tempAvatar === null
-      ? ""
-      : null;
+    const isDelete = selectedFile === null && tempAvatar === "";
+    const avatarToUpdate = selectedFile || (isDelete ? "" : null);
+    
     try {
       const updatedUser = await updateUserProfile(
         accessToken,

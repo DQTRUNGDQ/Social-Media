@@ -4,6 +4,12 @@ import asyncHandler from "~/middlewares/asyncHandler";
 import { AppError } from "~/utils/AppError";
 import cloudinary from "~/config/cloudinary";
 import { CloudinaryUploadResponse } from "~/models/cloudinary";
+import { validationResult } from "express-validator";
+import { HttpError } from "~/utils/httpError";
+import HTTP_STATUS from "~/constants/httpStatus";
+import { USERS_MESSAGES } from "~/constants/message";
+import { UserService } from "~/services/userService";
+import logger from "~/utils/logger";
 
 interface AuthenticatedRequest extends Request {
   user?: any;
@@ -27,9 +33,44 @@ export const getProfile = asyncHandler(
   }
 );
 
+export const getProfileByID = asyncHandler(
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        throw new HttpError(
+          HTTP_STATUS.BAD_REQUEST,
+          USERS_MESSAGES.USER_NOT_FOUND,
+          errors.array()
+        );
+      }
+      const { _id } = req.params;
+      const { user } = await UserService.getUserProfilebyID(_id);
+      res.status(HTTP_STATUS.OK).send({
+        message: USERS_MESSAGES.GET_ME_SUCCESS,
+        user,
+      });
+    } catch (error: any) {
+      logger.error(`Get user profile error: ${error.message}`, { error });
+      const statusCode =
+        error instanceof HttpError
+          ? error.statusCode
+          : HTTP_STATUS.INTERNAL_SERVER_ERROR;
+      res.status(statusCode).send({
+        error: error.message || HTTP_STATUS.INTERNAL_SERVER_ERROR,
+        details: error.details || null,
+      });
+    }
+  }
+);
+
 export const updateUserProfile = asyncHandler(
   async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    const { bio, link, avatar } = req.body;
+    const { bio, link, deleteAvatar } = req.body;
     const file = req.file;
     console.log("Received file:", file); // Thêm dòng này để kiểm tra
 
@@ -80,7 +121,7 @@ export const updateUserProfile = asyncHandler(
         // Cập nhật thông tin avatar mới
         user.avatar = uploadResult.secure_url;
         user.cloudinaryPublicId = uploadResult.public_id;
-      } else if (avatar === "") {
+      } else if (deleteAvatar === "1") {
         if (user.cloudinaryPublicId) {
           await cloudinary.uploader.destroy(user.cloudinaryPublicId);
         }

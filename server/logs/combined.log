@@ -3012,3 +3012,218 @@ Stack: Error: Cannot find /favicon.ico on this server
 2025-05-06T04:39:36.847Z [WARN]: Headers already sent, skipping errorHandler
 2025-05-06T04:40:20.975Z [WARN]: Headers already sent, skipping errorHandler
 2025-05-06T04:40:21.138Z [WARN]: Headers already sent, skipping errorHandler
+2025-05-06T08:44:32.586Z [ERROR]: Register service error: E11000 duplicate key error collection: Threads.users index: name_1 dup key: { name: "Heo Con" }
+2025-05-06T08:44:32.588Z [ERROR]: Register error: Internal server error
+2025-05-10T09:28:50.605Z [ERROR]: Error: Cannot find /api/users/profile/:id on this server 
+Stack: Error: Cannot find /api/users/profile/:id on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:29:43.475Z [ERROR]: Error: Cannot find /api/users/profile/681c376158ac95ae022b4c4a on this server 
+Stack: Error: Cannot find /api/users/profile/681c376158ac95ae022b4c4a on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:29:50.904Z [ERROR]: Error: Cannot find /api/users/profile/'681c376158ac95ae022b4c4a' on this server 
+Stack: Error: Cannot find /api/users/profile/'681c376158ac95ae022b4c4a' on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:29:59.406Z [ERROR]: Error: Cannot find /api/users/profile/:'681c376158ac95ae022b4c4a' on this server 
+Stack: Error: Cannot find /api/users/profile/:'681c376158ac95ae022b4c4a' on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:33:33.129Z [ERROR]: Error: Cannot find /api/users/profile/:681c376158ac95ae022b4c4a on this server 
+Stack: Error: Cannot find /api/users/profile/:681c376158ac95ae022b4c4a on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:34:23.715Z [ERROR]: Error: Cannot find /api/users/profile/:681c376158ac95ae022b4c4a on this server 
+Stack: Error: Cannot find /api/users/profile/:681c376158ac95ae022b4c4a on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:40:53.304Z [ERROR]: Error: Cannot find /api/users/profile/?_id=681c376158ac95ae022b4c4a on this server 
+Stack: Error: Cannot find /api/users/profile/?_id=681c376158ac95ae022b4c4a on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:41:19.487Z [ERROR]: Error: Cannot find /api/users/profile/?_id=681c376158ac95ae022b4c4a on this server 
+Stack: Error: Cannot find /api/users/profile/?_id=681c376158ac95ae022b4c4a on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:44:28.133Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:44:42.054Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:45:12.359Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:46:10.535Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:46:13.303Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:46:17.772Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:46:57.334Z [ERROR]: Error: Cannot find /api/users/profile/?_id=66dfbd050bdfe18c723f1066 on this server 
+Stack: Error: Cannot find /api/users/profile/?_id=66dfbd050bdfe18c723f1066 on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:47:07.971Z [ERROR]: Error: Cannot find /api/users/profile/?_id=%2766dfbd050bdfe18c723f1066%27 on this server 
+Stack: Error: Cannot find /api/users/profile/?_id=%2766dfbd050bdfe18c723f1066%27 on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-10T09:48:03.449Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:48:34.509Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:48:34.511Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:48:35.351Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:48:35.352Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:48:45.083Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:48:45.084Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:49:44.275Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:49:44.279Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:49:47.063Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:49:47.063Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:52:36.167Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:52:36.695Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:52:48.919Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:53:09.295Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-10T09:56:52.377Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:56:52.380Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:56:52.987Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:56:52.988Z [ERROR]: Get user profile error: User not found
+2025-05-10T09:57:10.885Z [ERROR]: Get user profile service error: User not found
+2025-05-10T09:57:10.888Z [ERROR]: Get user profile error: User not found

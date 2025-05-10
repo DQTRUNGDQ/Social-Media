@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { check, validationResult } from "express-validator";
+import mongoose from "mongoose";
+import HTTP_STATUS from "~/constants/httpStatus";
+import { USERS_MESSAGES } from "~/constants/message";
+import { HttpError } from "~/utils/httpError";
 
 // Validator cho đăng ký
 export const validateRegister = [
@@ -41,3 +45,16 @@ export const validateRefreshToken = [
     next();
   },
 ];
+
+export const validateObjectId = (param: string) => {
+  return (req: Request, res: Response, next: NextFunction): void => {
+    const _id = req.params[param];
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+      throw new HttpError(
+        HTTP_STATUS.BAD_REQUEST,
+        USERS_MESSAGES.ID_IS_INVALID
+      );
+    }
+    next();
+  };
+};
