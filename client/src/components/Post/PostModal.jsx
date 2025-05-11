@@ -7,6 +7,7 @@ import Avatar from "../../assets/Avatar";
 import { fetchUserProfile } from "../../services/userService";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useAuth } from "../../providers/AuthContext";
 
 const PostModal = ({ isOpen, onClose }) => {
   const maxLength = 1000;
@@ -14,6 +15,7 @@ const PostModal = ({ isOpen, onClose }) => {
   const placeholderText = "Có điều gì mới?";
 
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { auth } = useAuth();
   const [userData, setUserData] = useState(null);
   const [userError, setUserError] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
@@ -259,11 +261,12 @@ const PostModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const authToken = localStorage.getItem("accessToken");
-        if (!authToken) {
-          throw new Error("Không có token để xác thực");
+        if (!auth.accessToken || !auth.userId) {
+          throw new Error("Không có token hoặc userId để xác thực");
         }
-        const user = await fetchUserProfile(authToken);
+        const user = await fetchUserProfile(auth.userId, {
+          headers: { Authorization: `Bearer ${auth.accessToken}` },
+        });
         setUserData(user);
       } catch (error) {
         setUserError("Lỗi khi lấy thông tin người dùng");

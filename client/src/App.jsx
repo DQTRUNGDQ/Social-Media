@@ -4,22 +4,32 @@ import AppRoutes from "./routes/AppRoutes";
 import useAuthToken from "./services/useAuthToken";
 import axios from "axios";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider, useAuth } from "./providers/AuthContext";
 
 const QueryClientInstance = new QueryClient();
 
-function App() {
-  const { accessToken, setAccessToken } = useAuthToken();
+function AuthenticationApp() {
+  const { auth } = useAuth();
   useEffect(() => {
     // Gửi accessToken cùng với mỗi request
-    if (accessToken) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    if (auth.accessToken) {
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${auth.accessToken}`;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
     }
-  }, [accessToken]);
+  }, [auth.accessToken]);
 
+  return <AppRoutes />;
+}
+function App() {
   return (
     <QueryClientProvider client={QueryClientInstance}>
       <Router>
-        <AppRoutes />
+        <AuthProvider>
+          <AuthenticationApp />
+        </AuthProvider>
       </Router>
     </QueryClientProvider>
   );

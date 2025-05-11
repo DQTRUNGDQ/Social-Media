@@ -1,8 +1,10 @@
 import React from "react";
 import "../../styles/Sidebar.css";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../../providers/AuthContext";
 
 const Sidebar = () => {
+  const { auth } = useAuth(); //
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -118,7 +120,7 @@ const Sidebar = () => {
           </Link>
         </div>
         <div className="mmn-profile mmn-item">
-          <Link to="/profile">
+          <Link to={`/profile/${auth.userId}`}>
             <svg
               aria-label="Profile"
               role="img"

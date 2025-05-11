@@ -3205,3 +3205,1179 @@ Stack: HttpError: ID is invalid
 2025-05-10T09:56:52.988Z [ERROR]: Get user profile error: User not found
 2025-05-10T09:57:10.885Z [ERROR]: Get user profile service error: User not found
 2025-05-10T09:57:10.888Z [ERROR]: Get user profile error: User not found
+2025-05-11T07:53:01.885Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:01.890Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:01.893Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:01.896Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:43.226Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:43.236Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:43.243Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:53:43.248Z [ERROR]: Error: Cannot find /api/users/profile on this server 
+Stack: Error: Cannot find /api/users/profile on this server
+    at G:\ThreadsClone\ThreadsClone\server\src\app.ts:51:8
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:145:7)
+    at Route.dispatch (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:119:3)
+2025-05-11T07:59:02.414Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T07:59:02.451Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:40:44.394Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:40:44.435Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:40:48.472Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:40:48.507Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:40:48.543Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:40:48.580Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:34.970Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:35.018Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:35.061Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:35.097Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:37.802Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:37.838Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:37.876Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:52:37.926Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:53:48.825Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:53:48.860Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:53:48.895Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:53:48.934Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:08.081Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:08.090Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:08.095Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:08.098Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:32.662Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:32.670Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:32.673Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:54:32.677Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:57:13.942Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:57:13.977Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:57:14.012Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T08:57:14.050Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:00:32.559Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:00:32.563Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:00:32.569Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:00:32.575Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:02:49.132Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:02:49.135Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:02:49.139Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:02:49.144Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:02.404Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:02.410Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:02.413Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:02.418Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:05.955Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:05.960Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:05.966Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:04:05.974Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:04.927Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:04.932Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:04.936Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:04.941Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:56.523Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:56.530Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:56.533Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:06:56.539Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:10:18.408Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:10:22.148Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:10:22.162Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:10:22.167Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:10:22.178Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:10:25.397Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:14.296Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:14.300Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:14.304Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:14.313Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:57.197Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:57.200Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:57.202Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:13:57.206Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:14:54.674Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:14:54.678Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:14:54.681Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:14:54.686Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:24.889Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:24.892Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:24.895Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:24.903Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:48.699Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:48.706Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:48.710Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:15:48.719Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:16:53.397Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:17:06.390Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:17:06.392Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:17:56.073Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:17:56.076Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:18:11.285Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:18:11.289Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:18:47.903Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:18:47.906Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:21:46.260Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:21:46.263Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:21:49.312Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:21:49.318Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:22:22.235Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:22:22.250Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:22:27.237Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:22:27.239Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:22:41.616Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:22:41.622Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:23:33.091Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:23:33.096Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:27:48.935Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:27:48.973Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:28:36.403Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:28:36.439Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:29:33.622Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:29:33.661Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:29:43.151Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:29:43.154Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:30:19.799Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:30:19.803Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:32:50.016Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:32:50.035Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:34:19.231Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:34:19.238Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:35:46.390Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:58:14.894Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:58:17.603Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:58:17.618Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:58:36.394Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:58:44.947Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:58:44.953Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:59:21.348Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T09:59:21.353Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:00:04.384Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:00:09.272Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:00:09.280Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:00:30.739Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:00:30.744Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:01:36.380Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:01:40.833Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:01:40.847Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:04:08.006Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:04:08.010Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:06:33.004Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:06:33.034Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:08:26.397Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:08:26.405Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T10:24:38.193Z [ERROR]: Login error: Login is Unsuccessful
+2025-05-11T10:40:39.675Z [ERROR]: Login error: Login is Unsuccessful
+2025-05-11T11:02:03.094Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:05:24.145Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:22:33.395Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:22:58.596Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:22:59.987Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:23:00.893Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:23:01.679Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:23:10.315Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:27:17.775Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:28:13.464Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:28:39.219Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:28:41.064Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:29:44.420Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-05-11T11:31:32.354Z [ERROR]: Error: ID is invalid 
+Stack: HttpError: ID is invalid
+    at G:\ThreadsClone\ThreadsClone\server\src\middlewares\validation.ts:53:13
+    at Layer.handle [as handle_request] (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\ThreadsClone\ThreadsClone\server\node_modules\express\lib\router\route.js:149:13)
+    at authMiddleware (G:\ThreadsClone\ThreadsClone\server\src\middlewares\auth.ts:39:5)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

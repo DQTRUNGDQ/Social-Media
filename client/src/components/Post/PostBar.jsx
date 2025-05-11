@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "../../styles/Post.css";
-import images from "../../assets/loadImage";
 import api from "../../services/threadService";
 import "font-awesome/css/font-awesome.min.css";
 import io from "socket.io-client";
@@ -8,9 +8,12 @@ import Avatar from "../../assets/Avatar";
 import { fetchUserProfile } from "../../services/userService";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useAuth } from "../../providers/AuthContext";
 
 const PostBar = ({ onClick }) => {
   // State cho thông tin người dùng
+  const { auth } = useAuth();
+
   const [userData, setUserData] = useState(null);
   const [userError, setUserError] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
@@ -30,11 +33,13 @@ const PostBar = ({ onClick }) => {
   // HÀM LẤY THÔNG TIN NGƯỜI DÙNG
   const fetchUserData = async () => {
     try {
-      const authToken = localStorage.getItem("accessToken");
-      if (!authToken) {
-        throw new Error("Không có token để xác thực");
+      if (!auth.accessToken || !auth.userId) {
+        throw new Error("Không có token hoặc userId để xác thực");
       }
-      const user = await fetchUserProfile(authToken);
+      const user = await fetchUserProfile(auth.userId, {
+        // Sử dụng auth.userId thay vì userId từ useParams
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
+      });
       setUserData(user);
     } catch (error) {
       setUserError("Lỗi khi lấy thông tin người dùng");
@@ -112,9 +117,13 @@ const PostBar = ({ onClick }) => {
 
   // useEffect để lấy thông tin người dùng
   useEffect(() => {
-    fetchUserData();
-  }, []);
-
+    if (auth.userId) {
+      fetchUserData();
+    } else {
+      setUserError("Không có userId để lấy thông tin người dùng");
+      setUserLoading(false);
+    }
+  }, [auth.userId]);
   // useEffect để lấy danh sách bài viết (chỉ chạy khi đã có userData)
   useEffect(() => {
     if (userData) {
@@ -255,7 +264,12 @@ const PostBar = ({ onClick }) => {
                   size={40}
                 />
                 <div className="ml-3">
-                  <div className="font-bold">{post.author?.username}</div>
+                  <Link
+                    to={`/profile/${post.author?._id}`}
+                    className="font-bold hover:underline"
+                  >
+                    {post.author?.username}
+                  </Link>
                   <div className="text-gray-500 text-sm">
                     {formatPostTime(post.createdAt)}
                   </div>

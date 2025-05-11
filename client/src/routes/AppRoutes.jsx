@@ -79,56 +79,62 @@ const AppRoutes = () => {
   }, []);
 
   return (
-    <Routes>
-      {/* <Route path="/" element={<Home />} /> */}
-      {/* <Route path="/login" element={<Login />} /> */}
+    <ModalProvider>
+      <Routes>
+        {/* <Route path="/" element={<Home />} /> */}
+        {/* <Route path="/login" element={<Login />} /> */}
 
-      <Route
-        path="/home"
-        element={
-          <ProtectedRoute element={Home} isAuthenticated={!!isAuthenticated} />
-        }
-      />
-      <Route path="/search" element={<Search />} />
-      <Route path="/activity" element={<Activity />} />
-      <Route
-        path="/profile"
-        element={
-          <ModalProvider>
-            <Profile />
-          </ModalProvider>
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          isAuthenticated ? (
-            <Navigate to="/home" />
-          ) : (
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute
+              element={Home}
+              isAuthenticated={!!isAuthenticated}
+            />
+          }
+        />
+        <Route
+          path="/profile/:userId"
+          element={
+            <ProtectedRoute
+              element={Profile}
+              isAuthenticated={!!isAuthenticated}
+            />
+          }
+        />
+        <Route path="/search" element={<Search />} />
+        <Route path="/activity" element={<Activity />} />
+        <Route
+          path="/login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/home" />
+            ) : (
+              <LoginLayout>
+                <Login setIsAuthenticated={setIsAuthenticated} />
+              </LoginLayout>
+            )
+          }
+        />
+        <Route path="/activity" element={<Activity />} />
+        <Route
+          path="/register"
+          element={
             <LoginLayout>
-              <Login setIsAuthenticated={setIsAuthenticated} />
+              <Register />
             </LoginLayout>
-          )
-        }
-      />
-      <Route path="/activity" element={<Activity />} />
-      <Route
-        path="/register"
-        element={
-          <LoginLayout>
-            <Register />
-          </LoginLayout>
-        }
-      />
-      <Route
-        path="/forget-password"
-        element={
-          <LoginLayout>
-            <ForgotPassword />
-          </LoginLayout>
-        }
-      />
-    </Routes>
+          }
+        />
+        <Route
+          path="/forget-password"
+          element={
+            <LoginLayout>
+              <ForgotPassword />
+            </LoginLayout>
+          }
+        />
+      </Routes>
+    </ModalProvider>
   );
 };
 

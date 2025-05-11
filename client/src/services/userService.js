@@ -2,13 +2,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/users";
 
-export const fetchUserProfile = async (accessToken) => {
+export const fetchUserProfile = async (userId, options) => {
   try {
-    const res = await axios.get(`${API_URL}/profile`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const res = await axios.get(`${API_URL}/profile/${userId}`, options);
 
     // Kiểm tra dữ liệu trả về
     if (res.data && res.data.user) {

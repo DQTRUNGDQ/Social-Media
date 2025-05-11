@@ -11,7 +11,7 @@ import { validateObjectId } from "~/middlewares/validation";
 const router = express.Router();
 
 // Route lấy thông tin người dùng hiện tại
-// router.get("/profile", authMiddleware, getProfile);
+router.get("/profile", authMiddleware, getProfile);
 router.get(
   "/profile/:_id",
   authMiddleware,

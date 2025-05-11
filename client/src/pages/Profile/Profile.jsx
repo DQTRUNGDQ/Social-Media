@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchUserProfile } from "../../services/userService";
 import "../../styles/Profile.css";
@@ -10,26 +10,18 @@ import FollowersModal from "../../components/Followers/FollowersModal";
 import { useModal } from "../../providers/ModalContext";
 import Avatar, { getDefaultAvatar } from "../../assets/Avatar";
 import PostModal from "../../components/Post/PostModal";
+import { useAuth } from "../../providers/AuthContext";
 
 export default function Profile() {
   const navigate = useNavigate();
-  const [accessToken, setAccessToken] = useState("");
   const { isProfileModalOpen, setIsProfileModalOpen } = useModal();
   const [isFollowersOpen, setFollowersIsOpen] = useState(false);
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const [editSection, setEditSection] = useState(null); // NEW: Xác định phần nào được mở trong modal
-
-  // ======================== EFFECTS ===========================
-
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken"); // Giả sử bạn lưu token ở đây
-    if (!token) {
-      navigate("/login");
-    } else {
-      setAccessToken(token);
-    }
-  }, [navigate]);
+  const { userId } = useParams();
+  const { auth } = useAuth();
+  const isOwnProfile = String(auth.userId) === String(userId);
 
   // ======================== LOGIC ===========================
   const {
@@ -38,15 +30,19 @@ export default function Profile() {
     isError,
     isFetching,
   } = useQuery({
-    queryKey: ["userProfile", accessToken],
+    queryKey: ["userProfile", auth.accessToken, userId],
     queryFn: async () => {
-      if (!accessToken) throw new Error("No access token");
-      const profile = await fetchUserProfile(accessToken);
+      if (!auth.accessToken || !userId)
+        throw new Error("No access token or userId");
+
+      const profile = await fetchUserProfile(userId, {
+        headers: { Authorization: `Bearer ${auth.accessToken}` },
+      });
       setUserData(profile); // Gán dữ liệu user vào state mới
       console.log("Fetched Profile:", profile); // Log profile
       return profile;
     },
-    enabled: !!accessToken,
+    enabled: !!auth.accessToken && !!userId,
   });
   if (isLoading || isFetching) return <Loading></Loading>;
   if (isError) return <div>Error loading user profile</div>;
@@ -155,153 +151,185 @@ export default function Profile() {
               followers={userData.followers}
               following={userData.following}
             />
-            <div>
-              <button className="edit-profile" onClick={handleEditProfileClick}>
-                Chỉnh sửa hồ sơ
-              </button>
-            </div>
-
+            {isOwnProfile ? (
+              <div>
+                <button
+                  className="edit-profile"
+                  onClick={handleEditProfileClick}
+                >
+                  Chỉnh sửa hồ sơ
+                </button>
+              </div>
+            ) : (
+              <div className="flex space-x-2">
+                <button className="follow-button bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
+                  Theo dõi
+                </button>
+                <button className="message-button bg-gray-200 text-black px-4 py-2 rounded-full hover:bg-gray-300">
+                  Nhắn tin
+                </button>
+              </div>
+            )}
             <EditProfileModal
               isOpen={isProfileModalOpen}
               onClose={handleProfileCloseModal}
               userData={userData}
-              setUserData={setUserData} // Truyền setUserData xuống để cập nhật UI
-              editSection={editSection} // NEW: Truyền trạng thái edit
+              setUserData={setUserData}
+              editSection={editSection}
             />
-            <div className="detail-profile">
-              <div className="profile-options">
-                <div className="pro-options-item border-active">
-                  <div className="item-text">Chủ đề</div>
-                </div>
-                <div className="pro-options-item">
-                  <div className="item-text">Trả lời</div>
-                </div>
-                <div className="pro-options-item">
-                  <div className="item-text">Đăng lại</div>
-                </div>
+            {/* Tách profile-options ra khỏi detail-profile */}
+            <div className="profile-options">
+              <div className="pro-options-item border-active">
+                <div className="item-text">Chủ đề</div>
               </div>
-              <div class="flex items-center border-b pb-4 my-4 ">
-                <Avatar
-                  className="cursor-pointer"
-                  _id={userData._id}
-                  avatarUrl={userData.avatar || ""}
-                  size={40}
-                />
-                <div
-                  className="flex-grow bg-transparent text-gray-500 focus:outline-none ml-2 w-20"
-                  onClick={handleOpenModal}
-                >
-                  <span>Có điều gì mới không?</span>
-                </div>
-
-                <button
-                  className="ml-4 px-4 py-2 border rounded-full text-black"
-                  onClick={handleOpenModal}
-                >
-                  Post
-                </button>
+              <div className="pro-options-item">
+                <div className="item-text">Trả lời</div>
               </div>
-
-              <PostModal isOpen={isPostModalOpen} onClose={handleCloseModal} />
-
-              <div className="profile-info-detail">
-                {incompleteCount === 0 ? (
-                  <div class="flex justify-center py-6">
-                    <button
-                      class="px-6 py-3 border rounded-full text-black font-medium"
-                      onClick={handleOpenModal}
-                    >
-                      Hãy bắt đầu với một bài viết
-                    </button>
+              <div className="pro-options-item">
+                <div className="item-text">Đăng lại</div>
+              </div>
+            </div>
+            {/* Chỉ hiển thị detail-profile khi isOwnProfile là true */}
+            {isOwnProfile && (
+              <div className="detail-profile">
+                <div className="flex items-center border-b pb-4 my-4">
+                  <Avatar
+                    className="cursor-pointer"
+                    _id={userData._id}
+                    avatarUrl={userData.avatar || ""}
+                    size={40}
+                  />
+                  <div
+                    className="flex-grow bg-transparent text-gray-500 focus:outline-none ml-2 w-20"
+                    onClick={handleOpenModal}
+                  >
+                    <span>Có điều gì mới không?</span>
                   </div>
-                ) : (
-                  <div>
-                    <div className="finish-profile">
-                      <span className="title-finish">
-                        Hoàn thành hồ sơ của bạn
-                      </span>
-                      <span className="unfinished">
-                        chỉ còn {incompleteCount}
-                      </span>
+                  <button
+                    className="ml-4 px-4 py-2 border rounded-full text-black"
+                    onClick={handleOpenModal}
+                  >
+                    Đăng
+                  </button>
+                </div>
+                <PostModal
+                  isOpen={isPostModalOpen}
+                  onClose={handleCloseModal}
+                />
+                <div className="profile-info-detail">
+                  {incompleteCount === 0 ? (
+                    <div className="flex justify-center py-6">
+                      <button
+                        className="px-6 py-3 border rounded-full text-black font-medium"
+                        onClick={handleOpenModal}
+                      >
+                        Hãy bắt đầu với một bài viết
+                      </button>
                     </div>
-                    <div className="info-profile">
-                      <div className="info-item">
-                        <div className="icon-item">
-                          <svg aria-label="" role="img" viewBox="0 0 24 24">
-                            <title></title>
-                            <path
-                              d="M6.17225,22H2V17.82775L17.29142,2.53634a1.83117,1.83117,0,0,1,2.58967,0l1.58257,1.58257a1.83117,1.83117,0,0,1,0,2.58967Z"
+                  ) : (
+                    <div>
+                      <div className="finish-profile">
+                        <span className="title-finish">
+                          Hoàn thành hồ sơ của bạn
+                        </span>
+                        <span className="unfinished">
+                          chỉ còn {incompleteCount}
+                        </span>
+                      </div>
+                      <div className="info-profile">
+                        <div className="info-item">
+                          <div className="icon-item">
+                            <svg aria-label="" role="img" viewBox="0 0 24 24">
+                              <title></title>
+                              <path
+                                d="M6.17225,22H2V17.82775L17.29142,2.53634a1.83117,1.83117,0,0,1,2.58967,0l1.58257,1.58257a1.83117,1.83117,0,0,1,0,2.58967Z"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.25"
+                              ></path>
+                              <line
+                                x1="15.01842"
+                                x2="19.19067"
+                                y1="4.80933"
+                                y2="8.98158"
+                              ></line>
+                            </svg>
+                          </div>
+                          <div className="content-item">Thêm bio</div>
+                          <div className="guess-item">
+                            Giới thiệu bản thân và cho mọi người biết sở thích
+                            của bạn.
+                          </div>
+                          <div
+                            className={`btn-item ${
+                              isBioUpdated ? "" : "unactive"
+                            } `}
+                            onClick={
+                              isBioUpdated ? undefined : handleEditBioClick
+                            }
+                          >
+                            <button className="btn-text">
+                              {userData.bio ? "Đã hoàn thành" : "Thêm"}
+                            </button>
+                          </div>
+                        </div>
+                        <div className="info-item">
+                          <div className="icon-item">
+                            <svg
+                              aria-label=""
+                              role="img"
+                              viewBox="0 0 24 24"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth="1.25"
-                            ></path>
-                            <line
-                              x1="15.01842"
-                              x2="19.19067"
-                              y1="4.80933"
-                              y2="8.98158"
-                            ></line>
-                          </svg>
-                        </div>
-                        <div className="content-item">Thêm bio</div>
-                        <div className="guess-item">
-                          Giới thiệu bản thân và cho mọi người biết sở thích của
-                          bạn.
-                        </div>
-                        <div
-                          className={`btn-item ${
-                            isBioUpdated ? "" : "unactive"
-                          } `}
-                          onClick={
-                            isBioUpdated ? undefined : handleEditBioClick
-                          }
-                        >
-                          <button className="btn-text">
-                            {userData.bio ? "Đã hoàn thành" : "Thêm"}
-                          </button>
-                        </div>
-                      </div>
-                      <div className="info-item">
-                        <div className="icon-item">
-                          <svg
-                            aria-label=""
-                            role="img"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.25"
+                            >
+                              <title></title>
+                              <polyline points="21.648 5.352 9.002 17.998 2.358 11.358"></polyline>
+                            </svg>
+                          </div>
+                          <div className="content-item">Thêm ảnh cho hồ sơ</div>
+                          <div className="guess-item">
+                            Giúp mọi người dễ dàng nhận ra bạn hơn.
+                          </div>
+                          <div
+                            className={`btn-item ${
+                              isAvatarUpdated ? "" : "unactive"
+                            } `}
+                            onClick={
+                              isAvatarUpdated
+                                ? undefined
+                                : handleEditAvatarClick
+                            }
                           >
-                            <title></title>
-                            <polyline points="21.648 5.352 9.002 17.998 2.358 11.358"></polyline>
-                          </svg>
+                            <button
+                              className="btn-text"
+                              disabled={isAvatarUpdated}
+                            >
+                              {isAvatarUpdated ? "Đã hoàn thành" : "Thêm"}
+                            </button>
+                          </div>
                         </div>
-                        <div className="content-item">Thêm ảnh cho hồ sơ</div>
-                        <div className="guess-item">
-                          Giúp mọi người dễ dàng nhận ra bạn hơn.
-                        </div>
-                        <div
-                          className={`btn-item ${
-                            userData.bio ? "" : "unactive"
-                          } `}
-                          onClick={
-                            isAvatarUpdated ? undefined : handleEditAvatarClick
-                          }
-                        >
-                          <button
-                            className="btn-text"
-                            disabled={isAvatarUpdated}
-                          >
-                            {isAvatarUpdated ? "Đã hoàn thành" : "Thêm"}
-                          </button>
-                        </div>
+                        <div className="info-item"></div>
+                        <div className="info-item"></div>
                       </div>
-                      <div className="info-item"></div>
-                      <div className="info-item"></div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
+            )}
+            {/* Giao diện thay thế khi xem hồ sơ người khác */}
+            {!isOwnProfile && (
+              <div className="other-profile-content">
+                <div className="flex justify-center py-6">
+                  <button
+                    className="px-6 py-3 border rounded-full text-black font-medium"
+                    onClick={() => console.log("Load posts for", userId)}
+                  >
+                    Xem các bài viết của {userData.name}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
